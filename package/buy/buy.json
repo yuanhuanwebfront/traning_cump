@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "area-select": "../../component/areaMutiSelect/area-select"
+      }
+}

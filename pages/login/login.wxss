@@ -1,0 +1,69 @@
+.login-area{
+    background-image: url('http://qiniucdn.dailyyoga.com.cn/f4/0c/f40c0aad15390c42b4ac7e5997ec119f.jpeg');
+    background-size: cover;
+}
+.login-box{
+    text-align: center;
+    width: 640rpx;
+    height: 980rpx;
+    background-image:  linear-gradient(-180deg, rgba(255,255,255,0.06) 0%, rgba(254,254,254,0.81) 27%, rgba(254,254,254,0.96) 43%);
+}
+.login-box image{
+    margin-top: 160rpx;
+    width: 132rpx;
+    height: 132rpx;
+}
+.trump{margin-top: 32rpx;}
+.btn-area{margin-top: 252rpx;}
+.login-box .btn{
+    margin: 0 auto;
+    margin-top: 40rpx;
+    width: 496rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+}
+.phone-area{
+    padding: 276rpx 52rpx 210rpx 52rpx;
+    box-sizing: border-box;
+}
+.input-box{margin-bottom: 60rpx;}
+.input-box input{margin-top: 20rpx;}
+.setting-box{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+.setting-area{
+    width: 600rpx;
+    margin: 0 auto;
+    margin-top: 340rpx;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 6rpx;
+}
+.setting-header{
+    line-height: 30rpx;
+    height: 30rpx;
+    padding: 52rpx 0 28rpx 0;
+}
+.setting-body{
+    line-height: 40rpx;
+    padding: 10rpx 32rpx 40rpx;
+}
+.setting-btn{
+    padding: 28rpx 0;
+    border-top: 2rpx solid #c8c8c8;
+}
+.setting-btn button{
+    color: #fff;
+    background: #8CA5FF;
+    width: 180rpx;
+    height: 52rpx;
+    line-height: 52rpx;
+    border-radius: 52rpx;
+}
+.dis-btn{
+    opacity: 0.5;
+    color: #e3e3e3;
+}

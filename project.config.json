@@ -1,0 +1,225 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.3.0",
+	"appid": "wx3895f49172bc98b5",
+	"projectname": "%E8%AE%AD%E7%BB%83%E8%90%A5%E9%A1%B9%E7%9B%AE",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 22,
+			"list": [
+				{
+					"id": 0,
+					"name": "登录",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": 2,
+					"name": "课程详情",
+					"pathName": "package/detail/detail",
+					"query": "session_id=234&source=5",
+					"scene": "1008"
+				},
+				{
+					"id": 3,
+					"name": "购买页面",
+					"pathName": "package/buy/buy",
+					"query": "sessionId=257",
+					"scene": "1001"
+				},
+				{
+					"id": 4,
+					"name": "地址修改",
+					"pathName": "package/address/address",
+					"query": "sessionId=208",
+					"scene": "1001"
+				},
+				{
+					"id": 5,
+					"name": "购买成功",
+					"pathName": "package/success/success",
+					"query": "order_id=OP153734159283100&session_id=234",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "优惠券",
+					"pathName": "package/coupon/coupon",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "返利页面",
+					"pathName": "other/rebate/rebate",
+					"query": "id=282",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "课程详情",
+					"pathName": "package/shareFriendSpace/shareFriendSpace",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": 9,
+					"name": "报到页面",
+					"pathName": "package/report/report",
+					"query": "session_id=255",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "我的课程tab",
+					"pathName": "pages/session/session",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "结课列表",
+					"pathName": "session/sessionEndList/sessionEndList",
+					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "我的课程页",
+					"pathName": "session/sessionHome/sessionHome",
+					"query": "session_id=264&team_id=103&programId=36",
+					"scene": "1001"
+				},
+				{
+					"id": 13,
+					"name": "课程视频",
+					"pathName": "session/sessionVideo/sessionVideo",
+					"query": "sessionId=645&o2_session_id=282&session_id=282&programId=88&has_mark=1",
+					"scene": "1001"
+				},
+				{
+					"id": 14,
+					"name": "打卡成功",
+					"pathName": "session/sessionMark/sessionMark",
+					"query": "session_id=645&yoga_o2_session_id=282",
+					"scene": "1001"
+				},
+				{
+					"id": 15,
+					"name": "打卡排行",
+					"pathName": "session/sessionRank/sessionRank",
+					"query": "isShare=1&session_id=308",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "订单列表",
+					"pathName": "other/order/order",
+					"query": ""
+				},
+				{
+					"id": 17,
+					"name": "订单详情",
+					"pathName": "other/orderDetail/orderDetail",
+					"query": "orderId=MA153492382742210",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "个人",
+					"pathName": "pages/mine/mine",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "购买成功",
+					"pathName": "session/sessionEndList/sessionEndList",
+					"query": "order_id=OP153559276587050&session_id=234",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "规则页面",
+					"pathName": "package/rule/rule",
+					"query": "session_id=314&source=34",
+					"scene": "1008"
+				},
+				{
+					"id": 21,
+					"name": "打卡日记",
+					"pathName": "other/markDaily/markDaily",
+					"query": "tab=mine&shareStatus=1&yoga_o2_session_id=306&invite_euid=ab6f92ef09662eb1b7d8ff44ae6d8be0",
+					"scene": "1001"
+				},
+				{
+					"id": 22,
+					"name": "打卡成功",
+					"pathName": "session/sessionMark/sessionMark",
+					"query": "yoga_o2_session_id=306&mark_uid=2fd80d8018ffa2abeadf9fc486f5b56a",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "打卡日记列表",
+					"pathName": "other/dailyList/dailyList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的tab",
+					"pathName": "pages/mine/mine",
+					"query": ""
+				},
+				{
+					"id": 25,
+					"name": "打卡成功",
+					"pathName": "session/sessionMarkSuccess/sessionMarkSuccess",
+					"query": "session_id=645&o2_session_id=282",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "我的打卡日记",
+					"pathName": "other/dailyList/dailyList",
+					"query": "",
+					"scene": "1001"
+				}
+			]
+		}
+	}
+}

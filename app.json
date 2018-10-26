@@ -1,0 +1,74 @@
+{
+  "resizable": false,
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/session/session",
+    "pages/login/login",
+    "pages/webView/webView"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "每日瑜伽瑜乐训练营",
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 30
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#8CA5FF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "发现",
+        "iconPath": "./assets/img/discover.png",
+        "selectedIconPath": "./assets/img/discover_active.png"
+      },
+      {
+        "pagePath": "pages/session/session",
+        "text": "我的课程",
+        "iconPath": "./assets/img/session.png",
+        "selectedIconPath": "./assets/img/session_active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "个人",
+        "iconPath": "./assets/img/mine.png",
+        "selectedIconPath": "./assets/img/mine_active.png"
+      }
+    ]
+  },
+  "subPackages": [{
+    "root": "package",
+    "pages": [
+      "buy/buy",
+      "rule/rule",
+      "detail/detail",
+      "address/address",
+      "success/success",
+      "coupon/coupon",
+      "report/report",
+      "shareFriendSpace/shareFriendSpace"
+    ]
+  },{
+    "root": "other",
+    "pages": [
+      "rebate/rebate",
+      "order/order",
+      "orderDetail/orderDetail",
+      "rebateDetail/rebateDetail",
+      "markDaily/markDaily",
+      "dailyList/dailyList"
+    ]
+  },{
+    "root": "session",
+    "pages": [
+      "sessionHome/sessionHome",
+      "sessionEndList/sessionEndList",
+      "sessionVideo/sessionVideo",
+      "sessionMark/sessionMark",
+      "sessionRank/sessionRank",
+      "sessionMarkSuccess/sessionMarkSuccess"
+    ]
+  }]
+}

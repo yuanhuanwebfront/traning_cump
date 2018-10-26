@@ -1,0 +1,157 @@
+<view class="container" style="padding-top: 20rpx;">
+
+    <!--    首次进入没有用户信息的页面   -->
+    <view class="user-area" wx:if="{{!userInfoFull}}">
+        <view class="flex start">
+            <view class="input flex">
+                <text class="iconfont icon-geren"></text>
+                <input type="text" placeholder="姓名" value="{{addressInfo.userName}}" placeholder-style="font-size: 26rpx;line-height: 80rpx;" bindinput="setUserName"/>
+            </view>
+            <view class="input flex">
+                <text class="iconfont icon-dianhua" style="font-size: 48rpx;"></text>
+                <input type="text" maxlength="11" value="{{addressInfo.userPhone}}" placeholder="电话" placeholder-style="font-size: 26rpx;line-height: 80rpx;" bindinput="setUserPhone"/>
+            </view>
+        </view>
+
+        <view class="input flex start">
+            <text class="iconfont icon-weixin2"></text>
+            <input type="text" placeholder="微信号" value="{{addressInfo.userWeChat}}" bindinput="setUserWechat" placeholder-style="font-size: 26rpx;line-height: 80rpx;" />
+        </view>
+
+        <view class="input flex start back-bg" style="border-bottom: none;" bindtap="showPicker">
+            <text class="iconfont icon-buoumaotubiao23"></text>
+            <view class="info" style="padding-left: 10rpx;font-size: 26rpx;" wx:if="{{areaName.length > 0}}">{{areaName[0]}} {{areaName[1]}} {{areaName[2]}}</view>
+            <view class="info" style="padding-left: 10rpx;font-size: 26rpx;color: #999;" wx:if="{{areaName.length === 0}}">请选择城市</view>
+        </view>
+
+        <view class="input flex start" wx:if="{{showDetailAddress}}">
+            <input type="text" placeholder="输入详细地址" placeholder-style="font-size: 26rpx;line-height: 80rpx;" bindinput="setUserAddress" />
+        </view>
+
+
+    </view>
+
+    <!--    存在用户信息的界面           -->
+    <view class="user-area" style="padding-left: 0;" wx:if="{{userInfoFull}}">
+        <view class="stripe"></view>
+        <view class="user-tab back-bg" bindtap="goAddressEdit">
+            <view class="top over-hide" style="padding-right: 40rpx;">
+                <text class="word-15 color-3">{{addressInfo.userName}} {{addressInfo.userPhone}} <text style="font-size: 30rpx;padding-left: 20rpx;"> 微信：{{addressInfo.userWeChat}}</text></text>
+            </view>
+            <view class="bottom">
+                <text style="color: #666;">{{areaName[0]}}-{{areaName[1]}}市-{{areaName[2]}}</text>
+                <text style="color: #666;"> {{addressInfo.userAddress}}</text>
+            </view>
+        </view>
+    </view>
+
+
+    <view class="order-area">
+
+        <view class="order-header flex">
+            <text class="word-15 color-3" style="font-size: 30rpx;">{{sessionInfo.sessionName}}</text>
+            <text class="word-15 color-3" style="font-size: 30rpx;">￥{{sessionInfo.sessionPrice}}</text>
+        </view>
+
+        <view class="order-content flex">
+            <image src="{{sessionInfo.sessionImg}}" mode="widthFix"></image>
+            <view class="inner">
+                <view class="word-13 color-6">开课时间：{{sessionInfo.sessionStartTime}}</view>
+                <view class="word-13 color-6">上课地点：{{sessionInfo.sessionAddress}}</view>
+            </view>
+        </view>
+
+        <view class="discount-area" wx:if="{{discountLoadFinish}}">
+
+                <!--    复购优惠   不与任何优惠共用（存在这个优惠，其他都没有）  -->
+                <view class="discount-item flex" wx:if="{{discountsInfo[4]}}" style="border: none;">
+                    <text>{{discountsInfo[4].title}} <text class="word-12 color-9">(不与其他优惠共享)</text> </text>
+                    <text class="money">{{discountsInfo[4].value_content}}</text>
+                </view>
+
+                <view wx:if="{{!discountsInfo[4]}}">
+
+                    <!--    会员优惠   不会存在互斥关系   -->
+                    <view class="discount-item flex {{!canUseCoupon && !canUsePoints && pointsList.length !== 0 ? 'no-border' : '' }}" wx:if="{{discountsInfo[2]}}">
+                        <text>{{discountsInfo[2].title}}</text>
+                        <text class="money">{{discountsInfo[2].value_content}}</text>
+                    </view>
+
+                    <!--    优惠券    可能会与瑜币存在互斥关系 -->
+                    <view class="discount-item back-bg flex {{!canUsePoints && pointsList.length !== 0 ? 'no-border' : '' }}" bindtap="chooseCoupon" wx:if="{{canUseCoupon}}">
+                        <text>优惠券</text>
+                        <text class="money">{{discountsInfo[5].value_content || '不使用'}}</text>
+                    </view>
+
+                    <!--    瑜币抵用   可能会与优惠券互斥     -->
+                    <view class="discount-item back-bg flex no-border" wx:if="{{pointsList.length !== 0 && canUsePoints}}">
+                        <text>瑜币抵用: {{pointsList[0].usePoints}}瑜币抵用</text>
+                        <text class="money" data-open="1" bindtap="showPoints">{{discountsInfo[6].value_content || '不使用'}}</text>
+                    </view>
+
+                </view>
+
+        </view>
+
+    </view>
+
+
+    <view class="balance-area flex">
+        <view class="total flex">
+            <view class="left">
+                <text>实付: </text>
+                <text class="vip">￥{{discountsInfo[9].value}}</text>
+            </view>
+            <view class="right detail">
+                <text bindtap="toggleDetail">明细 </text>
+                <text bindtap="toggleDetail" class="iconfont icon-shangjiantou" style="font-size: 30rpx;"></text>
+            </view>
+        </view>
+        <button class="payOrder {{btnDisable ? 'disable' : '' }}" bindtap="payOrder" disabled="{{btnDisable}}">立即支付</button>
+    </view>
+
+    <view style="width: 100%;">
+        <area-select area-info="{{areaInfo}}" show-picker="{{showAreaPicker}}" bind:cancel="cancelPicker" bind:confirm="confirmPicker"></area-select>
+    </view>
+
+    <!--    切换瑜币抵扣区域      -->
+    <view class="bottom-area" hidden="{{hidePointsList}}" style="z-index: 40;">
+
+        <radio-group class="point-area" bindchange="changePoints">
+            <view class="point-item center">
+                <text>请选择抵扣方式</text>
+                <text class="icon-close" catchtap="closePoints"></text>
+            </view>
+            <view class="point-item flex" wx:for="{{pointsList}}" wx:key="">
+                <text>{{item.title}}</text>
+                <radio value="{{item.value}}" checked="{{item.isChecked}}" color="#8CA5FF"></radio>
+            </view>
+        </radio-group>
+
+    </view>
+
+    <!--    订单明细区域      -->
+    <view class="bottom-area" hidden="{{hideDetailInfo}}" data-close="1" capture-catch:tap="closeDetail">
+
+        <view class="detail-order-area" data-close="0">
+            <view class="order-title">订单支付明细</view>
+            <view class="detail-content">
+
+                <view class="flex" style="margin-bottom: 48rpx;">
+                    <text class="word-14 color-3">{{sessionInfo.sessionName}}</text>
+                    <text class="word-14 color-3">￥{{discountsInfo[1].value}}</text>
+                </view>
+
+                <view wx:for="{{discountList}}" wx:key="" >
+                    <view class="flex" wx:if="{{item.sort_order != 1 && item.sort_order != 9}}">
+                        <text class="word-13-3">{{item.title}}</text>
+                        <text class="word-13-3 money">{{item.value_content}}</text>
+                    </view>
+                </view>
+
+            </view>
+        </view>
+
+    </view>
+
+</view>

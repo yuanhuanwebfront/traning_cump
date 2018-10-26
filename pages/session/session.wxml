@@ -1,0 +1,18 @@
+<view class="container" style="padding-top: 20rpx;">
+
+    <view wx:if="{{sessionList.length === 0}}" style="margin-top: 160rpx;">
+        <view class="empty-img"></view>
+        <view class="center word-14 color-6">你还没有报名任何训练营~</view>
+        <view class="btn-area flex">
+            <button class="btn btn-confirm" wx:if="{{showJoinSessionBtn}}" bindtap="joinSession">参加训练营</button>
+            <button class="btn" style="margin-left: 23rpx;" wx:if="{{showEndSessionBtn}}" bindtap="toSessionEndList">已结营课程</button>
+        </view>
+    </view>
+
+
+    <view wx:if="{{sessionList.length !== 0}}">
+        <session-status wx:for="{{sessionList}}" wx:key="session_id" session-info="{{item}}"></session-status>
+    </view>
+
+
+</view>

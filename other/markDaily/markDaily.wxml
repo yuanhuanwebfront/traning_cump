@@ -1,0 +1,105 @@
+<view class="container" wx:if="{{pageLoaded || shareStatus === '3'}}">
+
+    <template name="listItem">
+        <view class="person flex">
+            <image src="{{item.Thumbnail}}"></image>
+            <view>
+                <view class="word-15 color-3">{{item.nickname}}</view>
+                <text class="word-13 color-9">{{item.create_time}} · 已坚持了{{item.keepDay}}天  </text>
+            </view>
+        </view>
+        <view class="info-area relative">
+            <view class="content word-16 color-6" style="color: #666;">{{item.content}}</view>
+            <image wx:if="{{item.images}}" mode="widthFix" src="{{item.images}}"></image>
+            <view style="text-align: right;margin-bottom: 20rpx;">
+                <text class="zan word-14 color-9 {{item.is_like ? 'active' : ''}}" data-active="{{item.is_like}}" data-count="{{item.like_count}}" data-id="{{item.id}}" data-item="{{item}}" data-index="{{index}}" bindtap="giveZan">{{item.is_like ? item.like_count: '点赞'}}</text>
+                <view class="zan-list relative word-12" wx:if="{{item.like_list.length > 0}}">
+                    <text wx:for="{{item.like_list}}" wx:for-item="zanItem" wx:key="">{{zanItem.nickname}}{{item.like_list.length > index + 1 ? '，' : '' }}</text>
+                </view>
+            </view>
+        </view>
+    </template>
+
+    <view class="header flex" wx:if="{{shareStatus !== '3'}}" bindtap="toMySession">
+        <image src="{{pageInfo.session_image}}"></image>
+        <view class="session-desc">
+            <view class="name word-16">{{pageInfo.session_name}}</view>
+            <view class="periods">{{pageInfo.periods_name}}</view>
+            <view class="date word-13">{{pageInfo.session_start_time}} 至 {{pageInfo.session_end_time}}</view>
+        </view>
+        <image class="arrow" wx:if="{{shareStatus === '1'}}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAaCAMAAACNQ/wIAAAAXVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9RKvvlAAAAHnRSTlMA9+8p165RFw4H5su9mj8jkYJ3bmE3G+HGp4hjSzGkmihWAAAAjUlEQVQY042RRw7EQAgEJzjnvJn/P3PlRkIMvphjqZC6weWls0Phc0FE3XhB5JcEZXRO+1Oonj3Ed61gfELMBr28BsC+UuzIwZpCi0UDmASverBwaHFAnuiSZW9Q+SJjbQGJJ0k8dhx3F2XhUrMoe8vVowSaWFll5/sgMmfkzJu9qnkJ+qcjV1Jl3Y35A5FTDkbzTqzkAAAAAElFTkSuQmCC"></image>
+    </view>
+
+    <view class="info flex" wx:if="{{shareStatus !== '3'}}">
+        <view class="center">
+            <text class="word-20 color-3 center">{{pageInfo.practiceSessionNum}}</text>
+            <view class="word-12 color-9">完成(课时)</view>
+        </view>
+        <view class="center">
+            <text class="word-20 color-3 center">{{pageInfo.practiceTimes}}</text>
+            <view class="word-12 color-9">练习(分钟)</view>
+        </view>
+        <view wx:if="{{shareStatus === '0' && globalQuery.sessionStatus != 3}}" class="center ranking" bindtap="toRankPage">
+            <view wx:if="{{pageInfo.ranking_list.length > 0}}">
+                <view class="word-20 color-3 center" style="height: 50rpx;">
+                    <image wx:key="" wx:for="{{pageInfo.ranking_list}}" src="{{item.Thumbnail}}" style="left: {{10 + index * 22}}rpx;z-index: {{3 - index}};"></image>
+                </view>
+                <view class="word-12 color-9">排名No.{{pageInfo.ranking}}</view>
+            </view>
+
+            <view wx:if="{{pageInfo.ranking_list.length <= 0}}" class="word-13 color-9">排名计算中</view>
+
+        </view>
+        <view wx:if="{{shareStatus === '1' || globalQuery.sessionStatus == 3}}" class="center">
+            <text class="word-20 color-3 center">{{pageInfo.user_diary_count}}</text>
+            <view class="word-12 color-9">打卡(天)</view>
+        </view>
+    </view>
+
+    <view class="tab" wx:if="{{shareStatus === '0'}}">
+        <view bindtap="switchTab" class="class center tab-item word-15 color-9 {{tabType === 'class' ? 'active' : ''}}" data-type="class">班级日记</view>
+        <view bindtap="switchTab" class="mine center tab-item word-15 color-9 {{tabType === 'mine' ? 'active' : ''}}" data-type="mine">我的日记</view>
+    </view>
+
+    <view style="padding-bottom: {{shareStatus !== '0' ? '150rpx' : '20rpx'}};min-height: 700rpx;">
+
+        <view hidden="{{tabType === 'mine'}}" class="daily-content" wx:for="{{classDailyList}}" wx:key="">
+            <template is="listItem" data="{{item, index}}"></template>
+        </view>
+        <!--    班级日记为空的ui   -->
+        <view class="empty center" wx:if="{{classDailyList.length <= 0 && tabType === 'class'}}">
+            <image src="http://qiniucdn.dailyyoga.com.cn/74/90/7490eb4dc5c0bb970a8f2553a7004ed8.png"></image>
+            <view class="color-6 word-14 word">竟然还没有班级日记~</view>
+        </view>
+
+        <view hidden="{{tabType === 'class'}}" class="daily-content" wx:for="{{mineDailyList}}" wx:key="">
+            <view wx:if="{{shareStatus !== '3'}}" class="day-tip day-bg word-14 color-9">{{item.passDay}}</view>
+            <template is="listItem" data="{{item, index}}"></template>
+        </view>
+
+        <!--    我的日记为空的ui   -->
+        <view class="empty center" wx:if="{{mineDailyList.length <= 0 && tabType === 'mine'}}">
+            <image src="http://qiniucdn.dailyyoga.com.cn/74/90/7490eb4dc5c0bb970a8f2553a7004ed8.png"></image>
+            <view class="color-6 word-14 word">还没有日记，查看班级日记吧~</view>
+            <button class="btn-confirm" bindtap="toClassDiary">班级日记</button>
+        </view>
+
+    </view>
+
+    <view class="header bottom" wx:if="{{shareStatus === '3'}}" bindtap="toMySession">
+        <image src="{{pageInfo.session_image}}"></image>
+        <view class="session-desc">
+            <view class="name word-13">你的好友正在参加</view>
+            <view class="word-13" style="color: #fff;">{{pageInfo.session_name}}</view>
+        </view>
+        <image class="arrow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAaCAMAAACNQ/wIAAAAXVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9RKvvlAAAAHnRSTlMA9+8p165RFw4H5su9mj8jkYJ3bmE3G+HGp4hjSzGkmihWAAAAjUlEQVQY042RRw7EQAgEJzjnvJn/P3PlRkIMvphjqZC6weWls0Phc0FE3XhB5JcEZXRO+1Oonj3Ed61gfELMBr28BsC+UuzIwZpCi0UDmASverBwaHFAnuiSZW9Q+SJjbQGJJ0k8dhx3F2XhUrMoe8vVowSaWFll5/sgMmfkzJu9qnkJ+qcjV1Jl3Y35A5FTDkbzTqzkAAAAAElFTkSuQmCC"></image>
+    </view>
+
+    <view class="back-home bottom" wx:if="{{shareStatus === '1'}}">
+        <text class="word-14">每日瑜伽瑜乐训练营</text>
+        <button class="word-14 right" bindtap="backHome">立即打开</button>
+    </view>
+
+    <button wx:if="{{tabType === 'mine' && shareStatus === '0' && mineDailyList.length > 0}}" class="btn-share word-13" open-type="share">分享</button>
+
+</view>

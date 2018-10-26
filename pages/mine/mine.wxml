@@ -1,0 +1,26 @@
+<view class='container'>
+
+    <view class="banner flex" bindtap="imgLogin">
+        <view class="bg"></view>
+        <view class="bg"></view>
+
+        <image class="ab" src="{{userImg}}"></image>
+        <view class="ab flex">
+            <text class="word-14 name">{{nickName}}</text>
+            <text wx:if="{{userId}}" class="word-14 name">ID: {{userId}}</text>
+        </view>
+
+    </view>
+
+
+    <view class="menu-area">
+        <view class="bar word-14 color-3" style="margin-top: 40rpx;" bindtap="toMySession">我的课程</view>
+        <view class="bar word-14 color-3 daily" style="margin-bottom: 40rpx;" bindtap="toMyDaily">我的打卡日记</view>
+
+        <view class="bar word-14 color-3" style="background-position-y: -120rpx;" bindtap="toMyOrder">我的订单</view>
+
+        <view class="bar word-14 color-3" style="background-position-y: -220rpx;" bindtap="toMyCoupon">我的优惠券</view>
+        <view class="bar word-14 color-3" style="background-position-y: -320rpx;" bindtap="toMyRebate">我的返利</view>
+    </view>
+
+</view>

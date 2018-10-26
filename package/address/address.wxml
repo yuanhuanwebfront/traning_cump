@@ -1,0 +1,34 @@
+<view class="container">
+
+    <view class="address-box">
+        <view class="address-item flex">
+            <text class="iconfont icon-geren"></text>
+            <input type="text" placeholder="姓名" placeholder-style="font-size: 26rpx;" bindinput="setUserName" value="{{addressInfo.userName}}"/>
+        </view>
+        <view class="address-item flex">
+            <text class="iconfont icon-dianhua"></text>
+            <input type="text" placeholder="电话" maxlength="11" placeholder-style="font-size: 26rpx;" bindinput="setUserPhone" value="{{addressInfo.userPhone}}"/>
+        </view>
+        <view class="address-item flex">
+            <text class="iconfont icon-weixin2"></text>
+            <input type="text" placeholder="微信号" placeholder-style="font-size: 26rpx;" bindinput="setUserWeChat" value="{{addressInfo.userWeChat}}"/>
+        </view>
+        <view class="address-item flex">
+            <text class="iconfont icon-buoumaotubiao23"></text>
+            <view style="width: 100%;height: 100rpx" bindtap="showPicker">
+                <text class="area-text">{{areaName[0]}}-{{areaName[1]}}市-{{areaName[2]}}</text>
+            </view>
+        </view>
+        <view class="address-item flex">
+            <input type="text" placeholder="地址" placeholder-style="font-size: 26rpx;" bindinput="setUserAddress" value="{{addressInfo.userAddress}}"/>
+        </view>
+    </view>
+
+    <view style="width: 100%;">
+        <area-select area-info="{{areaInfo}}" show-picker="{{showPicker}}" bind:cancel="cancelPicker"
+                     bind:confirm="confirmPicker"></area-select>
+    </view>
+
+    <button disabled="{{btnDisable}}" class="btn btn-confirm bottom-btn {{btnDisable ? 'disabled' : ''}} " bindtap="changeAddressInfo">确定</button>
+
+</view>

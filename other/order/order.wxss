@@ -1,0 +1,58 @@
+.order-header {
+    text-align: left;
+    color: #666;
+    line-height: 32 rpx;
+    /*padding: 25rpx 30rpx;*/
+    padding-top: 20rpx;
+}
+
+.order-item {
+    padding: 20rpx 30rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+
+.order-title {
+    font-size: 30rpx;
+    color: #333333;
+}
+
+.enter {
+    justify-content: space-between;
+    margin-top: 17rpx;
+    padding-bottom: 16rpx;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.enter .border{
+    color: #8CA5FF;
+    padding: 4rpx 12rpx;
+    font-size: 22rpx;
+}
+
+.info{
+
+    padding: 0 20rpx;
+    justify-content: flex-start;
+    margin-top: 20rpx;
+}
+.info image{
+    width: 240rpx;
+    height: 140rpx;
+    margin-right: 26rpx;
+}
+.info view{
+    font-size: 26rpx;
+    color: #999999;
+}
+
+.info view.margin{
+    margin-top: 16rpx;
+}
+
+image.empty-img{
+    display: block;
+    width: 420rpx;
+    height: 340rpx;
+    margin: 40rpx auto;
+}

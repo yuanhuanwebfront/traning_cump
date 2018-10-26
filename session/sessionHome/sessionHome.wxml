@@ -1,0 +1,56 @@
+<!--    模板      -->
+<template name="sessionItem">
+    <view style="margin-bottom: 20rpx;">
+        <view class="session-title day-bg">{{index + 1}}</view>
+        <view class="session-item" wx:for="{{item}}" wx:for-item="infoItem" wx:key="">
+
+            <view class="session-info flex" data-info="{{infoItem}}" bindtap="toSessionVideo" data-sessionId="{{infoItem.sessionId}}" data-lock="{{infoItem.isLock}}">
+                <view class="reward-bg {{infoItem.isFinish ? 'active' : '' }}">
+                    <view class="word-14 color-6">{{infoItem.title}}</view>
+                    <view class="word-13 color-c8">练习时长：{{infoItem.sessionTime}}</view>
+                </view>
+                <view hidden="{{infoItem.isLock}}" class="iconfont icon-bofang"></view>
+                <view hidden="{{!infoItem.isLock}}" class="iconfont icon-suo word-16 color-c8"></view>
+            </view>
+
+            <view wx:key="" wx:if="{{infoItem && infoItem.linkList}}" wx:for-item="video" wx:for="{{infoItem.linkList}}" data-src="{{video.link_content}}" bindtap="playTidbit" class="session-tidbit flex word-13 color-6">
+                <text data-src="{{video.link_content}}" class="iconfont icon-shipinzhibo"></text>
+                <text data-src="{{video.link_content}}">{{video.link_title}}</text>
+            </view>
+        </view>
+    </view>
+
+</template>
+
+<view class="container" wx:if="{{allInfoLoaded}}">
+
+    <view class="home-header flex">
+        <view>
+            <view class="flex" style="justify-content: flex-start;">
+                <text>计划进度</text>
+                <button class="mark" bindtap="jumpToSession" wx:if="{{showPracticeBtn && !hideRankBtn}}">去练习</button>
+                <button class="mark" bindtap="toMarkPage" wx:if="{{showMarkBtn && !hideRankBtn}}">去打卡</button>
+                <button class="mark" bindtap="toRankPage" wx:if="{{showRankBtn && !hideRankBtn}}">查看排行</button>
+            </view>
+            <view class="session-name"><text> {{hasFinishAllSession ? '你已成功完成本次课程安排' : sessionName}}</text></view>
+        </view>
+        <view class="practice-plan">
+            <circle circle-progress="{{programProgress}}"></circle>
+            <view class="text center">{{programDays}} / {{programAllCount}}</view>
+        </view>
+    </view>
+
+    <!--    日历区域    -->
+    <view class="calendar" wx:if="{{sessionStartTime && sessionEndTime}}">
+        <calendar start-time="{{sessionStartTime}}" select-day="{{sessionPracticeDays}}"
+                  end-time="{{sessionEndTime}}" today="{{sessionToday}}" bindjumpinfo="jumpToSession"></calendar>
+    </view>
+
+    <!--    课程列表    -->
+    <view class="session-list">
+        <template wx:for="{{sessionList}}" wx:key="" is="sessionItem" data="{{item, index}}"></template>
+    </view>
+
+    <video id="myVideo" bindended="closeVideo" class="session-video" src="{{videoUrl}}" bindfullscreenchange="changeFullScreen"></video>
+
+</view>

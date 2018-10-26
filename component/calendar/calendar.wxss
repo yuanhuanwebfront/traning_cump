@@ -1,0 +1,126 @@
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+.week-item{
+    width: 14.28571%;
+    text-align: center;
+    color: #000;
+    opacity: 0.8;
+    box-sizing: border-box;
+}
+.weight{
+   opacity: 1;
+}
+
+.calendar-box{
+    padding-top: 20rpx;
+    background: #fff;
+}
+.day-box{
+    padding: 12rpx 0;
+}
+
+.out-view{
+    box-sizing: border-box;
+    width: 14.28571%;
+}
+.in-view{
+    margin: 0 auto;
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: 24rpx;
+    line-height: 48rpx;
+    font-size: 26rpx;
+    text-align: center;
+    box-sizing: border-box;
+    background: #cdcdcd;
+    color: #fff;
+}
+.in-view.today{
+    position: relative;
+    width: auto;
+    font-size: 22rpx;
+    color: #7D9FFC;
+    opacity: 0.8;
+    background: none !important;
+}
+.active .in-view{
+    background: #7D9FFC;
+    position: relative;
+    overflow: auto;
+}
+/*.in-view.active:a*/
+.in-view.today:after{
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    margin-left: -2px;
+    content: "";
+    opacity: 0.8;
+    width: 4px;
+    height: 4px;
+    background: #7D9FFC;
+    border-radius: 4px;
+}
+
+.left-border{
+    border-top-left-radius: 24rpx;
+    border-bottom-left-radius: 24rpx;
+    margin-left: 6rpx;
+    background: #cdcdcd;
+}
+.left-border.active{
+    background: #7D9FFC;
+}
+
+
+
+
+.middle-item{
+    background: #cdcdcd;
+    border-radius: 0;
+    margin: 0;
+}
+.middle-item.active{
+    background: #7D9FFC;
+}
+
+.right-border{
+    border-top-right-radius: 24rpx;
+    border-bottom-right-radius: 24rpx;
+    margin-right: 6rpx;
+    background: #cdcdcd;
+}
+.right-border.active{
+    background: #7D9FFC;
+}
+
+.beyond{
+    background: #fff;
+}
+.beyond view.in-view{
+    background: #fff;
+    color: #000;
+}
+
+.today-out-view{
+    background: #fff; 
+    position: relative;
+}
+
+.today-out-view:after{
+  content: "";
+  position: absolute;
+  width: 4rpx;
+  height: 4rpx;
+  border-radius: 4rpx;
+  margin-left: -2rpx;
+  left: 50%;
+  z-index: 100;
+  bottom: 4rpx;
+  background: #7D9FFC;
+}
+.today-out-view.active:after{
+  background: #fff;
+}

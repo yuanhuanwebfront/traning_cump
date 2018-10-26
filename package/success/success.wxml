@@ -1,0 +1,37 @@
+<view class="container" wx:if="{{pageAllLoad}}">
+
+    <view class="success-header">
+        <text class="iconfont icon-gongdan-dingdanchenggong center"></text>
+        <view class="word-18 color-3 center">恭喜你，购买成功！</view>
+    </view>
+
+    <view class="success-content">
+        <view class="title word-16 color-6 item-border">报名信息</view>
+        <view class="success-item word-13 color-6 item-border mg-left">课程名称：{{sessionName}}</view>
+        <view class="success-item word-13 color-6 item-border mg-left">开课时间：{{sessionStartTime}}</view>
+        <view class="success-item word-13 color-6 item-border" wx:if="{{coachName}}">班主任：{{coachName}}（微信：{{coachWxName}}）</view>
+        <view class="money">
+            <text class="iconfont icon-jinggao"></text>
+            您还未完成报到，请尽快报到！
+        </view>
+    </view>
+
+    <button class="btn btn-confirm join" bindtap="toReport">立即报到</button>
+
+    <view class="share-box" style="padding-bottom: 60rpx;">
+        <view class="rebate-rule word-13 color-6" wx:if="{{hasRebate}}">
+            <text bindtap="toRulePage">返利规则</text>
+        </view>
+        <image src="http://qiniucdn.dailyyoga.com.cn/74/91/7491aa5bf262ce0f64dde0f40dc699b0.jpeg" mode="widthFix" wx:if="{{!hasRebate}}"></image>
+        <image src="http://qiniucdn.dailyyoga.com.cn/96/38/9638b484f8c0c786730849b95c11ca1a.jpeg" mode="widthFix" wx:if="{{hasRebate}}"></image>
+        <view>
+            <view class="common-rebate-area center" wx:if="{{hasRebate}}" style="margin-bottom: {{rebateInfo.rebateDesc ? '20rpx' : '40rpx'}}">
+                <text class="word-14 color-6">推荐好友报名赚</text>
+                <text class="money" style="padding: 0;">￥{{rebateInfo.rebatePrice}}</text>
+            </view>
+            <view class="common-rebate-time center" wx:if="{{rebateInfo.rebateDesc}}">{{rebateInfo.rebateDesc}}</view>
+            <share-area bindsharefriend="shareImgToSpace"></share-area>
+        </view>
+    </view>
+
+</view>

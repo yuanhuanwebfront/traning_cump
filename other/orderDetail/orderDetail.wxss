@@ -1,0 +1,49 @@
+.flex{
+    justify-content: space-between;
+}
+.detail-content{
+    padding-top: 20rpx;
+}
+.detail-item{
+    font-size: 26rpx;
+    color: #666666;
+}
+.order-info{
+    padding: 26rpx 30rpx;
+    background: #fff;
+}
+.split{
+    margin: 20rpx 0;
+}
+.border-inner{
+    padding: 0 30rpx;
+    background: #fff;
+}
+.border-box{
+    min-height: 90rpx;
+}
+.weight{
+    font-size: 28rpx;
+    color: #333;
+}
+.top-border{
+    border-top: 2rpx solid #e5e5e5;
+}
+.calculate{
+    padding: 26rpx 0;
+}
+.calculate view{
+    margin-bottom: 16rpx;
+}
+.pay-area{
+    margin-top: 20rpx;
+    padding: 28rpx 30rpx;
+    background: #fff;
+}
+.flex.info{
+    justify-content: space-between;
+    line-height: 90rpx;
+}
+.pay-area .detail-item{
+    color: #999;
+}

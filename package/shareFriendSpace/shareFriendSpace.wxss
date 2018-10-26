@@ -1,0 +1,22 @@
+.canvas-box{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+.canvas-box button{
+    margin-top: 40rpx;
+    width: 300rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 30rpx;
+    border-radius: 80rpx;
+    background: #8CA5FF;
+    color: #fff;
+}
+image{
+    display: block;
+    margin: 0 auto;
+    margin-top: 40rpx;
+    width: 600rpx;
+    height: 1023rpx;
+}

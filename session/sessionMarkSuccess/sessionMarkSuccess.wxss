@@ -1,0 +1,27 @@
+.bg{
+    width: 356rpx;
+    height: 270rpx;
+    margin-top: 62rpx;
+    margin-bottom: 24rpx;
+}
+.word-14{margin-top: 24rpx;}
+.check-daily{
+    width: 90%;
+    height: 100rpx;
+    line-height: 100rpx;
+    margin-top: 80rpx;
+    background: #7D9FFC;
+    border-radius: 6rpx;
+    color: #fff;
+    font-size: 34rpx;
+}
+.share-img-btn{
+    width: 90%;
+    height: 100rpx;
+    line-height: 100rpx;
+    margin-top: 40rpx;
+    border: 2rpx solid #7D9FFC;
+    color: #7D9FFC;
+    border-radius: 6rpx;
+    font-size: 34rpx;
+}

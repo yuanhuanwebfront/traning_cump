@@ -1,0 +1,72 @@
+<view class="container">
+
+    <view class="session">
+        <!--    autoplay="true" -->
+        <video id="videoInfo" objectFit="fill" bindtimeupdate="checkVideoPlay" bindended="watchVideoEnd"
+               bindplay="trackPlay"
+               class="session" src="{{sessionVideo}}"></video>
+    </view>
+
+    <view class="session-desc flex">
+        <view>
+            <view class="word-16 color-6">{{sessionTitle}}</view>
+        </view>
+        <view class="gif-area" wx:if="{{!isFree}}" bindtap="showShareArea">分享</view>
+    </view>
+
+    <view class="session-tip" wx:if="{{hasStudyNotes}}">
+        <view class="title">学习要点</view>
+        <view>
+            <import src="../../lib/wxParse/wxParse.wxml"/>
+            <template is="wxParse" data="{{wxParseData: templateStudyH5.nodes}}"/>
+        </view>
+    </view>
+
+    <view class="btn-area">
+        <!--<button class="btn btn-confirm" bindtap="toMark" wx:if="{{ (!isFree && finishSession) || hasMark}}">查看排行-->
+        <!--</button>-->
+        <button class="btn btn-confirm" bindtap="toMarkPage" wx:if="{{showMarkBtn}}">已完成学习，去打卡</button>
+        <button class="btn btn-confirm" bindtap="toRank" wx:if="{{showRankBtn}}">已打卡，查看排行</button>
+    </view>
+
+    <view class="bottom-share" hidden="{{hiddenShare}}" data-hide="1" bindtap="bgShareHide">
+        <view class="share-area" style="padding-top: {{hasRebate ? '0' : '60rpx'}}">
+            <view class="rebate-rule word-13 color-6" wx:if="{{hasRebate}}" wx:if="{{hasRebate}}">
+                <text bindtap="toRulePage">返利规则</text>
+            </view>
+            <view wx:if="{{hasRebate}}" class="common-rebate-area center"
+                  style="margin-bottom: {{rebateInfo.rebateDesc ? '20rpx' : '40rpx'}}">
+                <text class="word-14 color-6">推荐好友报名赚</text>
+                <text class="money">￥{{rebateInfo.rebatePrice}}</text>
+            </view>
+            <view class="common-rebate-time center" wx:if="{{rebateInfo.rebateDesc}}">{{rebateInfo.rebateDesc}}</view>
+            <share-area bindsharefriend="shareImgToSpace"></share-area>
+            <button class="cancel" bindtap="hideShare">取消</button>
+        </view>
+    </view>
+
+    <!--    去打卡的弹窗  -->
+    <cover-view class="bottom-share" wx:if="{{showMarkDialog}}" data-hide="1" bindtap="hideDialog">
+        <cover-view class="dialog-area relative">
+            <cover-image class="cloud" mode="widthFix" src="http://qiniucdn.dailyyoga.com.cn/d8/07/d80732a188af73510d59735777dc2513.png"></cover-image>
+            <cover-view class="word-18 color-3 center relative">恭喜你完成</cover-view>
+            <cover-view class="word-14 color-6 center session-name">【{{sessionTitle}}】</cover-view>
+            <cover-view class="flex practice">
+                <cover-view class="item center">
+                    <cover-view class="main">{{dialogTime}}</cover-view>
+                    <cover-view class="word-13 color-6">时长(分钟)</cover-view>
+                </cover-view>
+                <cover-view class="item center">
+                    <cover-view class="main">{{dialogKcal}}</cover-view>
+                    <cover-view class="word-13 color-6">消耗(Kcal)</cover-view>
+                </cover-view>
+            </cover-view>
+            <cover-view class="center">
+                <button class="mark-btn" bindtap="toMarkPage">立即打卡</button>
+            </cover-view>
+        </cover-view>
+        <cover-image class="header" mode="widthFix" src="http://qiniucdn.dailyyoga.com.cn/bf/c4/bfc4caaf22278582cfa41efbe49088fc.png"></cover-image>
+    </cover-view>
+
+
+</view>

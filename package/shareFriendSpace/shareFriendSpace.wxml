@@ -1,0 +1,4 @@
+<view class="canvas-box">
+    <image src="{{imgSrc}}"></image>
+    <button bindtap="saveImgPath" wx:if="{{imgSrc}}">保存图片</button>
+</view>

@@ -1,0 +1,33 @@
+<!--   订单模板     -->
+<template name="order">
+    <view class="order-title">{{product_list[0].product_name}}</view>
+    <view class="flex enter">
+        <text class="word-12 color-9">订单编号：{{order_id}}</text>
+    </view>
+    <view class="flex info">
+        <image src="{{sessionImage}}"></image>
+        <view>
+            <view class="vip">购买价：￥{{total}}</view>
+            <view class="margin">购买时间：{{buyTime}}</view>
+            <view class="margin">开课时间：{{startTime}}</view>
+        </view>
+    </view>
+</template>
+
+
+<view class="container">
+
+<!-- 每日瑜伽将会及时联系你，请保持电话畅通。如有疑问，请联系官方：4000662300 -->
+    <view class="order-header"></view>
+
+    <view  class="order-item" wx:for="{{list}}" data-order="{{item}}" wx:key="" capture-bind:tap="toOrderDetail">
+        <template is="order" data="{{...item}}"></template>
+    </view>
+
+
+    <block wx:if="{{list.length === 0}}">
+        <image class="empty-img" src="http://qiniucdn.dailyyoga.com.cn/41/d8/41d846534b843843def8883acd2cdcda.png"></image>
+        <view class="center word-14 color-6">你还没有相关订单</view>
+    </block>
+
+</view>

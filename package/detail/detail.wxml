@@ -1,0 +1,95 @@
+<view class="container">
+
+    <view class="detail-banner">
+        <image src="{{sessionInfo.banner}}" style="width: 100%;height: 422rpx;"></image>
+    </view>
+
+    <view class="detail-title">
+        <view class="word-18 color-6">{{sessionInfo.sessionName}}</view>
+        <view class="flex">
+            <text class="word-13 color-9">开课时间：{{sessionInfo.sessionStartTime}}</text>
+            <text class="word-13 color-9">累计{{sessionInfo.reportPersonNum}}人报名</text>
+        </view>
+    </view>
+
+    <view class="tab flex">
+        <view class="word-16 color-3 center {{activeTab === '0' ? 'active': ''}}" data-type="0" bindtap="changeTab">详情</view>
+        <view class="center flex word-16 color-3 {{activeTab === '1' ? 'active': ''}}" data-type="1" bindtap="changeTab">
+            <text class="word-16 color-3" data-type="1">课表</text>
+            <text class="border" wx:if="{{hasAuditionSession}}" data-type="1">试听</text>
+        </view>
+        <view class="word-16 color-3 center {{activeTab === '2' ? 'active': ''}}" data-type="2" bindtap="changeTab">评价</view>
+    </view>
+
+    <view class="detail-content">
+        <view hidden="{{activeTab === '1' || activeTab === '2'}}">
+            <button class="vip-border" bindtap="toListenTab" wx:if="{{hasAuditionSession}}">查看课程安排 免费试听></button>
+            <view>
+                <import src="../../lib/wxParse/wxParse.wxml"/>
+                <template is="wxParse" data="{{wxParseData: templateDetailH5.nodes}}"/>
+            </view>
+        </view>
+
+        <view hidden="{{activeTab === '0' || activeTab === '2'}}">
+            <button class="vip-border over-hide" wx:if="{{btnSessionWord}}" bindtap="toListenFirstSession">
+                {{btnSessionWord}}
+            </button>
+
+            <view wx:for="{{detailInfo.sessionList}}" wx:key="id">
+                <view class="session-title day-bg">{{index + 1}}</view>
+                <view class="session-intro flex" wx:key="" wx:for="{{item}}" wx:for-item="info">
+                    <view class="detail">
+                        <view class="word-14 color-6">{{info.title}}</view>
+                        <view class="word-13 color-c8">练习时长：{{info.action_times}}分钟</view>
+                    </view>
+                    <view>
+                        <text class="vip-color" data-info="{{info}}" bindtap="playVideo"
+                              wx:if="{{info.canMiniAppPlay}}">免费试听
+                        </text>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view hidden="{{activeTab === '0' || activeTab === '1'}}">
+            <view>
+                <import src="../../lib/wxParse/wxParse.wxml"/>
+                <template is="wxParse" data="{{wxParseData: templateCommentH5.nodes}}"/>
+            </view>
+        </view>
+    </view>
+
+    <view class="bottom-area flex">
+        <button class="service" open-type="contact" bindtap="trackService"></button>
+
+        <button class="service share" open-type="share" hidden="{{hasRebate}}"></button>
+        <!--    TODO    返利课程增加气泡    -->
+        <button class="service share" bindtap="showRebateShareArea" hidden="{{!hasRebate}}"></button>
+
+        <button class="btn-confirm" bindtap="goOrderPage" data-status="{{buttonStatus}}">{{buttonDesc || '立即报名'}}
+        </button>
+    </view>
+
+    <button class="back-home" bindtap="toHomePage" wx:if="{{showBackBtn}}">去首页</button>
+
+    <view class="bottom-share" hidden="{{hiddenShare}}" bindtap="hideShare" data-hide="1">
+        <view class="share-area" wx:if="{{hasRebate}}">
+            <view class="rebate-rule word-13 color-6" >
+                <text bindtap="toRulePage">返利规则</text>
+            </view>
+            <view class="common-rebate-area center" style="margin-bottom: {{rebateInfo.rebateDesc ? '20rpx' : '40rpx'}}">
+                <text class="word-14 color-6">推荐好友报名赚</text>
+                <text class="money">￥{{rebateInfo.rebatePrice}}</text>
+            </view>
+            <view class="common-rebate-time center" wx:if="{{rebateInfo.rebateDesc}}">{{rebateInfo.rebateDesc}}</view>
+            <share-area bindsharefriend="shareImgToSpace"></share-area>
+            <button class="cancel" bindtap="hideShare" data-hide="1">取消</button>
+        </view>
+    </view>
+
+
+    <!--    TODO    增加分享气泡    -->
+    <text wx:if="{{hasRebate}}" class="fix-word">分享返现</text>
+    <text wx:if="{{hasRebate}}" class="fix-tran"></text>
+
+</view>

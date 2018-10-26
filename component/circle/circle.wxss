@@ -1,0 +1,11 @@
+.circle-box{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 74px;
+    height: 74px;
+    border-radius: 70px;
+    box-sizing: border-box;
+    overflow: hidden;
+}

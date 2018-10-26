@@ -1,0 +1,68 @@
+<view class="container" style="padding-top: 20rpx;" wx:if="{{finishLoad}}">
+
+    <template name="number">
+        <view class="cool-box">
+            <text class="coolNum word-18 color-6">{{item}}</text>
+            <text class="cool-num-bg"></text>
+        </view>
+    </template>
+
+    <view class="report-area" wx:if="finishLoad">
+
+        <view class="report-header report-bg {{hasReport ? '' : 'no-report'}}">
+            <view class="center flex"  wx:if="{{passDayInfo}}">
+                <text class="word-18 color-6">课程开始还剩：</text>
+                <view wx:for="{{passDayInfo}}" wx:key="">
+                    <template is="number" data="{{item}}"></template>
+                </view>
+                <text class="word-18 color-6" style="padding-right: 60rpx;">天</text>
+            </view>
+            <view class="center word-13 color-6">开课时间：{{sessionStartTime}}</view>
+        </view>
+        <view class="stripe"></view>
+
+        <view style="background: #fff;padding-bottom: 80rpx;" wx:if="{{!hasReport}}">
+          <view class="report-intro">
+              <view class="report-item">报名流程</view>
+              <view class="money">
+                  <text class="iconfont icon-jinggao"></text>
+                  参加训练营的同学可享受专属老师答疑和指导服务，请你按以下步骤完成课程报到
+              </view>
+          </view>
+          <view class="report-step">第一步：截屏或者点击按钮保存报到二维码到相册</view>
+          <view class="report-step" style="padding: 0 30%;">
+              <image src="{{qrCodeImg}}" mode="widthFix"></image>
+              <button class="save-btn" bindtap="saveQrImg">点击保存</button>
+          </view>
+          <view class="report-step">第二步：使用<text class="iconfont icon-weixin1" style="font-size: 56rpx;color: #07B906;padding: 0 10rpx;"></text>微信扫一扫功能扫描保存的图片，关注“每日瑜伽教你学”公众号</view>
+          <view class="report-step" style="padding: 0 100rpx;">
+              <image src="http://qiniucdn.dailyyoga.com.cn/17/a3/17a3abb0876a704d5e776e9e696652ba.jpeg" mode="widthFix"></image>
+          </view>
+          <view class="report-step">第三步：根据公众号的指引，完成报到并添加班主任老师微信</view>
+        </view>
+
+
+        <view style="background: #fff;padding-bottom: 80rpx;padding-top: 40rpx;" wx:if="{{hasReport}}">
+            <view class="img-area">
+                <image mode='widthFix' src="{{sessionNotice}}"></image>
+            </view>
+            <view class="share-box">
+                <view class="rebate-rule word-13 color-6" wx:if="{{hasRebate}}">
+                    <text bindtap="toRulePage">返利规则</text>
+                </view>
+                <image src="http://qiniucdn.dailyyoga.com.cn/96/38/9638b484f8c0c786730849b95c11ca1a.jpeg" mode="widthFix" wx:if="{{hasRebate}}"></image>
+                <image src="http://qiniucdn.dailyyoga.com.cn/74/91/7491aa5bf262ce0f64dde0f40dc699b0.jpeg" mode="widthFix" wx:if="{{!hasRebate}}"></image>
+                <view class="share-area">
+                    <view class="common-rebate-area center" wx:if="{{hasRebate}}" style="margin-bottom: {{rebateInfo.rebateDesc ? '20rpx' : '40rpx'}}">
+                        <text class="word-14 color-6">推荐好友报名赚</text>
+                        <text class="money" style="padding: 0;">￥{{rebateInfo.rebatePrice}}</text>
+                    </view>
+                    <view class="common-rebate-time center" wx:if="{{rebateInfo.rebateDesc}}">{{rebateInfo.rebateDesc}}</view>
+                    <share-area bindsharefriend="shareImgToSpace"></share-area>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+</view>

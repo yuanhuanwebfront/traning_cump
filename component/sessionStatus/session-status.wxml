@@ -1,0 +1,11 @@
+<view class="status-container">
+    <image class="session-cover" src="{{sessionInfo.session_img}}" lazy-load="true"
+           data-info="{{sessionInfo}}" bindtap="toMySession"></image>
+    <view class="session-title">{{sessionInfo.title}}</view>
+    <view class="session-info">
+        <text class="tip" wx:if="{{sessionInfo.session_status === 1}}">开始时间: {{sessionInfo.session_start_time}}</text>
+        <text class="tip" wx:if="{{sessionInfo.session_status === 2}}">已开课: {{sessionInfo.session_practicing_time}}/{{sessionInfo.session_all_time}} 天</text>
+        <text class="tip" wx:if="{{sessionInfo.session_status === 3}}">结课时间: {{sessionInfo.session_end_time}}</text>
+        <text class="status-logo {{statusClass[sessionInfo.session_status]}}">{{status[sessionInfo.session_status]}}</text>
+    </view>
+</view>

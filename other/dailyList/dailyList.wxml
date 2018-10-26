@@ -1,0 +1,19 @@
+<view class="container">
+
+    <view class="list-item flex" bindtap="toDailyDetail" wx:for="{{dailyList}}" wx:key="" data-id="{{item.yoga_o2_session_id}}" data-status="{{item.user_session_status}}">
+        <image data-id="{{item.yoga_o2_session_id}}" data-status="{{item.user_session_status}}" src="{{item.session_image}}" lazy-load="true"></image>
+        <view class="desc" data-id="{{item.yoga_o2_session_id}}">
+            <view data-status="{{item.user_session_status}}" data-id="{{item.yoga_o2_session_id}}" class="word-14 color-3">{{item.session_name + item.periods_name}}</view>
+            <view class="flex" data-id="{{item.yoga_o2_session_id}}" data-status="{{item.user_session_status}}">
+                <view data-id="{{item.yoga_o2_session_id}}" data-status="{{item.user_session_status}}" class="status {{item.user_session_status === 2 ? 'active' : ''}}">{{item.user_session_status_desc}}</view>
+                <view data-id="{{item.yoga_o2_session_id}}" data-status="{{item.user_session_status}}" class="word-13 color-6">已记录{{item.user_diary_count}}天</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="empty center" wx:if="{{dailyList.length <= 0}}">
+        <image src="http://qiniucdn.dailyyoga.com.cn/74/90/7490eb4dc5c0bb970a8f2553a7004ed8.png"></image>
+        <view class="color-6 word-14 word">参加课程后将展示你的学习历程~</view>
+    </view>
+
+</view>

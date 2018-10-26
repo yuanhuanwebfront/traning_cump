@@ -1,0 +1,99 @@
+.rank-header{
+    padding-top: 40rpx;
+    padding-bottom: 40rpx;
+    background: #fff;
+}
+.rank-header image{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100rpx;
+}
+
+.header-item view{
+    font-size: 44rpx;
+    color: #333333;
+    text-align: center;
+}
+.header-item view.small{
+    font-size: 24rpx;
+    color: #666;
+    margin-top: 20rpx;
+}
+.rank-content{
+    padding: 0 20rpx;
+    padding-top: 80rpx;
+    background-color: #fff;
+    background-image: url("http://qiniucdn.dailyyoga.com.cn/9f/08/9f08de4ecc115a909fe533fa9be2a663.png");
+    background-size: 100% 100%;
+    min-height: 1300rpx;
+}
+.rank-box{
+    width: 100%;
+    background: #fff;
+    border-radius: 20rpx;
+    overflow: hidden;
+    min-height: 1300rpx;
+}
+.rank-border{border-bottom: 1px solid #e5e5e5;}
+.rank-border:last-child{
+	border: none;
+}
+.rank-title{
+    padding-left: 40rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: #fff;
+}
+.rank-item{
+    height: 160rpx;
+    background: #fff;
+    justify-content: space-between;
+}
+.rank-idx{
+    font-size: 50rpx;
+    color: #c4c4c4;
+    min-width: 120rpx;
+    text-align: center;
+}
+.rank-idx.small{
+  font-size: 38rpx;
+}
+.rank-idx.first{color: #FBC94D;}
+.rank-idx.second{color: #B6C9CD;}
+.rank-idx.third{color: #EBAA7A;}
+.progress-box{
+    position: relative;
+    width: 90%;
+    height: 8rpx;
+    background: #ddd;
+}
+.progress-box view{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 8rpx;
+    background-image: linear-gradient(90deg, #E7B4FE 0%, #7D9FFC 100%);
+}
+.rank-item .user{justify-content: space-between;}
+.rank-item .user image{
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 36rpx;
+    margin-right: 28rpx;
+}
+.rank-item .time{
+    margin-right: 10%;
+}
+.share-btn{
+    position: fixed;
+    padding: 0;
+    bottom: 60rpx;
+    right: 40rpx;
+    width: 88rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    color: #fff;
+    font-size: 28rpx;
+    border-radius: 88rpx;
+    background-image: linear-gradient(-3deg, #B29DFA 0%, #8BAAFF 100%);
+}

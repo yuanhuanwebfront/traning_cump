@@ -1,0 +1,16 @@
+<view class="calendar-box">
+    <view class="calendar-nav flex">
+        <view class="week-item {{index === 0 || index === 6 ? '' : 'weight'}}" wx:for="{{weekList}}" wx:key="">
+            {{item}}
+        </view>
+    </view>
+    <view class="calendar-content">
+        <view class="flex day-box" wx:for="{{calendarArr}}" wx:for-item="week" wx:key="">
+            <view class="out-view {{item.isBeyondToday ? 'beyond' : ''}} {{item.hasPractice ? 'active' : ''}} {{item.isLeftBorder ? 'left-border': ''}}  {{item.isMiddle ? 'middle-item': ''}} {{item.isRightBorder ? 'right-border': ''}} {{item.isToday ? 'today-out-view' : ''}}"
+                  wx:for="{{week}}"  wx:key="">
+                <view class="in-view" wx:if="{{ (item !== 0 && !item.isToday)  || (item !== 0 && item.isToday && item.hasPractice)}}">{{item.day}}</view>
+                <view class="in-view today" wx:if="{{item != 0 && item.isToday && !item.hasPractice}}" bindtap="jumpPage">去练习</view>
+            </view>
+        </view>
+    </view>
+</view>

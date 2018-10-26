@@ -1,0 +1,19 @@
+<view class="select-container" wx:if="{{showPicker}}">
+    <view class="select-box">
+        <view class="top-area">
+            <text bindtap="cancel">取消</text>
+            <text bindtap="confirm" class="confirm">确定</text>
+        </view>
+        <picker-view class="picker-box" style="" value="{{areaList}}" bindchange="change">
+            <picker-view-column>
+                <view class="picker-item" wx:for="{{proviceList}}" wx:key="">{{item.pname}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view class="picker-item" wx:for="{{cityList}}" wx:key="">{{item.cname}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view class="picker-item" wx:for="{{areaAllList}}" wx:key="">{{item.aname}}</view>
+            </picker-view-column>
+        </picker-view>
+    </view>
+</view>

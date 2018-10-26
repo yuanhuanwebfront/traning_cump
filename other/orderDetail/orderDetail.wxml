@@ -1,0 +1,49 @@
+<view class="container">
+    <view class="detail-content">
+
+        <view class="order-info">
+            <view class="detail-item">订单编号：{{orderInfo.order_id}}</view>
+            <view class="detail-item split">用户ID：{{userId}}</view>
+            <view class="flex">
+                <view class="detail-item">联系电话：{{userPhone}}</view>
+                <view class="detail-item over-hide" style="width: 50%;text-align: right;">购买人：{{userName}}</view>
+            </view>
+        </view>
+
+        <view class="border-inner">
+            <view class="border-box top-border">
+                <view class="flex info" wx:for="{{orderInfo.product_list}}" wx:key="">
+                    <view class="weight">{{item.product_name}}</view>
+                    <view class="money">￥{{item.product_price}}</view>
+                </view>
+            </view>
+        </view>
+
+        <view class="border-inner">
+            <view class="border-box top-border calculate">
+                <view class="flex">
+                    <text class="detail-item">商品总额：</text>
+                    <text class="money">￥{{orderInfo.price}}</text>
+                </view>
+                <view class="flex" wx:for="{{orderInfo.discount_list}}" wx:key="">
+                    <text class="detail-item">{{item.discount_desc}}</text>
+                    <text class="money">-￥{{item.disCountValue}}</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="border-inner">
+            <view class="border-box flex top-border">
+                <view class="detail-item">实付额：</view>
+                <view class="money">￥{{orderInfo.total}}</view>
+            </view>
+        </view>
+
+        <view class="border-inner pay-area">
+            <view class="detail-item">支付方式：{{orderInfo.payment_method}}</view>
+            <view class="detail-item split">下单时间：{{orderInfo.createTime}}</view>
+            <view class="detail-item">开课时间：{{orderInfo.startTime}}</view>
+        </view>
+
+    </view>
+</view>

@@ -1,0 +1,34 @@
+.profit-item {
+    box-sizing: border-box;
+    padding: 0 60rpx 0 30rpx;
+    height: 100rpx;
+    background-color: #fff;
+    border-top: 2rpx solid #f1f1f1;
+    justify-content: space-between;
+}
+
+.profit-item text {
+    font-size: 14px;
+    color: #333;
+}
+
+.profit-item .info-color {
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.profit-item:last-child {
+    border-bottom: 2rpx solid #f1f1f1;
+}
+
+.rebate-desc view {
+    margin-top: 16rpx;
+    box-sizing: border-box;
+    padding: 0 26rpx;
+    color: #666;
+    line-height: 35rpx;
+}
+
+.rebate-desc view:first-child {
+    margin-top: 26rpx;
+}

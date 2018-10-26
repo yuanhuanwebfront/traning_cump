@@ -1,0 +1,40 @@
+.rebate-box{
+    width: 100%;
+    height: 140rpx;
+    background: #fff;
+    border-bottom: 2rpx solid #f1f1f1;
+    box-sizing: border-box;
+    padding: 0 30rpx;
+    justify-content: space-between;
+}
+.rebate-box .bottom-word{
+    margin-top: 16rpx;
+    color: #999;
+}
+.detail-item-left view{
+    font-size: 26rpx;
+    line-height: 36rpx;
+    box-sizing: border-box;
+    padding-right: 10rpx;
+    color: #333333;
+    text-align: left;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+}
+.detail-item-right{
+    min-width: 160rpx;
+}
+.detail-item-right .info-color{
+    font-size: 32rpx;
+}
+.detail-item-right view {
+    text-align: right;
+}
+.tip{
+    padding: 30rpx;
+    line-height: 30rpx;
+    font-size: 24rpx;
+}

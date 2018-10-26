@@ -1,0 +1,20 @@
+<template name="detailItem">
+    <view class="rebate-box flex">
+        <div class="detail-item-left">
+            <view>{{record_desc}}</view>
+        </div>
+        <div class="detail-item-right">
+            <view class="info-color">+￥{{realMoney}}</view>
+            <view class="bottom-word" wx:if="{{realDate}}">{{realDate}}</view>
+        </div>
+    </view>
+</template>
+
+
+<view class="container">
+    <header-banner info="{{detailInfo}}"></header-banner>
+    <view class="word-13 color-9 tip" wx:if="{{detailInfo.type === '3' || detailInfo.type === '10'}}">被邀请者开课后才可以收到返利</view>
+    <view>
+        <template wx:for="{{infoList}}" wx:key="" is="detailItem" data="{{...item}}"></template>
+    </view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "button-dialog": "../../component/buttonDialog/button-dialog"
+  },
+  "enablePullDownRefresh": true
+}

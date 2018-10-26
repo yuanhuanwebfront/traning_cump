@@ -1,0 +1,55 @@
+.success-header{
+    padding-top: 40rpx;
+    padding-bottom: 40rpx;
+    box-sizing: border-box;
+    background: #fff;
+}
+.success-header .iconfont{
+    display: block;
+    width: 100%;
+    color: #8CA5FF;
+    font-size: 140rpx;
+    margin-bottom: 20rpx;
+}
+.success-content{
+    margin-top: 20rpx;
+    background: #fff;
+}
+.success-content .title{
+    box-sizing: border-box;
+    font-size: 28rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    padding-left: 30rpx;
+}
+.success-content .success-item{
+    box-sizing: border-box;
+    padding-left: 30rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-bottom: 1px solid #e5e5e5;
+}
+.success-content .money{
+    padding-left: 30rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background: #fafafa;
+}
+.success-content .money .iconfont{
+    font-size: 24rpx;
+}
+.success-content .mg-left{
+    margin-left: 30rpx;
+    padding-left: 0;
+}
+button.join{
+    width: 500rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 36rpx;
+    margin: 0 auto;
+    margin-top: 30rpx;
+}
+.share-box{margin-top: 80rpx;}
+.share-box image{margin-bottom: 20rpx;}
+.share-box .rebate-rule{margin-bottom: 24rpx;}

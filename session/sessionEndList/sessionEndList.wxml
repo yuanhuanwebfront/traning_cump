@@ -1,0 +1,7 @@
+<!--    已结课的课程列表    -->
+<scroll-view class="container" style="height: {{realHeight}}px;" scroll-y lower-threshold="30" bindscrolltolower="loadList">
+    <view wx:for="{{sessionList}}" wx:key="">
+        <session-status session-info="{{item}}"></session-status>
+    </view>
+    <view class="center word-13 color-9" wx:if="{{listEnd}}" style="margin: 30rpx 0;">更多课程即将上线~</view>
+</scroll-view>

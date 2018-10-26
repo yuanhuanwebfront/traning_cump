@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "session-status": "../../component/sessionStatus/session-status"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "share-area": "../../component/shareArea/share-area"
+  }
+}

@@ -1,0 +1,25 @@
+<view class="container">
+
+    <view class="desc-area">
+        <textarea maxlength="300" bindinput="setContent" placeholder="说说今天的感想和收获吧..."></textarea>
+        <view class="img-upload-area flex">
+            <view style="overflow: visible;">
+                <button hidden="{{uploadImageArr.length > 0}}" class="image inline" bindtap="uploadImage"></button>
+                <view class="image-inner inline" wx:for="{{uploadImageArr}}" wx:key="">
+                    <image class="image" src="{{item}}"></image>
+                    <text class="delete" data-idx="{{index}}" bindtap="deleteImage"></text>
+                </view>
+                <text class="word-12 color-9">日记只有同班同学能看到的哦！</text>
+            </view>
+            <text class="word-12 color-9" style="margin-right: 20rpx;">{{contentLength}}/300</text>
+        </view>
+    </view>
+
+    <view class="mark-area">
+        <image src="http://qiniucdn.dailyyoga.com.cn/2d/4d/2d4d66dadda317affb1278928ed31d02.png"></image>
+        <view class="word-14 color-6">今日打卡后你将超越<text class="percent">{{percentNumber}}%</text>同期学员</view>
+    </view>
+
+    <button class="submit-btn {{hasContent ? '' : 'disabled'}}" bindtap="submit">发表</button>
+
+</view>

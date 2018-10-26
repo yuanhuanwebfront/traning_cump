@@ -1,0 +1,7 @@
+<view class="container center">
+    <image class="bg" src="http://qiniucdn.dailyyoga.com.cn/2d/4d/2d4d66dadda317affb1278928ed31d02.png"></image>
+    <view class="word-16 color-3">打卡成功！</view>
+    <view class="word-14 color-6">{{sessionTitle}}</view>
+    <button class="check-daily" bindtap="checkDaily">查看日记</button>
+    <button open-type="share" class="share-img-btn">分享日记</button>
+</view>

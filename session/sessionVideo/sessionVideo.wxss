@@ -1,0 +1,132 @@
+video.session{
+    width: 100%;
+    height: 422rpx;
+}
+.session-desc{
+    justify-content: space-between;
+    background: #fff;
+    height: 100rpx;
+    padding: 0 30rpx 0 30rpx;
+}
+
+.gif-area{
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 28rpx;
+    color: #333;
+    background: url("data:image/png;base64,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") no-repeat left center;
+    background-size: 32rpx 32rpx;
+    padding-left: 38rpx;
+}
+
+.gif-area::after{
+    border: none;
+}
+
+.session-tip{
+    margin-top: 20rpx;
+    background: #fff;
+    padding: 0 20rpx;
+    margin-bottom: 100rpx;
+}
+.session-tip .title{
+    height: 90rpx;
+    line-height: 90rpx;
+    color: #333;
+    font-size: 28rpx;
+}
+.session-tip image{
+    width: 700rpx;
+    height: 700rpx;
+}
+.btn-area{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 2;
+}
+.btn-area button{
+    width: 100%;
+    border-radius: 0;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 32rpx;
+}
+.share-area{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: #fff;
+}
+.share-area button.cancel{
+    margin-top: 20rpx;
+    background: #fff;
+    font-size: 28rpx;
+    color: #666;
+    height: 90rpx;
+    line-height: 90rpx;
+}
+
+.bottom-share{
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    top: 0;
+}
+
+.dialog-area{
+    z-index: 10;
+    width: 540rpx;
+    height: 464rpx;
+    box-sizing: border-box;
+    border-radius: 16rpx;
+    padding: 114rpx 10rpx 24rpx 10rpx;
+    background-color: #fff;
+    margin: 0 auto;
+    margin-top: 320rpx;
+    background-image: url("http://qiniucdn.dailyyoga.com.cn/d8/07/d80732a188af73510d59735777dc2513.png");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+.dialog-area .cloud{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: -10;
+}
+.dialog-area .session-name{
+    margin-top: 16rpx;
+}
+.dialog-area .practice{
+    margin-top: 38rpx;
+}
+.dialog-area .practice .main{
+    font-size: 56rpx;
+    color: #666666;
+    padding-bottom: 4rpx;
+}
+.bottom-share .header{
+    position: absolute;
+    z-index: 20;
+    width: 360rpx;
+    height: 360rpx;
+    left: 50%;
+    margin-left: -180rpx;
+    top: 150rpx;
+}
+.mark-btn{
+    width: 324rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    margin: 0 auto;
+    margin-top: 24rpx;
+    font-size: 32rpx;
+    color: #fff;
+    border-radius: 3px;
+    background: #8CA5FF;
+}
+

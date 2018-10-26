@@ -1,0 +1,43 @@
+<view class="container login-area flex">
+
+    <view class="login-box" >
+
+        <view wx:if="{{!phoneLogin}}">
+            <image src="../../assets/img/logo.png"></image>
+            <view class="word-16 color-3 trump">每日瑜伽瑜乐训练营</view>
+            <view class="btn-area">
+                <button class="btn btn-confirm" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
+                    <text class="iconfont icon-weixin1" style="font-size: 32rpx;"></text> 微信快速登录
+                </button>
+                <button class="btn" open-type="getUserInfo" bindgetuserinfo="onPhoneGetUserInfo">每日瑜伽APP帐号登录</button>
+            </view>
+        </view>
+
+        <view wx:if="{{phoneLogin}}" class="phone-area word-left">
+            <view class="input-box">
+                <view class="word-18 color-3">手机号</view>
+                <input type="number" value="{{phoneNum}}" maxlength="11" placeholder="请输入手机号码" placeholder-style="font-size: 26rpx;" bindinput="setPhone"/>
+            </view>
+            <view class="input-box" style="margin-bottom: 80rpx;">
+                <view class="word-18 color-3">密码</view>
+                <input type="text" value="{{passInfo}}" password="true" placeholder="至少六位" placeholder-style="font-size: 26rpx;" bindinput="setPassword"/>
+            </view>
+            <button class="btn btn-confirm {{isPhoneValid ? '' : 'dis-btn'}}" style="font-size: 36rpx;" bindtap="loginByPhone">登录</button>
+        </view>
+       
+    </view>
+
+    <!--    引导用户打开个人信息授权的弹窗     -->
+    <view class="setting-box" wx:if="{{isShowSetting}}">
+        <view class="setting-area">
+            <view class="setting-header word-15 color-3 center">微信授权</view>
+            <view class="setting-body center">
+                <view class="word-14 color-6">每日瑜伽账号登录需要先绑定微信账号后使用。请勾选“使用我的用户信息”</view>
+            </view>
+            <view class="setting-btn">
+                <button class="word-13" open-type="openSetting" bindopensetting="changeSetting">确定</button>
+            </view>
+        </view>
+    </view>
+
+</view>

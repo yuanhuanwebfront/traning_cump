@@ -1,0 +1,46 @@
+.select-container{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+}
+.select-box{
+    position: relative;
+    height: 100%;
+}
+.picker-box{
+    position: absolute;
+    width: 100%; 
+    height: 400rpx;
+    bottom: 0;
+    z-index: 99;
+    background: #fff;
+}
+
+.picker-item{
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+}
+
+.top-area{
+    position: absolute;
+    bottom: 400rpx;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    display: flex;
+    height: 90rpx;
+    padding: 0 40rpx;
+    justify-content: space-between;
+}
+.top-area text{
+    display: inline-block;
+    height: 90rpx;
+    line-height: 90rpx;
+    padding: 0 20rpx;
+    font-size: 30rpx;
+}
+.top-area .confirm{color: #8CA5FF;}

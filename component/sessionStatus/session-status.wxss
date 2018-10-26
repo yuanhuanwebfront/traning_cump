@@ -1,0 +1,45 @@
+.status-container{
+    padding: 20rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+.session-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.tip{
+    font-size: 28rpx;
+    color: #666666;
+}
+.status-logo{
+    position: relative;
+    display: inline-block;
+    width: 100rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 6rpx;
+    color: #fff;
+    background: #8CA5FF;
+}
+.status-0{
+    background: none;
+    border: 1px solid #8CA5FF;
+    color: #8CA5FF;
+}
+.status-2{
+    background: none;
+    color: #aaa;
+    border: 1px solid #aaa;
+}
+.session-title{
+    font-size: 30rpx;
+    color: #333;
+    margin: 10rpx 0 14rpx 0;
+}
+.session-cover{
+    width: 100%;
+    height: 254rpx;
+}

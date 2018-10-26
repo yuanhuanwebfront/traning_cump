@@ -1,0 +1,52 @@
+<view class="container">
+
+    <template name="rankItem">
+        <view class="rank-item flex rank-border">
+            <view class="rank-idx {{rankClass[index]}}  {{index + 1 > 9 ? 'small' : ''}}">{{index + 1}}</view>
+            <view style="min-width: 83%;">
+                <view class="flex" style="justify-content: space-between;box-sizing: border-box;margin-bottom: 25rpx;">
+                    <view class="flex user">
+                        <image src="{{Thumbnail}}"></image>
+                        <view>
+                            <view>{{nickName}}</view>
+                            <view style='margin-top: 8rpx;'>已学习{{practiceSessionNum}}课时</view>
+                        </view>
+                    </view>
+                    <view class="time">{{practiceTimes}}分钟</view>
+                </view>
+                <view class="progress-box">
+                    <view style="width: {{progress}}%;"></view>
+                </view>
+            </view>
+        </view>
+    </template>
+
+    <view class="rank-header flex">
+        <image src="{{userInfo.Thumbnail || emptyImg}}"></image>
+        <view class="header-item">
+            <view>{{userInfo.rankNum}}</view>
+            <view class="small">排名</view>
+        </view>
+        <view class="header-item">
+            <view>{{userInfo.practiceSessionNum}}</view>
+            <view class="small">完成(课时)</view>
+        </view>
+        <view class="header-item">
+            <view>{{userInfo.practiceTimes}}</view>
+            <view class="small">练习(分钟)</view>
+        </view>
+    </view>
+
+    <view class="rank-content">
+        <view class="rank-box">
+            <view class="rank-title word-13 color-6 rank-border" >{{updateTimeInfo}}</view>
+            <view>
+                <template is="rankItem" wx:for="{{rankList}}" wx:key="" data="{{rankClass, index, ...item}}"></template>
+            </view>
+        </view>
+    </view>
+
+    <button open-type="share" wx:if="{{!isShareEnter}}" class="share-btn">分享</button>
+    <button bindtap="toMySession" style="font-size: 22rpx;" wx:if="{{isShareEnter}}" class="share-btn">去练习</button>
+
+</view>

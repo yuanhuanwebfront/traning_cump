@@ -1,0 +1,12 @@
+.btn-area{
+    margin-top: 48rpx;
+    justify-content: center;
+}
+.empty-img{
+    width: 420rpx;
+    height: 340rpx;
+    margin: 0 auto;
+    margin-bottom: 26rpx;
+    background-image: url("http://qiniucdn.dailyyoga.com.cn/74/90/7490eb4dc5c0bb970a8f2553a7004ed8.png");
+    background-size: 100% 100%;
+}

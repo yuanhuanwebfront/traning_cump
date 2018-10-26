@@ -1,0 +1,14 @@
+<view class="banner">
+    <!--    待提现区域   -->
+    <view class="withdraw" wx:if="{{isHome}}">
+        <button bindtap="goWechat">待提现￥{{info.balance || '0.00'}}</button>
+    </view>
+    <!--    金额区域    -->
+    <view class="money-area">
+        <view class="money">￥{{info.totalIncome || 0 }}</view>
+        <view>累计总收益</view>
+        <text class="over-tip" wx:if="{{info.overMoney > 0}}">你有￥{{info.overMoney}}的返利余额将于{{info.overDate}}过期</text>
+    </view>
+
+    <image src="{{imgList[info.type]}}" class="banner-bg" />
+</view>

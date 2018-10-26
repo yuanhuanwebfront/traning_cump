@@ -1,0 +1,22 @@
+<view class="container">
+
+
+        <header-banner info="{{info}}" is-home="false"></header-banner>
+
+        <view class="profit-area">
+            <view class="flex profit-item back-bg" wx:for="{{income_list}}" wx:key="source_type">
+                <text>{{"" || item.source_desc}}</text>
+                <view class="info-color" data-type="{{item.source_type}}" bindtap="toRebateDetail">今日￥{{ item.money || 0 }}</view>
+            </view>
+        </view>
+
+        <view class="rebate-desc">
+            <view>提现说明：</view>
+            <view>1、余额可以在App内消费，支持会员购买、训练营、线下培训购买</view>
+            <view>2、余 额满30元即可提现，每天最多提现200元。关注“每日瑜伽教你学”进行提现，提现金额将直接入帐微信零钱包中</view>
+            <view>3、当年获得的返利将在次年12月31日23点59分59秒过期，请在过期前使用</view>
+            <view>4、如有疑问，可联系瑜小蜜进行咨询</view>
+        </view>
+
+
+</view>

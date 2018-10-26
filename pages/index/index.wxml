@@ -1,0 +1,51 @@
+<swiper wx:if="{{swiperList.length > 1}}" indicator-dots="{{swiperList.length > 1}}" style="height: 180rpx;"
+        interval="3000" autoplay class="swiper-container" indicator-active-color="#fff"
+        indicator-color="rgba(255, 255, 255, 0.5)" circular="true">
+    <swiper-item wx:for="{{swiperList}}" wx:key="id">
+        <image data-info="{{item}}" style="height: 180rpx;" src="{{item.image}}" bindtap="toBannerPage"
+               lazy-load="true"></image>
+    </swiper-item>
+</swiper>
+
+<image data-info="{{swiperList[0]}}" style="height: 180rpx;" wx:if="{{swiperList.length == 1 }}" bindtap="toBannerPage"
+       src="{{swiperList[0].image}}"></image>
+
+<scroll-view class="tab noBar" scroll-x wx:if="{{tagList.length !== 0}}">
+    <text class="center word-13 color-9  {{activeTag === 0 ? 'active' : ''}}" data-id="0" bindtap="changeTab">全部</text>
+    <text class="center word-13 color-9 {{activeTag === item.id ? 'active' : ''}}" bindtap="changeTab"
+          wx:for="{{tagList}}" wx:key="id" data-id="{{item.id}}">{{item.tag_name}}
+    </text>
+</scroll-view>
+
+<view wx:for="{{sessionList}}" wx:key="id" class="session-container">
+    <image class="session-cover" src="{{item.image_phone}}" lazy-load="true" data-session="{{item}}" bindtap="goDetail"></image>
+    <view class="name word-14 color-3">{{item.session_name}}</view>
+    <view class="flex" style="margin-bottom: 20rpx;justify-content: space-between;">
+        <view>
+            <text wx:for="{{item.notice_list}}" wx:key="name" class="active-word">{{item}}</text>
+        </view>
+        <view style="color: #666;margin-right: 24rpx;">{{item.enrollNum}}人报名</view>
+    </view>
+</view>
+
+<view class="center word-13 color-9 end-word" wx:if="{{listEnd && sessionList.length > 1}}">更多课程即将上线~</view>
+
+<!--    引导弹窗    -->
+<view class="black-bg" data-hide="1" wx:if="{{showGuideDialog}}">
+    <view class="step word-14 step1">1.点击
+        <image src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAABACAMAAAC0nLwuAAAAb1BMVEUAAADs7Oz19fXw8PDr6+vt7e3r6+vs7Ozr6+v29vbz8/Pr6+vs7Ozr6+vr6+vr6+vt7e3q6urt7e3u7u7r6+vu7u7z8/P////r6+v////q6uoAAADm5ub7+/tZWVkZGRkPDw/4+PiamppCQkI3NzflCPGZAAAAGXRSTlMA8fzz+fTcj4AN9ujUyql0YmJVOzQeFQK1SddPKQAAAdpJREFUaN7U19luwjAQhWGPnY0lCykETmGykfd/xsoEQQqkTSU7Nf+VJV/4kzWyZDFWkUfJekXe56x5tFonUV6IP7UNA0/Jhhmzx9xI5QXhdqp1kQYkGf8aSwrSxRRsRIrhQKwo+hWc0dIJrI6XlP2I3cW+M1gd+/FuXPtBEo4l6WNMuyGnrraPafMSuw/dGoSb1w/3L7QHBUdTh2dv6KwWUOHT3PpwOH/z+CYwTCYlTMbf34edYS1OJxj2Dt/fWMJtLmR812Y+zGWHCz8T1xZmR8EOl2kh+qIl3OdiGVm6XAvcwfWmCoD7XKhU6AKG4exwOdDaLen1G3BB+v8WSpjOEleGdmbBEldPQ+FB9w5ceIXIFYxni6tyEUlMq+3qumsxJVtcGYmkwZRO5+Ol8xSHLW6TiDWPn1lWVXk9V2t773BvZi6vxYpHj6w1r74c3B5vtcO9mbkrQRir7HmlXnd3bjfcm5cLEh7GqnpSpdf1nVs/7j1njet9VWsHBQCAMAwD/buOjZwDHsDWNNpxscuAPTXsI8PGBDaEsRUHWyCx9VwLP1i0xIK7hkUw6IQhPQ2YYjhag/1alYIVVVoNqJWsWoWNCQKafsHJLZo6pIlZnPamSYWcsnkWYgNHJ+V2u6KHnAAAAABJRU5ErkJggg=="></image>
+    </view>
+    <view class="step step2">
+        <text class="word-14">2.点击 [添加到我的小程序]</text>
+        <image src="http://qiniucdn.dailyyoga.com.cn/bf/fa/bffa258fbce6f400e7a7845da7cc7ada.jpeg"></image>
+    </view>
+    <view class="step step3">
+        <text class="word-14">3.在微信首页下拉，快速进入“训练营”</text>
+        <image src="http://qiniucdn.dailyyoga.com.cn/40/a7/40a72cac9c2c18b872e0f8963864a95e.jpeg"></image>
+    </view>
+
+    <view>
+        <button class="know-btn" bindtap="closeDialog">我知道了</button>
+    </view>
+</view>
+

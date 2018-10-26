@@ -1,0 +1,70 @@
+<view class="container">
+
+    <template name="couponItem">
+        <view class="coupon-item flex {{item.canUse ? '' : 'disable'}}" data-item="{{item}}">
+            <view class="price flex">￥{{item.couponPrice}}</view>
+
+            <view class="intro">
+                <view class="vip-border">{{item.voucher_name}}</view>
+                <view class="desc-area">
+                    <view class="desc over-hide">{{item.voucher_decription}}</view>
+                    <view class="desc">
+                        <text>有效期：</text>
+                        <text>{{item.startTime}} 至</text>
+                        <view style="padding-left: 96rpx;">{{item.endTime}} </view>
+                    </view>
+                </view>
+            </view>
+
+            <view data-jump="0" data-item="{{item}}" class="radio {{item.is_select ? 'select-bg' : ''}}" wx:if="{{item.canUse && canSelect}}" bindtap="chooseCoupon"></view>
+
+            <view class="expire-tag" wx:if="{{item.expireStatus === 1}}"></view>
+            <view class="expire-tag used-tag" wx:if="{{item.usedStatus === 1}}"></view>
+        </view>
+    </template>
+
+    <view class="coupon-box">
+        <text class="iconfont icon-jinggao"></text> 每个订单优惠只能享受一次
+    </view>
+
+    <block wx:if="{{validList && validList.length > 0}}">
+        <view class="use-list">
+            <view wx:for="{{validList}}" wx:key="id">
+                <template is="couponItem" data="{{canSelect, item}}"></template>
+            </view>
+        </view>
+    </block>
+
+    <block wx:if="{{usedList && usedList.length > 0}}">
+        <view class="coupon-box">已使用优惠券</view>
+        <view class="use-list">
+            <view wx:for="{{usedList}}" wx:key="id">
+                <template is="couponItem" data="{{canSelect, item}}"></template>
+            </view>
+        </view>
+    </block>
+
+    <block wx:if="{{disabledList && disabledList.length > 0}}">
+        <view class="coupon-box">不可用优惠券</view>
+        <view class="use-list">
+            <view wx:for="{{disabledList}}" wx:key="id">
+                <template is="couponItem" data="{{canSelect, item}}"></template>
+            </view>
+        </view>
+    </block>
+
+    <block wx:if="{{expiredList && expiredList.length > 0}}">
+        <view class="coupon-box">已失效优惠券</view>
+        <view class="use-list">
+            <view wx:for="{{expiredList}}" wx:key="id">
+                <template is="couponItem" data="{{canSelect, item}}"></template>
+            </view>
+        </view>
+    </block>
+
+    <block wx:if="{{noAnyList}}">
+        <image class="empty-img" src="http://qiniucdn.dailyyoga.com.cn/d8/4f/d84f80763f702f1935f005cc0c871631.png"></image>
+        <view class="center word-14 color-6">暂无优惠券</view>
+    </block>
+
+</view>
