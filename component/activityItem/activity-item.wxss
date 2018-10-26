@@ -1,0 +1,22 @@
+.activity-item-container{
+    background: #fff;
+    padding-bottom: 20rpx;
+}
+.activity-item-container image{margin-bottom: 20rpx;}
+.activity-desc{
+    padding: 0 26rpx;
+    box-sizing: border-box;
+}
+.activity-desc .flex{
+    margin-top: 10rpx;
+    justify-content: space-between;
+}
+.price-bg{
+    background: #fe6b42;
+    height: 40rpx;
+    line-height: 40rpx;
+    color: #fff;
+    padding: 6rpx 12rpx;
+    border-radius: 20rpx;
+    margin-left: 12rpx;
+}

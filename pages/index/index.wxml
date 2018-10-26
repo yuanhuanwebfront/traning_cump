@@ -49,3 +49,10 @@
     </view>
 </view>
 
+<!--    运营位悬浮窗  -->
+<view class="black-bg adv flex" hidden="{{true}}">
+    <view class="content"></view>
+</view>
+
+<view class="adv-item"></view>
+

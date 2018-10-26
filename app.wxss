@@ -81,6 +81,7 @@ input {
 .color-6{color: #666;}
 .color-9{color: #999;}
 .color-c8{color: #c8c8c8;}
+.color-price{color: #FE6B42;}
 .word-12{font-size: 24rpx;}
 .word-13{font-size: 26rpx;}
 .word-14{font-size: 28rpx;}

@@ -15,4 +15,9 @@
     </view>
 
 
+    <view>
+        <activity-item></activity-item>
+    </view>
+
+
 </view>

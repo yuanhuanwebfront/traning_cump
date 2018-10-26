@@ -70,5 +70,8 @@
       "sessionRank/sessionRank",
       "sessionMarkSuccess/sessionMarkSuccess"
     ]
+  },{
+    "root": "activity",
+    "pages": []
   }]
 }

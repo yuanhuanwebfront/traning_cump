@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "session-status": "../../component/sessionStatus/session-status"
+    "session-status": "../../component/sessionStatus/session-status",
+    "activity-item": "../../component/activityItem/activity-item"
   }
 }
