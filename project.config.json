@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 28,
 			"list": [
 				{
 					"id": 0,
@@ -224,6 +224,13 @@
 					"name": "打卡成功",
 					"pathName": "pages/session/session",
 					"query": "yoga_o2_session_id=306&mark_uid=2fd80d8018ffa2abeadf9fc486f5b56a",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "活动课程详情",
+					"pathName": "activity/activityDetail/activityDetail",
+					"query": "",
 					"scene": "1001"
 				}
 			]

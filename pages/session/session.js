@@ -7,7 +7,6 @@ Page({
 
     data: {
         showJoinSessionBtn: true,
-        showEndSessionBtn: false,
         sessionList: [],
     },
 

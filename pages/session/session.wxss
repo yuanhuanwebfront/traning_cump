@@ -10,3 +10,12 @@
     background-image: url("http://qiniucdn.dailyyoga.com.cn/74/90/7490eb4dc5c0bb970a8f2553a7004ed8.png");
     background-size: 100% 100%;
 }
+.change-activity{
+    width: 128rpx;
+    height: 40rpx;
+    background: #e1e1e1;
+    line-height: 40rpx;
+    border-radius: 20rpx;
+    margin-top: 26rpx;
+    margin-bottom: 26rpx;
+}

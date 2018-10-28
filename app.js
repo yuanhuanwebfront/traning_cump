@@ -19,9 +19,9 @@ App({
         showBackBtn: false
     },
 
-    onLaunch: function (options) {
+    onLaunch: function () {
 
-        sa.para.autoTrack.appLaunch=function(){
+        sa.para.autoTrack.appLaunch = function(){
             return {
                 appId: 'wx3895f49172bc98b5',
             }
@@ -41,12 +41,9 @@ App({
             this.getJsCode();
         }
 
-        let sid = wx.getStorageSync('sid'),
-            params = {sid};
+        let sid = wx.getStorageSync('sid');
 
-        if(sid){
-            getUserInfo(params, this.setUserData);
-        }
+        if(sid) getUserInfo({sid}, this.setUserData);
 
         this.retryUploadRecord();
 
@@ -57,12 +54,7 @@ App({
     checkUpdate (){
         const updateManager = wx.getUpdateManager();
 
-        updateManager.onCheckForUpdate(res => {
-            if(res.hasUpdate){
-
-            }
-        });
-
+        updateManager.onCheckForUpdate();
 
         updateManager.onUpdateReady(function () {
             wx.showModal({
@@ -141,8 +133,7 @@ App({
     },
 
     checkUserLogin() {
-        let storageSid = wx.getStorageSync('sid');
-        return !!storageSid;
+        return !!wx.getStorageSync('sid');
     }
 
 });

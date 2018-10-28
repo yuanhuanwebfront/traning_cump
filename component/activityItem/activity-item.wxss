@@ -13,10 +13,11 @@
 }
 .price-bg{
     background: #fe6b42;
-    height: 40rpx;
+    height: 50rpx;
     line-height: 40rpx;
     color: #fff;
-    padding: 6rpx 12rpx;
+    padding: 5rpx 12rpx;
     border-radius: 20rpx;
     margin-left: 12rpx;
+    box-sizing: border-box;
 }

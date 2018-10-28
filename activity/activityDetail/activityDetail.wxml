@@ -1,0 +1,26 @@
+<view class="container">
+
+    <image class="banner" src="{{sessionImage}}"></image>
+
+    <view>
+        <view class="area price-area flex">
+            <view>
+                <text class="word-16">￥</text>
+                <text class="word-20">0.</text>
+                <text class="word-16">0</text>
+            </view>
+            <view>
+                <view>¥12</view>
+                <view>20人已参加</view>
+            </view>
+        </view>
+
+        <view class="area time-area">
+
+        </view>
+    </view>
+
+
+
+
+</view>

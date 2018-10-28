@@ -72,6 +72,8 @@
     ]
   },{
     "root": "activity",
-    "pages": []
+    "pages": [
+      "activityDetail/activityDetail"
+    ]
   }]
 }

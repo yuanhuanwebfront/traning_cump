@@ -1,0 +1,16 @@
+.container .banner{
+    height: 430rpx;
+    display: block;
+}
+.area{
+    box-sizing: border-box;
+    width: 50%;
+    height: 112rpx;
+}
+.price-area{
+    background-image: linear-gradient(45deg, #F095FF 0%, #F64848 100%);
+    color: #fff;
+}
+.time-area{
+    background: #FFEFEA;
+}
