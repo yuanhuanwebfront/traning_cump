@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="0631339c-f539-4daf-a5c5-a56e7f24c10e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/common/common.js" afterPath="$PROJECT_DIR$/common/common.js" />
+      <change beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change beforePath="$PROJECT_DIR$/app.json" afterPath="$PROJECT_DIR$/app.json" />
+      <change beforePath="$PROJECT_DIR$/assets/img/discover.png" afterPath="$PROJECT_DIR$/assets/img/discover.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/discover_active.png" afterPath="$PROJECT_DIR$/assets/img/discover_active.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/icon_guanbi.png" afterPath="$PROJECT_DIR$/assets/img/icon_guanbi.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/icon_reward-active.png" afterPath="$PROJECT_DIR$/assets/img/icon_reward-active.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/icon_reward.png" afterPath="$PROJECT_DIR$/assets/img/icon_reward.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/logo.png" afterPath="$PROJECT_DIR$/assets/img/logo.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/mine.png" afterPath="$PROJECT_DIR$/assets/img/mine.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/mine_active.png" afterPath="$PROJECT_DIR$/assets/img/mine_active.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/session.png" afterPath="$PROJECT_DIR$/assets/img/session.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/session_active.png" afterPath="$PROJECT_DIR$/assets/img/session_active.png" />
+      <change beforePath="$PROJECT_DIR$/project.config.json" afterPath="$PROJECT_DIR$/project.config.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,7 +31,7 @@
       <file leaf-file-name="sessionMark.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/session/sessionMark/sessionMark.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
+            <state relative-caret-position="1961">
               <caret line="75" column="36" lean-forward="false" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
               <folding>
                 <element signature="e#361#520#0" expanded="false" />
@@ -115,11 +127,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/common.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="111">
-              <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+              <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
               <folding>
                 <element signature="e#184#328#0" expanded="false" />
                 <element signature="e#350#490#0" expanded="false" />
@@ -187,6 +199,16 @@
                 <element signature="e#7629#7670#0" expanded="false" />
                 <element signature="e#7697#8013#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1554">
+              <caret line="110" column="24" lean-forward="false" selection-start-line="110" selection-start-column="24" selection-end-line="110" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -317,11 +339,6 @@
               <item name="training_camp" type="b2602c69:ProjectViewProjectNode" />
               <item name="training_camp" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="training_camp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="training_camp" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -407,16 +424,17 @@
       <workItem from="1540430659771" duration="8285000" />
       <workItem from="1540514786649" duration="326000" />
       <workItem from="1540517147029" duration="1066000" />
+      <workItem from="1540687803389" duration="38000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134559000" />
+    <option name="totallyTimeSpent" value="134597000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="7" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17637712" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1753178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -835,13 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="110" column="24" lean-forward="false" selection-start-line="110" selection-start-column="24" selection-end-line="110" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
@@ -851,7 +862,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/session/sessionMark/sessionMark.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
+        <state relative-caret-position="1961">
           <caret line="75" column="36" lean-forward="false" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
           <folding>
             <element signature="e#361#520#0" expanded="false" />
@@ -947,7 +958,7 @@
     <entry file="file://$PROJECT_DIR$/common/common.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
-          <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+          <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
           <folding>
             <element signature="e#184#328#0" expanded="false" />
             <element signature="e#350#490#0" expanded="false" />
@@ -1015,6 +1026,14 @@
             <element signature="e#7629#7670#0" expanded="false" />
             <element signature="e#7697#8013#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1554">
+          <caret line="110" column="24" lean-forward="false" selection-start-line="110" selection-start-column="24" selection-end-line="110" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
