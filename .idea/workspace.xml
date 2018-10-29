@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="0631339c-f539-4daf-a5c5-a56e7f24c10e" name="Default" comment="">
+<<<<<<< HEAD
       <change beforePath="" afterPath="$PROJECT_DIR$/activity" />
       <change beforePath="" afterPath="$PROJECT_DIR$/activity/activityDetail" />
       <change beforePath="" afterPath="$PROJECT_DIR$/activity/activityDetail/activityDetail.js" />
@@ -21,6 +22,21 @@
       <change beforePath="$PROJECT_DIR$/pages/session/session.json" afterPath="$PROJECT_DIR$/pages/session/session.json" />
       <change beforePath="$PROJECT_DIR$/pages/session/session.wxml" afterPath="$PROJECT_DIR$/pages/session/session.wxml" />
       <change beforePath="$PROJECT_DIR$/pages/session/session.wxss" afterPath="$PROJECT_DIR$/pages/session/session.wxss" />
+=======
+      <change beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change beforePath="$PROJECT_DIR$/app.json" afterPath="$PROJECT_DIR$/app.json" />
+      <change beforePath="$PROJECT_DIR$/assets/img/discover.png" afterPath="$PROJECT_DIR$/assets/img/discover.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/discover_active.png" afterPath="$PROJECT_DIR$/assets/img/discover_active.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/icon_guanbi.png" afterPath="$PROJECT_DIR$/assets/img/icon_guanbi.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/icon_reward-active.png" afterPath="$PROJECT_DIR$/assets/img/icon_reward-active.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/icon_reward.png" afterPath="$PROJECT_DIR$/assets/img/icon_reward.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/logo.png" afterPath="$PROJECT_DIR$/assets/img/logo.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/mine.png" afterPath="$PROJECT_DIR$/assets/img/mine.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/mine_active.png" afterPath="$PROJECT_DIR$/assets/img/mine_active.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/session.png" afterPath="$PROJECT_DIR$/assets/img/session.png" />
+      <change beforePath="$PROJECT_DIR$/assets/img/session_active.png" afterPath="$PROJECT_DIR$/assets/img/session_active.png" />
+      <change beforePath="$PROJECT_DIR$/other/markDaily/markDaily.js" afterPath="$PROJECT_DIR$/other/markDaily/markDaily.js" />
+>>>>>>> master
       <change beforePath="$PROJECT_DIR$/project.config.json" afterPath="$PROJECT_DIR$/project.config.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -38,6 +54,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+<<<<<<< HEAD
       <file leaf-file-name="activityDetail.wxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/activity/activityDetail/activityDetail.wxml">
           <provider selected="true" editor-type-id="text-editor">
@@ -70,6 +87,19 @@
             <state relative-caret-position="111">
               <caret line="3" column="98" lean-forward="false" selection-start-line="3" selection-start-column="98" selection-end-line="3" selection-end-column="98" />
               <folding />
+=======
+      <file leaf-file-name="markDaily.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/other/markDaily/markDaily.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="407">
+              <caret line="65" column="42" lean-forward="true" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
+              <folding>
+                <element signature="e#2098#2400#0" expanded="false" />
+                <element signature="e#2431#2529#0" expanded="false" />
+                <element signature="e#2627#2916#0" expanded="false" />
+                <element signature="e#2944#3360#0" expanded="false" />
+              </folding>
+>>>>>>> master
             </state>
           </provider>
         </entry>
@@ -133,12 +163,12 @@
         <option value="$PROJECT_DIR$/other/dailyList/dailyList.js" />
         <option value="$PROJECT_DIR$/other/markDaily/markDaily.wxss" />
         <option value="$PROJECT_DIR$/other/markDaily/markDaily.wxml" />
-        <option value="$PROJECT_DIR$/other/markDaily/markDaily.js" />
         <option value="$PROJECT_DIR$/session/sessionRank/sessionRank.js" />
         <option value="$PROJECT_DIR$/session/sessionRank/sessionRank.wxml" />
         <option value="$PROJECT_DIR$/common/$http.js" />
         <option value="$PROJECT_DIR$/session/sessionMark/sessionMark.js" />
         <option value="$PROJECT_DIR$/common/common.js" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/pages/index/index.wxml" />
         <option value="$PROJECT_DIR$/pages/index/index.wxss" />
         <option value="$PROJECT_DIR$/component/activityItem/activityItem.json" />
@@ -155,6 +185,9 @@
         <option value="$PROJECT_DIR$/activity/activityDetail/activityDetail.js" />
         <option value="$PROJECT_DIR$/activity/activityDetail/activityDetail.wxml" />
         <option value="$PROJECT_DIR$/activity/activityDetail/activityDetail.wxss" />
+=======
+        <option value="$PROJECT_DIR$/other/markDaily/markDaily.js" />
+>>>>>>> master
       </list>
     </option>
   </component>
@@ -168,8 +201,13 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+<<<<<<< HEAD
     <option name="x" value="177" />
     <option name="y" value="38" />
+=======
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+>>>>>>> master
     <option name="width" value="1931" />
     <option name="height" value="1050" />
   </component>
@@ -214,11 +252,16 @@
             <path>
               <item name="training_camp" type="b2602c69:ProjectViewProjectNode" />
               <item name="training_camp" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="activity" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="other" type="462c0819:PsiDirectoryNode" />
+>>>>>>> master
             </path>
             <path>
               <item name="training_camp" type="b2602c69:ProjectViewProjectNode" />
               <item name="training_camp" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="activity" type="462c0819:PsiDirectoryNode" />
               <item name="activityDetail" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -231,6 +274,10 @@
               <item name="training_camp" type="b2602c69:ProjectViewProjectNode" />
               <item name="training_camp" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="other" type="462c0819:PsiDirectoryNode" />
+              <item name="markDaily" type="462c0819:PsiDirectoryNode" />
+>>>>>>> master
             </path>
           </expand>
           <select />
@@ -318,13 +365,21 @@
       <workItem from="1540430659771" duration="8285000" />
       <workItem from="1540514786649" duration="326000" />
       <workItem from="1540517147029" duration="1066000" />
+<<<<<<< HEAD
       <workItem from="1540524652646" duration="2985000" />
       <workItem from="1540533636495" duration="8591000" />
+=======
+      <workItem from="1540687803389" duration="1040000" />
+>>>>>>> master
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="146135000" />
+=======
+    <option name="totallyTimeSpent" value="135599000" />
+>>>>>>> master
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -536,13 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/other/markDaily/markDaily.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1702">
-          <caret line="86" column="29" lean-forward="false" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/other/markDaily/markDaily.wxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -564,6 +612,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/common/common.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
@@ -575,11 +624,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="740">
           <caret line="249" column="38" lean-forward="false" selection-start-line="249" selection-start-column="37" selection-end-line="249" selection-end-column="38" />
+=======
+    <entry file="file://$PROJECT_DIR$/app.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/session/sessionMark/sessionMark.js">
+    <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1776">
+          <caret line="110" column="24" lean-forward="false" selection-start-line="110" selection-start-column="24" selection-end-line="110" selection-end-column="24" />
+          <folding />
+>>>>>>> master
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-37">
           <caret line="75" column="36" lean-forward="false" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
         </state>
@@ -606,12 +670,83 @@
             <element signature="e#1372#1462#0" expanded="false" />
             <element signature="e#1472#1593#0" expanded="false" />
             <element signature="e#1603#1807#0" expanded="false" />
+=======
+        <state relative-caret-position="111">
+          <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+          <folding>
+            <element signature="e#184#328#0" expanded="false" />
+            <element signature="e#350#490#0" expanded="false" />
+            <element signature="e#806#1420#0" expanded="false" />
+            <element signature="e#839#890#0" expanded="false" />
+            <element signature="e#1476#1568#0" expanded="false" />
+            <element signature="e#1601#1901#0" expanded="false" />
+            <element signature="e#1634#1899#0" expanded="false" />
+            <element signature="e#1684#1890#0" expanded="false" />
+            <element signature="e#1727#1772#0" expanded="false" />
+            <element signature="e#1813#1857#0" expanded="false" />
+            <element signature="e#1941#1996#0" expanded="false" />
+            <element signature="e#1972#1993#0" expanded="false" />
+            <element signature="e#2036#2109#0" expanded="false" />
+            <element signature="e#2055#2106#0" expanded="false" />
+            <element signature="e#2112#2425#0" expanded="false" />
+            <element signature="e#2487#3306#0" expanded="false" />
+            <element signature="e#2582#2850#0" expanded="false" />
+            <element signature="e#2920#2958#0" expanded="false" />
+            <element signature="e#3003#3301#0" expanded="false" />
+            <element signature="e#3024#3294#0" expanded="false" />
+            <element signature="e#3168#3213#0" expanded="false" />
+            <element signature="e#3240#3284#0" expanded="false" />
+            <element signature="e#3355#3802#0" expanded="false" />
+            <element signature="e#3407#3799#0" expanded="false" />
+            <element signature="e#3430#3792#0" expanded="false" />
+            <element signature="e#3602#3782#0" expanded="false" />
+            <element signature="e#3637#3686#0" expanded="false" />
+            <element signature="e#3719#3768#0" expanded="false" />
+            <element signature="e#3864#4489#0" expanded="false" />
+            <element signature="e#3887#4484#0" expanded="false" />
+            <element signature="e#3934#4477#0" expanded="false" />
+            <element signature="e#3974#4466#0" expanded="false" />
+            <element signature="e#4057#4117#0" expanded="false" />
+            <element signature="e#4148#4452#0" expanded="false" />
+            <element signature="e#4184#4433#0" expanded="false" />
+            <element signature="e#4226#4411#0" expanded="false" />
+            <element signature="e#4304#4385#0" expanded="false" />
+            <element signature="e#4555#5295#0" expanded="false" />
+            <element signature="e#4608#5290#0" expanded="false" />
+            <element signature="e#4637#5282#0" expanded="false" />
+            <element signature="e#4667#5272#0" expanded="false" />
+            <element signature="e#4717#5202#0" expanded="false" />
+            <element signature="e#4752#5183#0" expanded="false" />
+            <element signature="e#4894#5161#0" expanded="false" />
+            <element signature="e#4942#5016#0" expanded="false" />
+            <element signature="e#5062#5135#0" expanded="false" />
+            <element signature="e#5208#5258#0" expanded="false" />
+            <element signature="e#5336#5367#0" expanded="false" />
+            <element signature="e#5417#5600#0" expanded="false" />
+            <element signature="e#5527#5578#0" expanded="false" />
+            <element signature="e#5668#5924#0" expanded="false" />
+            <element signature="e#5778#5901#0" expanded="false" />
+            <element signature="e#5988#7124#0" expanded="false" />
+            <element signature="e#6054#6457#0" expanded="false" />
+            <element signature="e#6473#6529#0" expanded="false" />
+            <element signature="e#6533#6712#0" expanded="false" />
+            <element signature="e#6754#7088#0" expanded="false" />
+            <element signature="e#6795#7017#0" expanded="false" />
+            <element signature="e#7186#7679#0" expanded="false" />
+            <element signature="e#7243#7676#0" expanded="false" />
+            <element signature="e#7377#7438#0" expanded="false" />
+            <element signature="e#7460#7553#0" expanded="false" />
+            <element signature="e#7569#7609#0" expanded="false" />
+            <element signature="e#7629#7670#0" expanded="false" />
+            <element signature="e#7697#8013#0" expanded="false" />
+>>>>>>> master
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/index/index.wxml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="370">
           <caret line="52" column="48" lean-forward="false" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
         </state>
@@ -644,12 +779,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="74">
           <caret line="74" column="9" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="9" />
+=======
+        <state relative-caret-position="740">
+          <caret line="249" column="38" lean-forward="false" selection-start-line="249" selection-start-column="37" selection-end-line="249" selection-end-column="38" />
+>>>>>>> master
           <folding>
             <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/component/areaMutiSelect/area-select.wxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -830,6 +970,37 @@
             <element signature="e#18#61#0" expanded="false" />
             <element signature="e#146#238#0" expanded="false" />
             <element signature="e#249#277#0" expanded="false" />
+=======
+    <entry file="file://$PROJECT_DIR$/session/sessionMark/sessionMark.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="75" column="36" lean-forward="false" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
+          <folding>
+            <element signature="e#361#520#0" expanded="false" />
+            <element signature="e#385#513#0" expanded="false" />
+            <element signature="e#825#1225#0" expanded="false" />
+            <element signature="e#1060#1191#0" expanded="false" />
+            <element signature="e#1093#1172#0" expanded="false" />
+            <element signature="e#2733#2825#0" expanded="false" />
+            <element signature="e#2756#2818#0" expanded="false" />
+            <element signature="e#3139#3212#0" expanded="false" />
+            <element signature="e#3162#3204#0" expanded="false" />
+            <element signature="e#3275#3444#0" expanded="false" />
+            <element signature="e#3537#3607#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/other/markDaily/markDaily.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="65" column="42" lean-forward="true" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
+          <folding>
+            <element signature="e#2098#2400#0" expanded="false" />
+            <element signature="e#2431#2529#0" expanded="false" />
+            <element signature="e#2627#2916#0" expanded="false" />
+            <element signature="e#2944#3360#0" expanded="false" />
+>>>>>>> master
           </folding>
         </state>
       </provider>
