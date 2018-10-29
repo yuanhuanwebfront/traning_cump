@@ -29,7 +29,7 @@ Page({
 
         commonParams = {
             page: 1,
-            page_size: 3,
+            page_size: 10,
             listEnd: false
         };
         listParams = {
