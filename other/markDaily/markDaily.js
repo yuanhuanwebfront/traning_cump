@@ -29,7 +29,7 @@ Page({
 
         commonParams = {
             page: 1,
-            page_size: 10,
+            page_size: 3,
             listEnd: false
         };
         listParams = {
@@ -60,7 +60,9 @@ Page({
 
     onPullDownRefresh() {
         listParams.class.page = 1;
+        listParams.class.listEnd = false;
         listParams.mine.page = 1;
+        listParams.mine.listEnd = false;
         this.getDairyListByType(this.data.sessionId, this.data.globalQuery.diaryId, true);
     },
 
@@ -183,7 +185,7 @@ Page({
         } else {
             let tempList = data.list.list;
             this.setData({
-                mineDailyList: [...tempList, ...this.data.mineDailyList]
+                mineDailyList: [...this.data.mineDailyList, ...tempList]
             });
         }
         wx.stopPullDownRefresh();
@@ -197,13 +199,13 @@ Page({
         if (this.data.tabType === 'mine') {
             if (tempList.length < commonParams.page_size) listParams.mine.listEnd = true;
             this.setData({
-                mineDailyList: needRefresh ? [...tempList] : [...tempList, ...this.data.mineDailyList],
+                mineDailyList: needRefresh ? [...tempList] : [...this.data.mineDailyList, ...tempList],
                 invite_euid: data.invite_euid
             })
         } else if (this.data.tabType === 'class') {
             if (tempList.length < commonParams.page_size) listParams.class.listEnd = true;
             this.setData({
-                classDailyList: needRefresh ? [...tempList] : [...tempList, ...this.data.classDailyList],
+                classDailyList: needRefresh ? [...tempList] : [...this.data.classDailyList, ...tempList],
                 invite_euid: data.invite_euid
             })
         }
@@ -304,7 +306,7 @@ Page({
             + '&invite_euid=' + this.data.invite_euid;
 
         return {
-            title: app.globalData.userInfo.nickName + '的打卡日记 @21天瑜伽入门体式精讲课',
+            title: app.globalData.userInfo.nickName + '的打卡日记 @' + this.data.pageInfo.session_name,
             path: shareUrl,
             imageUrl: shareImage
         }
