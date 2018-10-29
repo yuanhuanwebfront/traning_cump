@@ -28,7 +28,7 @@
         <view>
             <view class="flex" style="justify-content: flex-start;">
                 <text>计划进度</text>
-                <button class="mark" bindtap="jumpToSession" wx:if="{{showPracticeBtn && !hideRankBtn}}">去练习</button>
+                <button class="mark" bindtap="jumpToSession" wx:if="{{showPracticeBtn && !hideRankBtn}}">开始练习</button>
                 <button class="mark" bindtap="toMarkPage" wx:if="{{showMarkBtn && !hideRankBtn}}">去打卡</button>
                 <button class="mark" bindtap="toRankPage" wx:if="{{showRankBtn && !hideRankBtn}}">查看排行</button>
             </view>

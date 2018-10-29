@@ -59,10 +59,8 @@ Page({
     },
 
     onPullDownRefresh() {
-        listParams.class.page = 1;
-        listParams.class.listEnd = false;
-        listParams.mine.page = 1;
-        listParams.mine.listEnd = false;
+        listParams[this.data.tabType].page = 1;
+        listParams[this.data.tabType].listEnd = false;
         this.getDairyListByType(this.data.sessionId, this.data.globalQuery.diaryId, true);
     },
 
