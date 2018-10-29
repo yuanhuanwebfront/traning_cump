@@ -253,6 +253,10 @@ let diaryRequest = function(params, namespace, callback, method = 'POST', reLogi
         }
 
     }).catch(err => {
+        //  创建日记失败后，修改禁用按钮置灰
+        if(namespace === 'createDiary'){
+            reLoginFn();
+        }
         console.log(err);
         ERR_FN();
     })
