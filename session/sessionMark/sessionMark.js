@@ -11,7 +11,8 @@ Page({
         contentLength: 0,
         dailyText: '',
         globalQuery: {},
-        ranking_percentage: 0
+        ranking_percentage: 0,
+        disSubmit: false
     },
 
     toRank() {
@@ -139,7 +140,15 @@ Page({
                 ...this.data.globalQuery,
             };
 
+        if(this.data.disSubmit === true){
+            return;
+        }
+
         wx.showLoading({mask: true});
+
+        this.setData({
+            disSubmit: true
+        });
 
         if (this.data.dailyText.trim().length < 5) {
             wxToast('心得少于5个字：请认真填写哦');
@@ -147,7 +156,6 @@ Page({
         }
 
         diaryRequest(params, 'createDiary', res => {
-            wx.hideLoading();
             wx.setStorageSync('markShareImage', vm.data.uploadImageArr[0]);
             wx.setStorageSync('markShareCount', res.user_diary_count);
             wx.redirectTo({
@@ -155,6 +163,10 @@ Page({
                 + '&o2_session_id=' + this.data.globalQuery.yoga_o2_session_id
                 + '&id=' + res.id
                 + '&invite_euid=' + res.invite_euid
+            });
+        }, 'POST', () => {
+            vm.setData({
+                disSubmit: false
             });
         });
 
