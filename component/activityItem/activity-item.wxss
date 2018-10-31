@@ -23,7 +23,7 @@
     height: 44rpx;
     line-height: 44rpx;
     padding: 0rpx 10rpx 0rpx 30rpx;
-    border-bottom-left-radius: 40rpx;
+    border-bottom-left-radius: 30rpx;
     background-image: radial-gradient(circle at -20% 15%, #01D5E3 10%, #6184EA 50%, #996FF2 100%);
 }
 .price-bg{
@@ -48,10 +48,13 @@ image.error::after{
     background-position: center;
     background-size: 246rpx 206rpx;
 }
-image.error.fail::after{
+image.error.end::after{
     background-image: url("http://qiniucdn.dailyyoga.com.cn/7d/09/7d098113d46bfa0a7dc891e41fbab208.png");
 }
-
-image.error.end::after{
+image.error.fail::after{
     background-image: url("http://qiniucdn.dailyyoga.com.cn/f9/e2/f9e2cb4b28e22f49dea83efb99d1c042.png");
+}
+.activity-desc .error{
+    background: #c6c6c6;
+    color: #fff;
 }

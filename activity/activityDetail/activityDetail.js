@@ -14,7 +14,10 @@ Page({
             minuteCount: 0,
             secondCount: 0,
             millsCount: 0
-        }
+        },
+        showInviteDialog: false,
+        showShareInDialog: false,
+        showEndDialog: false
     },
 
     onLoad(){
@@ -51,9 +54,37 @@ Page({
 
 
 
+    },
+
+    openInviteDialog(){
+        this.setData({
+            showInviteDialog: true
+        })
+    },
+
+    openShareInDialog(){
+        this.setData({
+            showShareInDialog: true
+        })
+    },
+
+    openEndDialog(){
+        this.setData({
+            showEndDialog: true
+        })
+    },
+
+    closeDialog(e){
+        let closeStatus = e.target.dataset.close === '1';
+        if(closeStatus){
+            this.setData({
+                showInviteDialog: false,
+                showShareInDialog: false,
+                showEndDialog: false
+            })
+        }
+
     }
-
-
 
 
 

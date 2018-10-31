@@ -1,5 +1,6 @@
 <view class="container" style="padding-top: 20rpx;">
 
+    <!--    空页面     -->
     <view wx:if="{{sessionList.length === 0}}" style="margin-top: 160rpx;">
         <view class="empty-img"></view>
         <view class="center word-14 color-6">你还没有报名任何训练营~</view>
@@ -8,17 +9,47 @@
         </view>
     </view>
 
-
+    <!--    我的训练营课程 -->
     <view wx:if="{{sessionList.length !== 0}}">
+        <view class="list-title word-14 color-3">我的训练营</view>
         <session-status wx:for="{{sessionList}}" wx:key="session_id" session-info="{{item}}"></session-status>
     </view>
 
-
+    <!--    我的活动课程  -->
     <view>
-        <activity-item></activity-item>
+        <view class="list-title activity-title word-14 color-3">我的课程</view>
+        <view class="my-activity">
+            <view wx:for="{{mineActivityList}}" wx:key="" class="my-activity-item flex">
+                <image src="{{item.session_image}}"></image>
+                <view>
+                    <view class="word-15 color-3 main-title">{{item.session_name}}</view>
+                    <view class="word-14 color-9">有效期至：{{item.session_end_time}}</view>
+                    <view class="word-12 play-btn">立即播放</view>
+                </view>
+            </view>
+            <view class="word-12 color-9 center get-more" bindtap="toMineActivityList" wx:if="{{mineActivityList.length >= 2}}">查看更多</view>
+        </view>
     </view>
 
-    <button class="change-activity word-13 color-6">换一个</button>
+    <!--    活动课程列表tab   -->
+    <view>
+        <view class="list-title activity-title flex">
+            <text class="word-14 color-3">活动课程  拼课限免</text>
+            <text class="word-13 color-6" style="font-weight: 500;" bindtap="seeMoreActivity">查看更多></text>
+        </view>
+        <swiper style="height: 420rpx;" current="{{currentSwiper}}" circular="{{true}}">
+            <block wx:for="{{activityList}}" wx:key="">
+                <swiper-item catchtouchmove="stopTouchEvent">
+                    <activity-item activity-info="{{item}}"></activity-item>
+                </swiper-item>
+            </block>
+        </swiper>
+
+    </view>
+    <button class="change-activity word-13 color-6" bindtap="setStatus">换一个</button>
+    <view class="split-area"></view>
+
+
 
 
 </view>

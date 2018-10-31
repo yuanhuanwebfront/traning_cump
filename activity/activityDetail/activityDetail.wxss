@@ -22,7 +22,7 @@
 }
 .price-2{
     padding-left: 50rpx;
-    padding-bottom: 14rpx;
+    padding-bottom: 12rpx;
 }
 .time-area{background: #FFEFEA;}
 .time-area .center{
@@ -44,10 +44,9 @@
     justify-content: space-between;
     padding: 0 30rpx;
     height: 132rpx;
-    margin-bottom: 20rpx;
 }
 .share-area .word-18{
-    margin-bottom: 16rpx;
+    margin-bottom: 12rpx;
 }
 .invite-area{
     height: 100rpx;
@@ -99,6 +98,7 @@
     flex-grow: 1;
     color: #fff;
     line-height: 100rpx;
+    font-weight: 800;
 }
 .user-image{
     display: inline-block;

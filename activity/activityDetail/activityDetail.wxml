@@ -54,7 +54,7 @@
                 <view class="word-11 color-6">您已免费获得课程</view>
             </view>
         </view>
-        <button class="orange-bg word-14">去邀请</button>
+        <button class="orange-bg word-14" bindtap="openInviteDialog">去邀请</button>
         <!--<button class="word-14 sign">立即报名</button>-->
     </view>
 
@@ -65,17 +65,17 @@
     <view class="split-area"></view>
 
     <view class="bottom-area flex">
-        <view class="home center"></view>
-        <view class="buy center">
+        <view class="home center" bindtap="openShareInDialog"></view>
+        <view class="buy center" bindtap="openEndDialog">
             <text class="word-20 color-price">¥12</text>
             <text class="word-11 color-9">单独购买</text>
         </view>
         <view class="orange-bg center word-14">好友助力免费领 (还差1人)</view>
     </view>
 
-    <view class="share-bg">
+    <view data-close="1"  bindtap="closeDialog" class="share-bg" wx:if="{{showInviteDialog || showEndDialog || showShareInDialog}}">
         <!--    分享内容    -->
-        <view wx:if="{{false}}" class="share-content center">
+        <view wx:if="{{showInviteDialog}}" class="share-content center">
             <view class="word-20">邀请好友助力 免费领</view>
             <view class="main">
                 <view class="time-line">
@@ -109,7 +109,7 @@
         </view>
 
         <!--    活动结束内容    -->
-        <view wx:if="{{false}}" class="end-info">
+        <view wx:if="{{showEndDialog}}" class="end-info">
 
             <view class="icon-close"></view>
 
@@ -119,7 +119,7 @@
         </view>
 
         <!--    助力弹窗    -->
-        <view class="share-in">
+        <view wx:if="{{showShareInDialog}}" class="share-in">
             <view class="icon-close"></view>
             <view class="center word-20">帮xxxx助力成功！</view>
             <view class="invite-person">
@@ -135,8 +135,6 @@
             <view class="session-title word-16">xxxx正在参加课程名称课程名称0元学活动</view>
             <button class="know-btn">了解一下</button>
         </view>
-
-
 
     </view>
 

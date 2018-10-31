@@ -16,7 +16,13 @@ Component({
             value: true
         }
 
+    },
 
+    data: {
+        errorClass: {
+            1: "error fail",          //  状态为未成功的class
+            2: "error end"            //  状态为已结束的class
+        }
     },
 
     methods: {

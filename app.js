@@ -54,7 +54,9 @@ App({
     checkUpdate (){
         const updateManager = wx.getUpdateManager();
 
-        updateManager.onCheckForUpdate();
+        updateManager.onCheckForUpdate(() => {
+
+        });
 
         updateManager.onUpdateReady(function () {
             wx.showModal({

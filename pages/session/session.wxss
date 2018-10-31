@@ -17,6 +17,51 @@
     background: #e1e1e1;
     line-height: 40rpx;
     border-radius: 20rpx;
-    margin-top: 26rpx;
-    margin-bottom: 26rpx;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+}
+.list-title{
+    padding: 0 20rpx;
+    font-weight: 700;
+    height: 60rpx;
+    line-height: 80rpx;
+    background: #fff;
+}
+.activity-title{
+    height: 80rpx;
+    line-height: 80rpx;
+    justify-content: space-between;
+}
+.my-activity{
+    padding: 0 20rpx;
+    background: #fff;
+}
+.my-activity-item{
+    justify-content: flex-start;
+    padding: 20rpx 0;
+}
+.my-activity-item .main-title{margin-bottom: 6rpx;}
+.my-activity-item image{
+    width: 260rpx;
+    height: 149rpx;
+    margin-right: 20rpx;
+}
+.my-activity-item .play-btn{
+    background: #8ca5ff;
+    color: #fff;
+    width: 156rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    border-radius: 20rpx;
+    margin-top: 20rpx;
+    text-indent: 20rpx;
+    /*  tip 播放的三角按钮 */
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAADzoH0MAAAAAXNSR0IArs4c6QAAAMlJREFUOBFj+P///1wg5mQgFwA1g8BFIFYlywywdgjxEUgFk2wIkgEwZj+QwUq0QTBdaPQxIF+GKEPQNCJzXwM5bgQNQdaBhf0XKNYAxEw4DcKiCZvQLqCgKFZDsKnGIfYEKG6FYQgOxbiEfwMlilAMwaWSgPhaoDw/yCBGkEIUE4nn3AEqDcUduoQNYgQrIeBUXNLrgBJgLzDgUoFDnKJApCgayU5IoKTcCMS4AxuHX0HCFGUmirIz2QUKRUUaRYXqPGCAkV2sAwAiU8Lhy0uCOQAAAABJRU5ErkJggg==");
+    background-repeat: no-repeat;
+    background-position: right 16rpx center;
+    background-size: 16rpx 24rpx;
+}
+.get-more{
+    height: 80rpx;
+    line-height: 80rpx;
 }

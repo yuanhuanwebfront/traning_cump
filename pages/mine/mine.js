@@ -77,12 +77,6 @@ Page({
         this.toOtherPage('../../other/dailyList/dailyList')
     },
 
-    toActivity(){
-        wx.navigateTo({
-          url: '../../activity/activityList/activityList'
-        })
-    },
-
     toOtherPage (pageUrl){
         let hasLogin = app.checkUserLogin();
         if (hasLogin) {
