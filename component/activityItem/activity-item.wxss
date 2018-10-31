@@ -1,15 +1,30 @@
 .activity-item-container{
+    position: relative;
     background: #fff;
-    padding-bottom: 20rpx;
 }
-.activity-item-container image{margin-bottom: 20rpx;}
+.activity-item-container image{
+    margin-bottom: 20rpx;
+    height: 280rpx;
+}
 .activity-desc{
     padding: 0 26rpx;
+    padding-bottom: 20rpx;
     box-sizing: border-box;
 }
 .activity-desc .flex{
     margin-top: 10rpx;
     justify-content: space-between;
+}
+.activity-desc .join-info{
+    position: absolute;
+    color: #fff;
+    top: 0;
+    right: 0;
+    height: 44rpx;
+    line-height: 44rpx;
+    padding: 0rpx 10rpx 0rpx 30rpx;
+    border-bottom-left-radius: 40rpx;
+    background-image: radial-gradient(circle at -20% 15%, #01D5E3 10%, #6184EA 50%, #996FF2 100%);
 }
 .price-bg{
     background: #fe6b42;
@@ -20,4 +35,23 @@
     border-radius: 20rpx;
     margin-left: 12rpx;
     box-sizing: border-box;
+}
+image.error::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 280rpx;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 246rpx 206rpx;
+}
+image.error.fail::after{
+    background-image: url("http://qiniucdn.dailyyoga.com.cn/7d/09/7d098113d46bfa0a7dc891e41fbab208.png");
+}
+
+image.error.end::after{
+    background-image: url("http://qiniucdn.dailyyoga.com.cn/f9/e2/f9e2cb4b28e22f49dea83efb99d1c042.png");
 }

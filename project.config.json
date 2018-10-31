@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 28,
+			"current": 30,
 			"list": [
 				{
 					"id": 0,
@@ -232,6 +232,18 @@
 					"pathName": "activity/activityDetail/activityDetail",
 					"query": "",
 					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "活动列表",
+					"pathName": "activity/activityList/activityList",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "我的活动",
+					"pathName": "activity/activityMine/activityMine"
 				}
 			]
 		}

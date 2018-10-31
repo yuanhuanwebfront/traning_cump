@@ -3,9 +3,19 @@
 
 
 Component({
+
+    properties: {
+      textColor: {
+          type: String,
+          value: '#666'
+      }
+    },
+
     methods: {
         shareFriend() {
             this.triggerEvent('sharefriend');
         }
-    }
+    },
+
+    externalClasses: ['share-class']
 });

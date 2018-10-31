@@ -1,0 +1,17 @@
+<view>
+    <!--    活动列表banner  -->
+    <image class="activity-banner" src=""></image>
+
+    <view class="split-area"></view>
+
+    <view class="title word-14 color-3">活动课程  拼课限免</view>
+
+    <view wx:for="{{activityList}}" wx:key="">
+
+        <activity-item activity-info="{{item}}" show-split="{{(index + 1) !== activityList.length}}"></activity-item>
+
+    </view>
+
+    <view class="to-mine word-13" bindtap="toMyActivity">我参加的></view>
+
+</view>

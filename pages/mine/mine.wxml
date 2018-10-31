@@ -21,6 +21,7 @@
 
         <view class="bar word-14 color-3" style="background-position-y: -220rpx;" bindtap="toMyCoupon">我的优惠券</view>
         <view class="bar word-14 color-3" style="background-position-y: -320rpx;" bindtap="toMyRebate">我的返利</view>
+        <view class="bar word-14 color-3" style="background-position-y: -320rpx;" bindtap="toActivity">活动专区</view>
     </view>
 
 </view>

@@ -11,6 +11,7 @@
     background-size: 100% 100%;
 }
 .change-activity{
+    padding: 0;
     width: 128rpx;
     height: 40rpx;
     background: #e1e1e1;

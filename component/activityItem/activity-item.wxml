@@ -1,16 +1,19 @@
 <view class="activity-item-container">
 
-    <image mode="widthFix" src="http://qiniucdn.dailyyoga.com.cn/3c/dc/3cdc95f66a1f89bf892e39b0e70966ff.png"></image>
+    <image src="{{activityInfo.image}}" class="error fail end" bindtap="toActivityDetail"></image>
 
     <view class="activity-desc">
-        <view class="word-15 color-3">瑜伽精品在线私教</view>
+        <view class="word-15 color-3">{{activityInfo.sessionTitle}}</view>
         <view class="flex">
-            <view class="word-13 color-9">小标题小标小标题小标题</view>
+            <view class="word-13 color-9">{{activityInfo.subTitle}}</view>
             <view>
-                <text class="word-15 color-price">￥27.00</text>
+                <text class="word-15 color-price">￥{{activityInfo.price}}</text>
                 <text class="word-12 price-bg">0元参加</text>
             </view>
         </view>
+        <view class="join-info word-12">{{activityInfo.joinPerson}}人参加</view>
     </view>
+
+    <view class="split-area" wx:if="{{showSplit}}"></view>
 
 </view>

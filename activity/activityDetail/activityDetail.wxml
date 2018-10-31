@@ -1,23 +1,143 @@
-<view class="container">
+<view>
 
     <image class="banner" src="{{sessionImage}}"></image>
 
     <view>
-        <view class="area price-area flex">
-            <view>
+
+        <view class="flex area price-area">
+            <view class="inline price-1">
                 <text class="word-16">￥</text>
-                <text class="word-20">0.</text>
-                <text class="word-16">0</text>
+                <text class="word-32">{{sessionInfo.finalPrice[0]}}.</text>
+                <text class="word-16">{{sessionInfo.finalPrice[1]}}</text>
             </view>
-            <view>
-                <view>¥12</view>
-                <view>20人已参加</view>
+            <view class="inline price-2">
+                <view class="word-14 del">￥{{sessionInfo.realPrice}}</view>
+                <view class="word-14">{{sessionInfo.joinPerson}}人已参加</view>
             </view>
         </view>
 
-        <view class="area time-area">
-
+        <view class="inline area time-area color-price">
+            <view class="center word-12">距结束仅剩</view>
+            <view class="time-ending center">
+                <text class="day-count">{{sessionInfo.dayCount}}天</text>
+                <text class="count-item word-12 orange-bg">{{sessionInfo.hourCount}}</text>
+                <text class="split">:</text>
+                <text class="count-item word-12 orange-bg">{{sessionInfo.minuteCount}}</text>
+                <text class="split">:</text>
+                <text class="count-item word-12 orange-bg">{{sessionInfo.secondCount}}</text>
+                <text class="split">:</text>
+                <text class="count-item word-12 orange-bg">{{sessionInfo.millsCount}}</text>
+            </view>
         </view>
+
+    </view>
+
+    <view class="share-area flex bg-f">
+
+        <view>
+            <view class="word-18 color-3">RYT教练线下培训训练营</view>
+            <view class="word-13 color-6">课程小标题小标题小标题</view>
+        </view>
+        <view class="word-13">分享</view>
+
+    </view>
+    <view class="split-area"></view>
+
+    <view class="invite-area flex bg-f">
+        <view>
+            <view class="inline user-image">
+                <open-data type="userAvatarUrl"></open-data>
+            </view>
+
+            <view class="inline">
+                <view class="word-13 color-3" style="margin-bottom: 4rpx;">已邀请5人助力</view>
+                <view class="word-11 color-6">您已免费获得课程</view>
+            </view>
+        </view>
+        <button class="orange-bg word-14">去邀请</button>
+        <!--<button class="word-14 sign">立即报名</button>-->
+    </view>
+
+    <view class="rule back-bg bg-f">
+        <text class="word-13 color-6">活动规则</text>
+        <text class="word-12 color-9">邀请好友参与助力，满5人获得课程</text>
+    </view>
+    <view class="split-area"></view>
+
+    <view class="bottom-area flex">
+        <view class="home center"></view>
+        <view class="buy center">
+            <text class="word-20 color-price">¥12</text>
+            <text class="word-11 color-9">单独购买</text>
+        </view>
+        <view class="orange-bg center word-14">好友助力免费领 (还差1人)</view>
+    </view>
+
+    <view class="share-bg">
+        <!--    分享内容    -->
+        <view wx:if="{{false}}" class="share-content center">
+            <view class="word-20">邀请好友助力 免费领</view>
+            <view class="main">
+                <view class="time-line">
+                    <text class="word-14 color-price">剩余时间 </text>
+                    <view class="inline time-ending center">
+                        <text class="day-count color-price">{{sessionInfo.dayCount}}天</text>
+                        <text class="count-item word-12 orange-bg">{{sessionInfo.hourCount}}</text>
+                        <text class="split color-price">:</text>
+                        <text class="count-item word-12 orange-bg">{{sessionInfo.minuteCount}}</text>
+                        <text class="split color-price">:</text>
+                        <text class="count-item word-12 orange-bg">{{sessionInfo.secondCount}}</text>
+                        <text class="split color-price">:</text>
+                        <text class="count-item word-12 orange-bg">{{sessionInfo.millsCount}}</text>
+                    </view>
+                </view>
+                <view class="invite-person">
+                    <view class="inline"></view>
+                    <view class="inline"></view>
+                    <view class="inline"></view>
+                    <view class="inline"></view>
+                    <view class="inline"></view>
+                </view>
+                <view class="word-14 color-6">
+                    再邀请<text class="color-man word-14">5人</text>助力，即可获得
+                </view>
+            </view>
+            <view class="word-14">分享到5个微信群，成功率高达98%</view>
+            <view class="share-btn-area">
+                <share-area text-color="#fff"></share-area>
+            </view>
+        </view>
+
+        <!--    活动结束内容    -->
+        <view wx:if="{{false}}" class="end-info">
+
+            <view class="icon-close"></view>
+
+            <view class="word-18 color-3 center">活动已结束 !</view>
+            <!--  tip:    yomi 坐在箱子里面的图片  -->
+            <image src="http://qiniucdn.dailyyoga.com.cn/74/90/7490eb4dc5c0bb970a8f2553a7004ed8.png"></image>
+        </view>
+
+        <!--    助力弹窗    -->
+        <view class="share-in">
+            <view class="icon-close"></view>
+            <view class="center word-20">帮xxxx助力成功！</view>
+            <view class="invite-person">
+                <view class="flex">
+                    <view class="inline"></view>
+                    <view class="inline"></view>
+                    <view class="inline"></view>
+                    <view class="inline"></view>
+                    <view class="inline"></view>
+                </view>
+                <view class="word-13 color-6 center friend">xxx等4位好友已帮ta助力</view>
+            </view>
+            <view class="session-title word-16">xxxx正在参加课程名称课程名称0元学活动</view>
+            <button class="know-btn">了解一下</button>
+        </view>
+
+
+
     </view>
 
 

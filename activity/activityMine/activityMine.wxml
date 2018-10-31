@@ -1,0 +1,9 @@
+<view>
+
+    <view wx:for="{{activityList}}" wx:key="">
+
+        <activity-item activity-info="{{item}}" show-split="{{(index + 1) !== activityList.length}}"></activity-item>
+
+    </view>
+
+</view>

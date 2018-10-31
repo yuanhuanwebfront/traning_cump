@@ -73,7 +73,9 @@
   },{
     "root": "activity",
     "pages": [
-      "activityDetail/activityDetail"
+      "activityDetail/activityDetail",
+      "activityList/activityList",
+      "activityMine/activityMine"
     ]
   }]
 }
