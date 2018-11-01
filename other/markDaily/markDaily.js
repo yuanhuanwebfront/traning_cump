@@ -120,7 +120,6 @@ Page({
 
     /*
     *   获取单个tab下的日记列表数据
-    *   @params diaryType       0为全部   1为个人   2为班级   3为单个
     *   @params sessionId       课程ID
     *   @params diaryId         日记ID
     *   @params needRefresh     是否是下拉刷新操作(需要重置list和page)
@@ -210,7 +209,6 @@ Page({
 
         wx.stopPullDownRefresh();
     },
-
 
     switchTab(e) {
         let {type} = e.target.dataset;

@@ -1,4 +1,4 @@
-<view>
+<view class="container">
 
     <view wx:for="{{activityList}}" wx:key="">
 

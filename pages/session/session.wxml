@@ -29,6 +29,7 @@
             </view>
             <view class="word-12 color-9 center get-more" bindtap="toMineActivityList" wx:if="{{mineActivityList.length >= 2}}">查看更多</view>
         </view>
+        <view class="split-area"></view>
     </view>
 
     <!--    活动课程列表tab   -->

@@ -35,6 +35,12 @@ Page({
         wx.navigateTo({
           url: '/activity/activityMine/activityMine'
         })
+    },
+
+    backHome(){
+        wx.switchTab({
+            url: '/pages/index/index'
+        })
     }
 
 });

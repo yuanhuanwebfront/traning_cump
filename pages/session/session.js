@@ -12,24 +12,21 @@ const mock = {
         subTitle: "活动副标题1",
         price: "10",
         joinPerson: "100",
-        status: 0,
-        is_join: 1
+        status: 0
     },{
         image: "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
         sessionTitle: "活动标题1",
         subTitle: "活动副标题1",
         price: "10",
         joinPerson: "100",
-        status: 1,
-        is_join: 0
+        status: 1
     },{
         image: "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
         sessionTitle: "活动标题1",
         subTitle: "活动副标题1",
         price: "10",
         joinPerson: "100",
-        status: 2,
-        is_join: 0
+        status: 2
     },{
         image: "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
         sessionTitle: "活动标题1",
@@ -104,7 +101,7 @@ Page({
         });
 
         this.setData({
-            sessionList: list
+            sessionList: [] || list
         })
     },
 

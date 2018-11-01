@@ -6,7 +6,7 @@ Page({
     data: {
         sessionImage: 'http://qiniucdn.dailyyoga.com.cn/e2/19/e21918c26897cb13ee79dd28755fd9ac.png',
         sessionInfo: {
-            finalPrice: [0, 2],
+            finalPrice: [0, 0],
             realPrice: 12,
             joinPerson: 200,
             dayCount: 0,
