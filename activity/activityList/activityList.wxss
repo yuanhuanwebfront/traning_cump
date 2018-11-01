@@ -21,15 +21,3 @@ view.title{
     border-top-left-radius: 22rpx;
     background: rgba(0, 0, 0, 0.5);
 }
-.back-home{
-    position: fixed;
-    right: 20rpx;
-    bottom: 40rpx;
-    width: 90rpx;
-    height: 90rpx;
-    line-height: 90rpx;
-    border-radius: 45rpx;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    padding: 0;
-}

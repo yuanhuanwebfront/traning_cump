@@ -1,10 +1,19 @@
 <view class="container" style="padding-top: 20rpx;">
 
-    <!--    空页面     -->
-    <view wx:if="{{sessionList.length === 0}}" style="margin-top: 160rpx;">
+    <!--    空页面(没有活动列表  上下布局)     -->
+    <view style="margin-top: 160rpx;" wx:if="{{sessionList.length === 0 && activityList.length === 0}}">
         <view class="empty-img"></view>
         <view class="center word-14 color-6">你还没有报名任何训练营~</view>
         <view class="btn-area flex">
+            <button class="btn btn-confirm" wx:if="{{showJoinSessionBtn}}" bindtap="joinSession">参加训练营</button>
+        </view>
+    </view>
+
+    <!--    空页面(有活动列表  左右布局)     -->
+    <view class="flex has-activity" wx:if="{{sessionList.length === 0 && activityList.length !== 0}}">
+        <view class="empty-img"></view>
+        <view>
+            <view class="center word-14 color-9">你还没有报名任何训练营~</view>
             <button class="btn btn-confirm" wx:if="{{showJoinSessionBtn}}" bindtap="joinSession">参加训练营</button>
         </view>
     </view>
@@ -16,14 +25,14 @@
     </view>
 
     <!--    我的活动课程  -->
-    <view>
+    <view wx:if="{{mineActivityList.length > 0}}">
         <view class="list-title activity-title word-14 color-3">我的课程</view>
         <view class="my-activity">
-            <view wx:for="{{mineActivityList}}" wx:key="" class="my-activity-item flex">
+            <view wx:if="{{index < 2}}" wx:for="{{mineActivityList}}" wx:key="" class="my-activity-item flex">
                 <image src="{{item.session_image}}"></image>
                 <view>
                     <view class="word-15 color-3 main-title">{{item.session_name}}</view>
-                    <view class="word-14 color-9">有效期至：{{item.session_end_time}}</view>
+                    <view class="word-14 color-9">有效期至：{{item.end_time}}</view>
                     <view class="word-12 play-btn">立即播放</view>
                 </view>
             </view>
@@ -33,10 +42,10 @@
     </view>
 
     <!--    活动课程列表tab   -->
-    <view>
+    <view wx:if="{{activityList.length > 0}}">
         <view class="list-title activity-title flex">
             <text class="word-14 color-3">活动课程  拼课限免</text>
-            <text class="word-13 color-6" style="font-weight: 500;" bindtap="seeMoreActivity">查看更多></text>
+            <text class="word-13 color-6" wx:if="{{activityList.length > 3}}" style="font-weight: 500;" bindtap="seeMoreActivity">查看更多></text>
         </view>
         <swiper style="height: 420rpx;" current="{{currentSwiper}}" circular="{{true}}">
             <block wx:for="{{activityList}}" wx:key="">
@@ -45,10 +54,11 @@
                 </swiper-item>
             </block>
         </swiper>
-
+        <button wx:if="{{activityList.length > 1}}" class="change-activity word-13 color-6" bindtap="changeActivitySwiper">换一个</button>
+        <view class="split-area"></view>
     </view>
-    <button class="change-activity word-13 color-6" bindtap="setStatus">换一个</button>
-    <view class="split-area"></view>
+
+
 
 
 

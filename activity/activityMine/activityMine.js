@@ -5,7 +5,7 @@ const mock = {
         subTitle: "活动副标题1",
         price: "10",
         joinPerson: "100",
-        status: 2
+        status: 1
     },{
         image: "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
         sessionTitle: "活动标题2",
@@ -20,6 +20,12 @@ Page({
 
     data: {
         activityList: mock.list
+    },
+
+    backHome(){
+        wx.switchTab({
+            url: '/pages/index/index'
+        })
     }
 
 });

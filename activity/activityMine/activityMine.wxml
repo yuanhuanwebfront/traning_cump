@@ -6,4 +6,6 @@
 
     </view>
 
+    <button class="back-home-fix center word-12" bindtap="backHome">去首页</button>
+
 </view>

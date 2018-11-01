@@ -6,45 +6,59 @@ let mySa = require('../../common/sa.js');
 // status 0 未参加  1 未成功  2 已结束   is_join == 1  已参加
 
 const mock = {
-    list: [{
-        image: "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
-        sessionTitle: "活动标题1",
-        subTitle: "活动副标题1",
-        price: "10",
-        joinPerson: "100",
-        status: 0
+    // 我报名和购买的活动课程列表
+    // 课程图片  课程名称  有效期
+    // 最多三条（前端页面大于等于三条会只展示两条）
+    "mine_activity_list": [{
+        "id": 1,
+        "session_image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
+        "session_name": "课程名称-1",
+        "end_time": "2018-11-2"
     },{
-        image: "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
-        sessionTitle: "活动标题1",
-        subTitle: "活动副标题1",
-        price: "10",
-        joinPerson: "100",
-        status: 1
+        "id": 2,
+        "session_image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
+        "session_name": "课程名称-2",
+        "end_time": "2018-11-3"
     },{
-        image: "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
-        sessionTitle: "活动标题1",
-        subTitle: "活动副标题1",
-        price: "10",
-        joinPerson: "100",
-        status: 2
-    },{
-        image: "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
-        sessionTitle: "活动标题1",
-        subTitle: "活动副标题1",
-        price: "10",
-        joinPerson: "100",
-        status: 0,
-        is_join: 0
+        "id": 3,
+        "session_image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
+        "session_name": "课程名称-3",
+        "end_time": "2018-11-4"
     }],
-    myActivityList: [{
-        session_image: 'http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg',
-        session_name: '已购买课程名称1',
-        session_end_time: '2018-11-09'
-    },{
-        session_image: 'http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg',
-        session_name: '已购买课程名称2',
-        session_end_time: '2018-12-09'
-    }]
+
+    // 	配置的活动课程列表
+    //  图片 课程标题  课程副标题  课程原价 参加人数  课程状态(0  未参加  1 已参加  2 已购买)
+    "activity_list": [{
+        "image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
+        "sessionTitle": "活动标题1",
+        "subTitle": "活动副标题1",
+        "price": "10",
+        "joinPerson": "100",
+        "status": 0
+    }, {
+        "image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
+        "sessionTitle": "活动标题2",
+        "subTitle": "活动副标题2",
+        "price": "20",
+        "joinPerson": "200",
+        "status": 1
+    }, {
+        "image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
+        "sessionTitle": "活动标题3",
+        "subTitle": "活动副标题3",
+        "price": "30",
+        "joinPerson": "300",
+        "status": 2
+    },
+        {
+        "image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
+        "sessionTitle": "活动标题4",
+        "subTitle": "活动副标题4",
+        "price": "40",
+        "joinPerson": "400",
+        "status": 2
+    }
+    ]
 };
 
 Page({
@@ -53,25 +67,32 @@ Page({
         showJoinSessionBtn: true,
         sessionList: [],
         currentSwiper: 0,
-        activityList: mock.list,
-        mineActivityList: mock.myActivityList
+        activityList: [1],
+        mineActivityList: []
     },
 
     onLoad() {
 
         let sid = wx.getStorageSync('sid');
-        mySa.trackEvent(11, {page_id: 1001});
+
         if (!sid) {
             wx.navigateTo({
                 url: '../login/login'
             })
         }
 
+        mySa.trackEvent(11, {page_id: 1001});
+
+        this.setData({
+            activityList: mock.activity_list,
+            mineActivityList: mock.mine_activity_list
+        })
+
     },
 
     onShow() {
         if (wx.getStorageSync('sid')) {
-            getDetailWebInfo({}, this.handleSessionInfo, 'getUserSessionList');
+            // getDetailWebInfo({}, this.handleSessionInfo, 'getUserSessionList');
         }
     },
 
@@ -101,7 +122,8 @@ Page({
         });
 
         this.setData({
-            sessionList: [] || list
+            sessionList: list,
+            activityList: mock.activity_list
         })
     },
 
@@ -129,7 +151,7 @@ Page({
         })
     },
 
-    setStatus(){
+    changeActivitySwiper(){
         let maxLen = this.data.activityList.length,
             nextSwiper = this.data.currentSwiper + 1;
         this.setData({

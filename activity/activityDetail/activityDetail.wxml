@@ -1,6 +1,6 @@
 <view>
 
-    <image class="banner" src="{{sessionImage}}"></image>
+    <image class="banner" src="{{activityDetail.sessionImage}}"></image>
 
     <view>
 
@@ -11,8 +11,8 @@
                 <text class="word-16">{{sessionInfo.finalPrice[1]}}</text>
             </view>
             <view class="inline price-2">
-                <view class="word-14 del">￥{{sessionInfo.realPrice}}</view>
-                <view class="word-14">{{sessionInfo.joinPerson}}人已参加</view>
+                <view class="word-14 del">￥{{activityDetail.realPrice}}</view>
+                <view class="word-14">{{activityDetail.joinPerson}}人已参加</view>
             </view>
         </view>
 
@@ -35,10 +35,10 @@
     <view class="share-area flex bg-f">
 
         <view>
-            <view class="word-18 color-3">RYT教练线下培训训练营</view>
-            <view class="word-13 color-6">课程小标题小标题小标题</view>
+            <view class="word-18 color-3">{{activityDetail.session_title}}</view>
+            <view class="word-13 color-6">{{activityDetail.session_subtitle}}</view>
         </view>
-        <view class="word-13">分享</view>
+        <view class="word-13 share-img">分享</view>
 
     </view>
     <view class="split-area"></view>
@@ -50,7 +50,7 @@
             </view>
 
             <view class="inline">
-                <view class="word-13 color-3" style="margin-bottom: 4rpx;">已邀请5人助力</view>
+                <view class="word-13 color-3" style="margin-bottom: 4rpx;">已邀请{{activityDetail.invite_list.length}}人助力</view>
                 <view class="word-11 color-6">您已免费获得课程</view>
             </view>
         </view>
@@ -58,21 +58,24 @@
         <!--<button class="word-14 sign">立即报名</button>-->
     </view>
 
+    <!--    规则区域-->
     <view class="rule back-bg bg-f">
         <text class="word-13 color-6">活动规则</text>
-        <text class="word-12 color-9">邀请好友参与助力，满5人获得课程</text>
+        <text class="word-12 color-9">邀请好友参与助力，满{{activityDetail.full_person}}人获得课程</text>
     </view>
     <view class="split-area"></view>
 
+    <!--    底部区域    -->
     <view class="bottom-area flex">
         <view class="home center" bindtap="openShareInDialog"></view>
         <view class="buy center" bindtap="openEndDialog">
-            <text class="word-20 color-price">¥12</text>
+            <text class="word-20 color-price">¥{{activityDetail.realPrice}}</text>
             <text class="word-11 color-9">单独购买</text>
         </view>
-        <view class="orange-bg center word-14">好友助力免费领 (还差1人)</view>
+        <view class="orange-bg center word-14">好友助力免费领 (还差{{activityDetail.full_person - activityDetail.invite_list.length}}人)</view>
     </view>
 
+    <!--    所有的弹窗   -->
     <view data-close="1"  bindtap="closeDialog" class="share-bg" wx:if="{{showInviteDialog || showEndDialog || showShareInDialog}}">
         <!--    分享内容    -->
         <view wx:if="{{showInviteDialog}}" class="share-content center">

@@ -1,5 +1,27 @@
 let app = getApp();
 
+const mock = {
+    //  活动课程图
+    sessionImage: 'http://qiniucdn.dailyyoga.com.cn/e2/19/e21918c26897cb13ee79dd28755fd9ac.png',
+    //  活动原价
+    realPrice: 12,
+    //  参与人数
+    joinPerson: 200,
+    //  活动结束时间
+    end_time: 1541001600,
+    //  课程标题
+    session_title: "课程标题",
+    //  课程副标题
+    session_subtitle: "课程副标题",
+    //  邀请用户的列表
+    invite_list: [{
+        uid: 123213,
+        logo: ""
+    }],
+    //  邀请几个人算活动完成
+    full_person: 5
+};
+
 
 Page({
 
@@ -7,8 +29,6 @@ Page({
         sessionImage: 'http://qiniucdn.dailyyoga.com.cn/e2/19/e21918c26897cb13ee79dd28755fd9ac.png',
         sessionInfo: {
             finalPrice: [0, 0],
-            realPrice: 12,
-            joinPerson: 200,
             dayCount: 0,
             hourCount: 0,
             minuteCount: 0,
@@ -22,6 +42,9 @@ Page({
 
     onLoad(){
         this.countDown();
+        this.setData({
+            activityDetail: mock
+        })
     },
 
     countDown(){
@@ -31,6 +54,10 @@ Page({
             hourNum = 1000 * 60 * 60,
             dayNum = hourNum * 24,
             endTime = 1541001600 * 1000;
+
+        if(endTime - new Date().getTime() <= 0){
+            return;
+        }
 
         setInterval(() => {
 

@@ -159,7 +159,18 @@ view.split-area{
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
 }
-
+.back-home-fix{
+    position: fixed;
+    right: 20rpx;
+    bottom: 40rpx;
+    width: 90rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-radius: 45rpx;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 0;
+}
 
 /*  通用的返利文案样式 */
 .common-rebate-area{

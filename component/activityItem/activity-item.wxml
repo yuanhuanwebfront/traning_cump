@@ -7,11 +7,11 @@
         <view class="flex">
             <view class="word-13 color-9">{{activityInfo.subTitle}}</view>
             <view>
-                <text class="word-15 color-price">￥{{activityInfo.price}}</text>
+                <text class="word-15 color-price" bindtap="toActivityDetail">￥{{activityInfo.price}}</text>
                 <!--    按钮状态有三种 0元参加  已参加   已购买  -->
-                <text wx:if="{{activityInfo.status === 0}}" class="word-12 price-bg">0元参加</text>
-                <text wx:if="{{activityInfo.status === 1}}" class="word-12 price-bg">已参加</text>
-                <text wx:if="{{activityInfo.status === 2}}" class="word-12 price-bg">已购买</text>
+                <text wx:if="{{activityInfo.status === 0}}" bindtap="toActivityDetail" class="word-12 price-bg">0元参加</text>
+                <text wx:if="{{activityInfo.status === 1}}" bindtap="toActivityDetail" class="word-12 price-bg">已参加</text>
+                <text wx:if="{{activityInfo.status === 2}}" bindtap="toActivityDetail" class="word-12 price-bg">已购买</text>
             </view>
         </view>
         <view class="join-info word-12">{{activityInfo.joinPerson}}人参加</view>

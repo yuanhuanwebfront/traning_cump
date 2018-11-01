@@ -48,6 +48,14 @@
 .share-area .word-18{
     margin-bottom: 12rpx;
 }
+.share-area .share-img{
+    padding-left: 36rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    /*  tip 分享icon */
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAeFBMVEUAAABmZmZmZmZoaGh2dnZmZmZsbGxqampnZ2dmZmZmZmZnZ2dnZ2dnZ2dmZmZnZ2dmZmZnZ2dnZ2dnZ2dmZmZnZ2doaGhmZmZnZ2dnZ2doaGhqampvb29mZmZnZ2dnZ2dpaWlnZ2dnZ2dmZmZmZmZoaGhmZmZmZmaWZbRQAAAAJ3RSTlMA1/w+BvUWLPHu4L25iHJI08KtoZddNo9uVE8eC8WkeyfoybGDZWRiexP1AAABA0lEQVQoz22SV5KEMBBDHTEGY5PDzhImre5/w8UevqZaP+rilbrUlBmlW8et+2GkZA6+akwU+y10YCwrQWUX+GiZdgSsYJKvlmjjINPAiy+ihhJAG8eA7lPhQmNvgce7QSuN1/nt/DRzkTvDMl8DeW9S0VNFXP5EPW25cAJYh2uHfFVLHN/o1dmigJ0M+1ZjVbQBO3FV3iQ7sBHwuiagJ2CPOd73IP9kdsc2zDXEyAiZGoAohagUQZWc/w42cvAYpqWqFFbLa5cEjuGB49QzI8PQ3sgWJSPUIURrycM4TybJ11U3yQw6aq1OVTw8AaUoTxq0zRihHbrh0AsjFdy9aI/P/A9TthKTwR8cqwAAAABJRU5ErkJggg==") no-repeat left center;
+    background-size: 28rpx 28rpx;
+}
 .invite-area{
     height: 100rpx;
     padding: 0 28rpx;
@@ -199,6 +207,9 @@
     height: 36rpx;
     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAZVJREFUWAnFl01ugzAQRmN6j/ZWzSILVnCE9g65AbBKpVbiWO09Cv0+ZCOn8c+MCa0lguXY854nigdM13VnY8wzrtemacbDH7RhGI7TNJ2BGit8HOd5fsL13vf9aW8+GWSB88iNV2gv6Hxj8AGDlz0lbOwLWWQy65VNe723xG84NluTbVzKQxPatmWqNrdU7FWAlNTEUotczCuBe0vk4OTdCNxLQgKPCmyVkMKTAqUSGnhWQCuhhYsEpBIlcLFATqIUrhKISXAcbT1e0a81B1jwb7iEjHwEdntwZ7sWToRagIt8iSUICgvuqp1zHRvL8b82dQa4e6T8DdYVKyjtt/wEqgy41HvwGv1NpVycAQcP7Tb1HTOUaiIBCUAyJySSFdAE1sx1MkmBkoDaNVEBbSC3I941a4MCmgA+2O9LY9wISBf6sFhfEutKQLIgBouN52KuArmJMYBkPBV7EUhNkAAkc2IMY18UPxDEne1FVa1EArXkVNm31N3hFLQPKmvtIJvFiK/kX7TRPMkwYEkjgyxcn1g//gAPS/YMrx7gfgAAAABJRU5ErkJggg==") no-repeat center center;
     background-size: cover;
+}
+.share-in .icon-close{
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkBAMAAAATLoWrAAAAJ1BMVEUAAAD///////////////////////////////////////////////+uPUo5AAAADHRSTlMAa3F2fOtl3uHUlJH0lCO9AAAAj0lEQVQoz13QsQkCQRRF0S+CVWywXZgYWIcYWIClmFiMBTgoJlOUuAvvMP7wc5L7an+p4Xb3urXxNX1q6nOV2/RW294G1I9Vhx+DXlVhUFgQBmEQBi0sCIOwIAzCgrAgLAgLUpdSdUpTl1ITpDQopZBBoDAoDMIgDFoYFAZhEAZh1xVhzzqvCHvXY/6b6fQFGoJbvHQ65aYAAAAASUVORK5CYII=") no-repeat center center;
 }
 .share-in{
     position: relative;

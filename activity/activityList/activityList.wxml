@@ -14,6 +14,6 @@
 
     <view class="to-mine word-13" bindtap="toMyActivity">我参加的></view>
 
-    <button class="back-home center word-12" bindtap="backHome">去首页</button>
+    <button class="back-home-fix center word-12" bindtap="backHome">去首页</button>
 
 </view>

@@ -10,6 +10,23 @@
     background-image: url("http://qiniucdn.dailyyoga.com.cn/74/90/7490eb4dc5c0bb970a8f2553a7004ed8.png");
     background-size: 100% 100%;
 }
+.has-activity{
+    justify-content: flex-start;
+    margin-top: 40rpx;
+    margin-bottom: 70rpx;
+}
+.has-activity .empty-img{
+    width: 294rpx;
+    height: 238rpx;
+    margin-right: 30rpx;
+    margin-left: 60rpx;
+}
+.has-activity .btn-confirm{
+    width: 200rpx;
+    height: 48rpx;
+    line-height: 48rpx;
+    margin-top: 30rpx;
+}
 .change-activity{
     padding: 0;
     width: 128rpx;
