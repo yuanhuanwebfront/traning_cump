@@ -1,8 +1,8 @@
 <view>
 
-    <image class="banner" src="{{activityDetail.sessionImage}}"></image>
+    <image class="banner {{activityClass[activityDetail.status]}}" src="{{activityDetail.sessionImage}}"></image>
 
-    <view>
+    <view class="{{activityClass[activityDetail.status]}}">
 
         <view class="flex area price-area">
             <view class="inline price-1">
@@ -45,8 +45,9 @@
 
     <view class="invite-area flex bg-f">
         <view>
-            <view class="inline user-image">
-                <open-data type="userAvatarUrl"></open-data>
+            <view class="inline user-image" style="width: {{80 + 30 * activityDetail.invite_list.length}}rpx;height: 80rpx;">
+                <image style="z-index: {{10 - index}};left: {{35 * index}}rpx;" wx:for="{{activityDetail.invite_list}}" wx:key="" src="{{item.logo}}"></image>
+                <!--<open-data type="userAvatarUrl"></open-data>-->
             </view>
 
             <view class="inline">
@@ -72,13 +73,14 @@
             <text class="word-20 color-price">¥{{activityDetail.realPrice}}</text>
             <text class="word-11 color-9">单独购买</text>
         </view>
-        <view class="orange-bg center word-14">好友助力免费领 (还差{{activityDetail.full_person - activityDetail.invite_list.length}}人)</view>
+        <view class="orange-bg center word-14" bindtap="openInviteDialog">好友助力免费领 (还差{{activityDetail.full_person - activityDetail.invite_list.length}}人)</view>
     </view>
 
     <!--    所有的弹窗   -->
     <view data-close="1"  bindtap="closeDialog" class="share-bg" wx:if="{{showInviteDialog || showEndDialog || showShareInDialog}}">
         <!--    分享内容    -->
         <view wx:if="{{showInviteDialog}}" class="share-content center">
+            <view class="icon-close" data-close="1" bindtap="closeDialog"></view>
             <view class="word-20">邀请好友助力 免费领</view>
             <view class="main">
                 <view class="time-line">
@@ -95,14 +97,14 @@
                     </view>
                 </view>
                 <view class="invite-person">
-                    <view class="inline"></view>
-                    <view class="inline"></view>
-                    <view class="inline"></view>
-                    <view class="inline"></view>
+                    <view class="inline has-img" style="background-image: url({{activityDetail.invite_list[0].logo}});"></view>
+                    <view class="inline has-img" style="background-image: url({{activityDetail.invite_list[1].logo}});"></view>
+                    <view class="inline has-img" style="background-image: url({{activityDetail.invite_list[2].logo}});"></view>
+                    <view class="inline has-img" style="background-image: url({{activityDetail.invite_list[3].logo}});"></view>
                     <view class="inline"></view>
                 </view>
                 <view class="word-14 color-6">
-                    再邀请<text class="color-man word-14">5人</text>助力，即可获得
+                    再邀请<text class="color-man word-14">{{activityDetail.full_person - activityDetail.invite_list.length}}人</text>助力，即可获得
                 </view>
             </view>
             <view class="word-14">分享到5个微信群，成功率高达98%</view>
@@ -114,7 +116,7 @@
         <!--    活动结束内容    -->
         <view wx:if="{{showEndDialog}}" class="end-info">
 
-            <view class="icon-close"></view>
+            <view class="icon-close" data-close="1" bindtap="closeDialog"></view>
 
             <view class="word-18 color-3 center">活动已结束 !</view>
             <!--  tip:    yomi 坐在箱子里面的图片  -->
@@ -123,7 +125,7 @@
 
         <!--    助力弹窗    -->
         <view wx:if="{{showShareInDialog}}" class="share-in">
-            <view class="icon-close"></view>
+            <view class="icon-close" data-close="1" bindtap="closeDialog"></view>
             <view class="center word-20">帮xxxx助力成功！</view>
             <view class="invite-person">
                 <view class="flex">

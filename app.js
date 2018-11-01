@@ -2,8 +2,14 @@
 let sa = require('./lib/sa/sensorsdata.min.js');
 sa.init();
 
-import {wxPromise, sendRequest} from './common/common';
-import {getUserInfo, loginStep} from './common/$http';
+import {
+    wxPromise,
+    sendRequest
+} from './common/common';
+import {
+    getUserInfo,
+    loginStep
+} from './common/$http';
 
 let getCode = wxPromise(wx.login);
 
@@ -14,14 +20,14 @@ App({
         wechatInfo: {},
         userInfo: null,
         jsCode: "",
-        hasListLoginRefresh: false,                  //  列表页是否登录并刷新
-        hasDetailLoginRefresh: false,                //  详情页是否登录并刷新
+        hasListLoginRefresh: false, //  列表页是否登录并刷新
+        hasDetailLoginRefresh: false, //  详情页是否登录并刷新
         showBackBtn: false
     },
 
     onLaunch: function () {
 
-        sa.para.autoTrack.appLaunch = function(){
+        sa.para.autoTrack.appLaunch = function () {
             return {
                 appId: 'wx3895f49172bc98b5',
             }
@@ -43,7 +49,9 @@ App({
 
         let sid = wx.getStorageSync('sid');
 
-        if(sid) getUserInfo({sid}, this.setUserData);
+        if (sid) getUserInfo({
+            sid
+        }, this.setUserData);
 
         this.retryUploadRecord();
 
@@ -51,7 +59,7 @@ App({
 
     },
 
-    checkUpdate (){
+    checkUpdate() {
         const updateManager = wx.getUpdateManager();
 
         updateManager.onCheckForUpdate(() => {
@@ -73,7 +81,7 @@ App({
 
     },
 
-    setUserData(userInfo){
+    setUserData(userInfo) {
         this.globalData.userInfo = userInfo;
         sa.login(userInfo.uid);
     },
@@ -86,7 +94,7 @@ App({
     },
 
     //  重新上传用户练习时长和进度
-    retryUploadRecord (){
+    retryUploadRecord() {
 
         let practiceTimeArr = wx.getStorageSync('practiceReportArr') || [],
             userActionTimeArr = wx.getStorageSync('userActionArr') || [],
@@ -97,7 +105,7 @@ App({
         practiceTimeArr.forEach((item, idx) => {
 
             sendRequest('POST', 'statistic/playtime', item).then(res => {
-                if(res.data.error_code === 0){
+                if (res.data.error_code === 0) {
                     savePracticeArr.splice(idx, 1);
                 }
             })
@@ -106,7 +114,7 @@ App({
 
         userActionTimeArr.forEach((item, index) => {
             sendRequest('POST', 'user/userActionLog', item).then(res => {
-                if(res.data.error_code === 0){
+                if (res.data.error_code === 0) {
                     saveActionArr.splice(index, 1);
                 }
             })
@@ -126,10 +134,10 @@ App({
             mini_app_source: vm.globalData.mini_app_source
         };
 
-        loginStep(params, function(data){
+        loginStep(params, function (data) {
             wx.setStorageSync('sessionKey', data.session_key);
             wx.setStorageSync('openId', data.openid);
-            if(cb) cb();
+            if (cb && typeof cb === 'function') cb();
         }, 'getUserSessionKey');
 
     },

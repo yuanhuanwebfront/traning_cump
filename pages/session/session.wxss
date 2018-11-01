@@ -64,7 +64,7 @@
     margin-right: 20rpx;
 }
 .my-activity-item .play-btn{
-    background: #8ca5ff;
+    background-color: #8ca5ff;
     color: #fff;
     width: 156rpx;
     height: 40rpx;

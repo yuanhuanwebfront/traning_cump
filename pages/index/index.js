@@ -1,4 +1,7 @@
-import {getSessionDetail, getSessionList} from '../../common/$http';
+import {
+    getSessionDetail,
+    getSessionList
+} from '../../common/$http';
 
 let mySa = require('../../common/sa.js');
 
@@ -37,7 +40,9 @@ Page({
     },
 
     onLoad: function () {
-        mySa.trackEvent(11, {page_id: 1000});
+        mySa.trackEvent(11, {
+            page_id: 1000
+        });
         this.setData({
             showGuideDialog: !wx.getStorageSync('hideGuideDialog')
         });
@@ -73,8 +78,7 @@ Page({
     onShareAppMessage() {
         return {
             title: '给你推荐一个超赞的学瑜伽小程序',
-            path: '/pages/index/index',
-            imageUrl: ''
+            path: '/pages/index/index'
         }
     },
 
@@ -111,7 +115,6 @@ Page({
     //  获取课程列表数据  isRefresh 是否重新刷新列表
     getSessionList(isRefresh, noNeedRefresh) {
 
-        let sid = wx.getStorageSync('sid');
         pageParams.tag_id = this.data.activeTag;
 
         if (isRefresh) {
@@ -119,7 +122,6 @@ Page({
             pageParams.page = 1;
         }
 
-        if (sid) pageParams.sid = sid;
         getSessionList(pageParams, this.handleSessionList, noNeedRefresh);
 
     },
@@ -132,7 +134,7 @@ Page({
 
         this.setData({
             sessionList: tempList,
-            listEnd: data.length < 20
+            listEnd: data.length < pageParams.size
         });
         wx.stopPullDownRefresh();
     },
@@ -156,19 +158,16 @@ Page({
 
     //  跳到课程详情页
     goDetail(e) {
-        let detail = e.target.dataset.session;
+        let {id, source} = e.target.dataset.session;
         wx.navigateTo({
-            url: '../../package/detail/detail?session_id=' + detail.id + '&source=' + detail.source
+            url: '../../package/detail/detail?session_id=' + id + '&source=' + source
         })
     },
 
     toBannerPage(e) {
 
         //  跳转类型   1 (外链)  100(小程序内部页)
-
-        let info = e.target.dataset.info,
-            linkType = info.sourceType,
-            contentUrl = info.content_url;
+        let {linkType, contentUrl} = e.target.dataset.info;
 
         if (linkType === 1) {
             let url = encodeURI(contentUrl);

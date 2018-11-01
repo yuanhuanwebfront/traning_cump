@@ -24,7 +24,7 @@
         <view>
             <text wx:for="{{item.notice_list}}" wx:key="name" class="active-word">{{item}}</text>
         </view>
-        <view style="color: #666;margin-right: 24rpx;">{{item.enrollNum}}人报名</view>
+        <view class="color-6" style="margin-right: 24rpx;">{{item.enrollNum}}人报名</view>
     </view>
 </view>
 

@@ -2,6 +2,17 @@
     height: 430rpx;
     display: block;
 }
+.banner.finish-session::after{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 430rpx;
+    background: url("http://qiniucdn.dailyyoga.com.cn/f9/e2/f9e2cb4b28e22f49dea83efb99d1c042.png") no-repeat center center;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-size: 380rpx 320rpx;
+    content: "";
+}
 .orange-bg{background-color: #FE6B42;}
 .area{
     float: left;
@@ -12,6 +23,10 @@
     align-items: flex-end;
 }
 .area.time-area{width: 40%;}
+.finish-session .price-area{
+    background-image: linear-gradient(45deg, #B4B4B4 0%, #D7D7D7 100%);
+}
+.finish-session .count-item{background: #ABABAB;}
 .price-area{
     background-image: linear-gradient(45deg, #F095FF 0%, #F64848 100%);
     color: #fff;
@@ -108,18 +123,20 @@
     line-height: 100rpx;
     font-weight: 800;
 }
-.user-image{
-    display: inline-block;
+.user-image{position: relative;}
+.user-image image{
+    position: absolute;
+    left: 0;
+    top: 10rpx;
     width: 70rpx;
     height: 70rpx;
     border-radius: 40rpx;
-    margin-right: 20rpx;
 }
 .share-bg{
     position: fixed;
     width: 100%;
     height: 100%;
-    z-index: 10;
+    z-index: 20;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.4);
@@ -157,6 +174,7 @@
     padding-left: 30rpx;
     margin-bottom: 30rpx;
 }
+.invite-person .flex{flex-wrap: wrap;}
 .invite-person .inline{
     width: 84rpx;
     height: 84rpx;
@@ -168,6 +186,10 @@
     background-size: 26rpx 26rpx;
     margin-right: 30rpx;
     border: 2rpx dashed #cfcfcf;
+}
+.invite-person .inline.has-img{
+    background-size: cover;
+    border: none;
 }
 .share-btn-area{
     margin-top: 40rpx;
@@ -208,18 +230,18 @@
     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAZVJREFUWAnFl01ugzAQRmN6j/ZWzSILVnCE9g65AbBKpVbiWO09Cv0+ZCOn8c+MCa0lguXY854nigdM13VnY8wzrtemacbDH7RhGI7TNJ2BGit8HOd5fsL13vf9aW8+GWSB88iNV2gv6Hxj8AGDlz0lbOwLWWQy65VNe723xG84NluTbVzKQxPatmWqNrdU7FWAlNTEUotczCuBe0vk4OTdCNxLQgKPCmyVkMKTAqUSGnhWQCuhhYsEpBIlcLFATqIUrhKISXAcbT1e0a81B1jwb7iEjHwEdntwZ7sWToRagIt8iSUICgvuqp1zHRvL8b82dQa4e6T8DdYVKyjtt/wEqgy41HvwGv1NpVycAQcP7Tb1HTOUaiIBCUAyJySSFdAE1sx1MkmBkoDaNVEBbSC3I941a4MCmgA+2O9LY9wISBf6sFhfEutKQLIgBouN52KuArmJMYBkPBV7EUhNkAAkc2IMY18UPxDEne1FVa1EArXkVNm31N3hFLQPKmvtIJvFiK/kX7TRPMkwYEkjgyxcn1g//gAPS/YMrx7gfgAAAABJRU5ErkJggg==") no-repeat center center;
     background-size: cover;
 }
-.share-in .icon-close{
+.share-in .icon-close, .share-content .icon-close{
     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkBAMAAAATLoWrAAAAJ1BMVEUAAAD///////////////////////////////////////////////+uPUo5AAAADHRSTlMAa3F2fOtl3uHUlJH0lCO9AAAAj0lEQVQoz13QsQkCQRRF0S+CVWywXZgYWIcYWIClmFiMBTgoJlOUuAvvMP7wc5L7an+p4Xb3urXxNX1q6nOV2/RW294G1I9Vhx+DXlVhUFgQBmEQBi0sCIOwIAzCgrAgLAgLUpdSdUpTl1ITpDQopZBBoDAoDMIgDFoYFAZhEAZh1xVhzzqvCHvXY/6b6fQFGoJbvHQ65aYAAAAASUVORK5CYII=") no-repeat center center;
 }
 .share-in{
     position: relative;
     width: 580rpx;
-    height: 700rpx;
     background-image: linear-gradient(-45deg, #F64848 0%, #F095FF 100%);
     margin: 0 auto;
     margin-top: 200rpx;
     border-radius: 16rpx;
     color: #fff;
+    padding-bottom: 40rpx;
 }
 .share-in .word-20{margin-top: 80rpx;}
 .share-in .friend{margin-top: 30rpx;}
