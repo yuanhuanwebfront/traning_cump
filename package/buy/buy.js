@@ -521,11 +521,7 @@ Page({
 
     renderTrackParamsDiscount(info){
 
-        if(info[2]){
-            track_params.is_vip_discount = true;
-        }else{
-            track_params.is_vip_discount = false;
-        }
+        track_params.is_vip_discount = !!info[2];
 
         if(info[4]){
             track_params.is_repurchase = true;

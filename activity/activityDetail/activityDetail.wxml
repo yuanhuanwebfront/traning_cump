@@ -38,25 +38,25 @@
             <view class="word-18 color-3">{{activityDetail.session_title}}</view>
             <view class="word-13 color-6">{{activityDetail.session_subtitle}}</view>
         </view>
-        <view class="word-13 share-img">分享</view>
+        <view class="word-13 share-img" wx:if="{{activityDetail.status !== 1}}">分享</view>
 
     </view>
     <view class="split-area"></view>
 
     <view class="invite-area flex bg-f">
         <view>
-            <view class="inline user-image" style="width: {{80 + 30 * activityDetail.invite_list.length}}rpx;height: 80rpx;">
-                <image style="z-index: {{10 - index}};left: {{35 * index}}rpx;" wx:for="{{activityDetail.invite_list}}" wx:key="" src="{{item.logo}}"></image>
-                <!--<open-data type="userAvatarUrl"></open-data>-->
+            <view class="inline user-image">
+                <open-data type="userAvatarUrl"></open-data>
             </view>
 
             <view class="inline">
                 <view class="word-13 color-3" style="margin-bottom: 4rpx;">已邀请{{activityDetail.invite_list.length}}人助力</view>
-                <view class="word-11 color-6">您已免费获得课程</view>
+                <view class="word-11 color-6" wx:if="{{activityDetail.status === 0}}">还差{{activityDetail.full_person - activityDetail.invite_list.length}}人免费获得课程</view>
+                <view class="word-11 color-6" wx:if="{{activityDetail.status === 1}}">您已免费获得课程</view>
             </view>
         </view>
-        <button class="orange-bg word-14" bindtap="openInviteDialog">去邀请</button>
-        <!--<button class="word-14 sign">立即报名</button>-->
+        <button wx:if="{{activityDetail.status === 0}}" class="orange-bg word-14" bindtap="openInviteDialog">去邀请</button>
+        <button wx:if="{{activityDetail.status === 2}}" class="word-14 sign">立即报名</button>
     </view>
 
     <!--    规则区域-->
@@ -69,11 +69,21 @@
     <!--    底部区域    -->
     <view class="bottom-area flex">
         <view class="home center" bindtap="openShareInDialog"></view>
-        <view class="buy center" bindtap="openEndDialog">
-            <text class="word-20 color-price">¥{{activityDetail.realPrice}}</text>
-            <text class="word-11 color-9">单独购买</text>
-        </view>
-        <view class="orange-bg center word-14" bindtap="openInviteDialog">好友助力免费领 (还差{{activityDetail.full_person - activityDetail.invite_list.length}}人)</view>
+        <!--    活动进行中底部的展示  -->
+        <block  wx:if="{{activityDetail.status === 0}}">
+            <view class="buy center" bindtap="openEndDialog">
+                <text class="word-20 color-price">¥{{activityDetail.realPrice}}</text>
+                <text class="word-11 color-9">单独购买</text>
+            </view>
+            <view class="orange-bg center word-14" bindtap="openInviteDialog">好友助力免费领 (还差{{activityDetail.full_person - activityDetail.invite_list.length}}人)</view>
+        </block>
+
+        <!--    活动参与成功的展示   -->
+        <button wx:if="{{activityDetail.status === 2}}" class="orange-bg center word-14">立即报名</button>
+
+        <!--    活动结束的展示 -->
+        <button wx:if="{{activityDetail.status === 1}}" bindtap="backHome" class="orange-bg center word-14">进入训练营</button>
+
     </view>
 
     <!--    所有的弹窗   -->
@@ -97,11 +107,14 @@
                     </view>
                 </view>
                 <view class="invite-person">
-                    <view class="inline has-img" style="background-image: url({{activityDetail.invite_list[0].logo}});"></view>
-                    <view class="inline has-img" style="background-image: url({{activityDetail.invite_list[1].logo}});"></view>
-                    <view class="inline has-img" style="background-image: url({{activityDetail.invite_list[2].logo}});"></view>
-                    <view class="inline has-img" style="background-image: url({{activityDetail.invite_list[3].logo}});"></view>
-                    <view class="inline"></view>
+                    <view wx:for="{{allInviteList}}" wx:key="" class="inline {{index >= 5 ? 'float-img' : '' }} {{item.logo ? 'has-img' : '' }}">
+                        <image wx:if="{{item.logo}}" mode="widthFix" src="{{item.logo}}"></image>
+                    </view>
+                    <!--<view class="inline has-img" style="background-image: url({{activityDetail.invite_list[0].logo}});"></view>-->
+                    <!--<view class="inline has-img" style="background-image: url({{activityDetail.invite_list[1].logo}});"></view>-->
+                    <!--<view class="inline has-img" style="background-image: url({{activityDetail.invite_list[2].logo}});"></view>-->
+                    <!--<view class="inline has-img" style="background-image: url({{activityDetail.invite_list[3].logo}});"></view>-->
+                    <!--<view class="inline"></view>-->
                 </view>
                 <view class="word-14 color-6">
                     再邀请<text class="color-man word-14">{{activityDetail.full_person - activityDetail.invite_list.length}}人</text>助力，即可获得

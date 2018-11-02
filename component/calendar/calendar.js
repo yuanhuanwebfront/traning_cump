@@ -63,10 +63,6 @@ function checkHasPractice(date, practiceList){
 *   @params     arr     构造好的日历数据
 *   arr为一个二维数组，第一层的元素为日历的某一行所有数据
 *                     第二层的元素为某一行的所有日期
-*   tip:  实际我们只需要关心每一行的数据，以为第一行和第二行是不可能存在连接关系的
-*         以第一行为例，我们遍历第一行的数据，从第一个不为0的元素开始，先记录第一个元素的练习状态，然后根据第二个元素来确定这两个是否相连
-*         如果相连，那么第一个元素肯定是左边框样式，第二个元素待定
-*
 * */
 function renderCalendarByArr(arr){
 
@@ -80,13 +76,6 @@ function renderCalendarByArr(arr){
                 //  true 或者 undefined
                 let studyStatus = item.hasPractice;
 
-    //  如果某个元素位于最左边，那么他只可能有左边框，不可能有中间状态和右边框状态   (左边框状态取决于右边紧挨的元素)
-    //  如果某个元素位于最右边，那么他只可能有有边框，不可能有中间状态和左边框状态   (右边框状态取决于左边紧挨的元素）
-    //  --- 如果某个元素位于中间某个位置，那么他三种状态都可能存在   ------
-    //  (左边框状态取决于右边的元素和他的状态是否相同)                    |
-    //  (右边框状态取决于左边的元素和他的状态是否相同)                    |
-    //  (中间状态取决于右边的元素和左边的元素和他的状态是否相同)          |
-    //  -----------------------------------------------------------------
                 if(index === 0){
                     if(itemArr[1] !== 0){
                         item.isLeftBorder = studyStatus === itemArr[1].hasPractice && !(itemArr[1].isToday && !itemArr[1].hasPractice);
@@ -107,18 +96,9 @@ function renderCalendarByArr(arr){
                         let leftStatus = itemArr[index - 1].hasPractice,
                             rightStatus = itemArr[index + 1].hasPractice;
 
-                        //  中间区域若要存在左边框, 那么它的状态必须和右边的状态相同（右边不能为今天并且没有练习的）, 并且和左边的状态不一样
-                        // item.isLeftBorder = studyStatus === rightStatus && studyStatus !== leftStatus
-
-                        //  中间区域的存在左边框的情况  左边的状态不一样，右边的状态必须一样
                         item.isLeftBorder = studyStatus === rightStatus && studyStatus !== leftStatus && !(itemArr[index + 1].isToday && !itemArr[index + 1].hasPractice);
-
-
-                        //  中间区域必须和左右两边的状态都相同  并且下一天不能是今天
                         item.isMiddle = (studyStatus === rightStatus && studyStatus === leftStatus);
 
-
-                        //  右边框必须左边的状态和他相同，右边和他不同 (右边若为今天，判断今天的练习状态是否和今天相同)
                         item.isRightBorder = (studyStatus !== rightStatus || (itemArr[index + 1].isToday && !studyStatus) ) && studyStatus === leftStatus;
 
                         if(itemArr[index + 1].isToday){

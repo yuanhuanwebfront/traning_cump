@@ -27,10 +27,16 @@ const mock = {
     }, {
         uid: 123213,
         logo: "http://ypycdn.dailyyoga.com.cn/f1/cd/f1cd0083ee6435f2d4865ff199ba55c1.png"
+    },{
+        uid: 123213,
+        logo: "http://ypycdn.dailyyoga.com.cn/f1/cd/f1cd0083ee6435f2d4865ff199ba55c1.png"
+    },{
+        uid: 123213,
+        logo: "http://ypycdn.dailyyoga.com.cn/f1/cd/f1cd0083ee6435f2d4865ff199ba55c1.png"
     }],
     //  邀请几个人算活动完成
-    full_person: 5,
-    //  0 进行中  1  已结束
+    full_person: 7,
+    //  0 进行中  1 已结束  2 参与成功
     status: 0,
 
 };
@@ -63,8 +69,13 @@ Page({
         globalInterval = null;
         
         this.setData({
-            activityDetail: mock
-        })
+            activityDetail: mock,
+            allInviteList: new Array(mock.full_person > 6 ? 6 : mock.full_person).fill({}).map((item, index) =>{
+                if(mock.invite_list[index]){
+                    return  {...mock.invite_list[index]}
+                }
+            })
+        });
         this.countDown();
     },
 
@@ -77,8 +88,8 @@ Page({
             endTime = this.data.activityDetail.end_time ? this.data.activityDetail.end_time * 1000 : 0;
 
 
-        if (endTime - (new Date().getTime() / 1000) <= 0) {
-            return;
+        if (endTime - (new Date().getTime() * 1000) <= 0) {
+            return false;
         }
 
         globalInterval = setInterval(() => {
@@ -100,8 +111,6 @@ Page({
 
 
         }, 100)
-
-
 
     },
 
@@ -145,6 +154,10 @@ Page({
             })
         }
 
+    },
+
+    backHome(){
+        wx.switchTab({url: '/pages/index/index'})
     }
 
 
