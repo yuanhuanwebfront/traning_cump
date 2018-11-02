@@ -1,6 +1,6 @@
 import {IS_IOS, formatTime, wxToast, wxSetNavTitle} from '../../common/common';
 import {getYogaSchoolInfo, postCheckout, createPrePayment} from '../../common/$http';
-import AREA from '../../mock/area';
+import AREA from './area';
 
 let mySa = require('../../common/sa');
 
@@ -30,6 +30,8 @@ let pageInfo = {
 Page({
 
     data: {
+
+        areaData: AREA,
 
         showDetailAddress: false,                       //      是否显示详细地址输入框
         hidePointsList: true,                           //      隐藏瑜币选择弹窗

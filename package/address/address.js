@@ -1,4 +1,5 @@
 import {wxSetNavTitle} from '../../common/common';
+import AREA from '../buy/area';
 
 
 Page({
@@ -8,7 +9,8 @@ Page({
         areaInfo: {},
         areaName: [],
         sessionId: '',
-        btnDisable: true
+        btnDisable: true,
+        areaData: AREA
     },
 
     onLoad (options){

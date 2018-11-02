@@ -5,22 +5,25 @@
  */
 
 
-import area from "../../mock/area";
+// import area from "../../mock/area";
 
-let proviceList = [];
-let cityList = [...area[0].citylist];
-let areaAllList = [...(area[0].citylist[0].areaList)];
-let tempList = [0, 0, 0];
+// let proviceList = [];
+// let cityList = [...area[0].citylist];
+// let areaAllList = [...(area[0].citylist[0].areaList)];
+let proviceList = [],
+    cityList = [],
+    areaAllList = [],
+    tempList = [0, 0, 0];
 
-area.forEach(item => {
-    proviceList.push({
-        pid: item.pid,
-        pname: item.pname
-    })
-});
+// area.forEach(item => {
+//     proviceList.push({
+//         pid: item.pid,
+//         pname: item.pname
+//     })
+// });
 
 //  通过一个 areaInfo 对象来确定 valueList
-function getValueListByInfo(areaInfo) {
+function getValueListByInfo(areaInfo, area) {
     let valueList = [0, 0, 0];
 
     if (areaInfo.pId && areaInfo.cId && areaInfo.aId) {
@@ -49,7 +52,7 @@ function getValueListByInfo(areaInfo) {
 }
 
 // 通过ValueList来确定pickerList要显示哪些
-function setPickerListByValueList(valueList) {
+function setPickerListByValueList(valueList, area) {
     let realList = {
         cityList: area[valueList[0]].citylist,
         areaAllList: area[valueList[0]].citylist[valueList[1]].areaList
@@ -58,7 +61,7 @@ function setPickerListByValueList(valueList) {
 }
 
 //  通过valueList获取地区信息(pid + cid + aid 省市区名称)
-function getAreaInfoByValueList(valueList) {
+function getAreaInfoByValueList(valueList, area) {
     let nameList = [],
         idList = [];
 
@@ -87,20 +90,35 @@ Component({
         showPicker: {
             type: Boolean,
             value: false
+        },
+
+        areaData: {
+            type: Object,
+            value: {}
         }
     },
 
     attached() {
+        cityList = [...this.data.areaData[0].citylist];
+        areaAllList = [...(this.data.areaData[0].citylist[0].areaList)];
+
+        this.data.areaData.forEach(item => {
+            proviceList.push({
+                pid: item.pid,
+                pname: item.pname
+            })
+        });
+        this.setData({
+            cityList,
+            areaAllList,
+            proviceList
+        })
         // 根据后台数据确定下拉框当前选项;
         this.initList();
     },
 
     data: {
-        areaList: [0, 0, 0],
-        cityList,
-        areaAllList,
-        proviceList,
-        areaData: area
+        areaList: [0, 0, 0]
     },
 
     methods: {
@@ -116,7 +134,7 @@ Component({
                 changeList[2] = 0;
             }
 
-            let sendInfo = setPickerListByValueList([...changeList]);
+            let sendInfo = setPickerListByValueList([...changeList], this.data.areaData);
 
             this.setData({
                 cityList: sendInfo.cityList,
@@ -133,7 +151,7 @@ Component({
         },
 
         confirm(e) {
-            let areaInfo = getAreaInfoByValueList(this.data.areaList);
+            let areaInfo = getAreaInfoByValueList(this.data.areaList, this.data.areaData);
             this.triggerEvent('confirm', {
                 showPicker: false,
                 nameList: areaInfo.nameList,
@@ -142,8 +160,8 @@ Component({
         },
 
         initList (){
-            let initList = getValueListByInfo(this.data.areaInfo),
-                pickerInfo = setPickerListByValueList(initList);
+            let initList = getValueListByInfo(this.data.areaInfo, this.data.areaData),
+                pickerInfo = setPickerListByValueList(initList, this.data.areaData);
             tempList = [...initList];
             this.setData({
                 cityList: pickerInfo.cityList,

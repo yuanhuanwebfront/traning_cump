@@ -111,7 +111,7 @@
     </view>
 
     <view style="width: 100%;">
-        <area-select area-info="{{areaInfo}}" show-picker="{{showAreaPicker}}" bind:cancel="cancelPicker" bind:confirm="confirmPicker"></area-select>
+        <area-select area-data="{{areaData}}" area-info="{{areaInfo}}" show-picker="{{showAreaPicker}}" bind:cancel="cancelPicker" bind:confirm="confirmPicker"></area-select>
     </view>
 
     <!--    切换瑜币抵扣区域      -->
