@@ -92,7 +92,7 @@ Page({
 
     onShow() {
         if (wx.getStorageSync('sid')) {
-            // getDetailWebInfo({}, this.handleSessionInfo, 'getUserSessionList');
+            getDetailWebInfo({}, this.handleSessionInfo, 'getUserSessionList');
         }
     },
 

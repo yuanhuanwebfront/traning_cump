@@ -4,23 +4,10 @@
  *  @prop showPicker (Boolean)  控制picker的显示和隐藏
  */
 
-
-// import area from "../../mock/area";
-
-// let proviceList = [];
-// let cityList = [...area[0].citylist];
-// let areaAllList = [...(area[0].citylist[0].areaList)];
 let proviceList = [],
     cityList = [],
     areaAllList = [],
     tempList = [0, 0, 0];
-
-// area.forEach(item => {
-//     proviceList.push({
-//         pid: item.pid,
-//         pname: item.pname
-//     })
-// });
 
 //  通过一个 areaInfo 对象来确定 valueList
 function getValueListByInfo(areaInfo, area) {

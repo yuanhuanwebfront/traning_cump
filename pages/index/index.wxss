@@ -48,7 +48,7 @@
     line-height: 100rpx;
 }
 .black-bg{
-    padding: 0 96rpx;
+    padding: 0 80rpx;
     box-sizing: border-box;
 }
 .black-bg .step{
@@ -76,10 +76,18 @@
     margin-top: 20rpx;
 }
 .black-bg.adv .content{
-    width: 580rpx;
-    height: 700rpx;
-    background: #fff;
+    position: relative;
+    width: 540rpx;
+    height: 640rpx;
     border-radius: 20rpx;
+}
+.black-bg .close-area{
+    position: absolute;
+    top: 0;
+    right: 22rpx;
+    width: 64rpx;
+    height: 64rpx;
+    z-index: 22;
 }
 .adv-item{
     position: fixed;
@@ -87,7 +95,7 @@
     right: 40rpx;
     width: 124rpx;
     height: 124rpx;
-    background: red;
+    background-size: cover;
 }
 .know-btn{
     border: 1px solid #FFFFFF;

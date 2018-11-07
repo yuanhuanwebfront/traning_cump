@@ -36,7 +36,10 @@ Page({
         swiperList: [],
         sessionList: [],
         isFirstEnter: true,
-        showGuideDialog: false
+        showFloatImage: false,
+        showGuideDialog: false,
+        floatImage: '',
+        smallFloatImage: ''
     },
 
     onLoad: function () {
@@ -107,7 +110,9 @@ Page({
             tagList: data.tag_list,
             sessionList: tempList,
             listEnd: data.yogao2school_list.length < 20,
-            isFirstEnter: false
+            isFirstEnter: false,
+            floatImage: data.Suspended_Adv.Image,
+            smallFloatImage: data.Suspended_Adv.images
         });
 
     },
@@ -156,6 +161,12 @@ Page({
 
     },
 
+    hideFloatImage(){
+        this.setData({
+            showFloatImage: false
+        })
+    },
+
     //  跳到课程详情页
     goDetail(e) {
         let {id, source} = e.target.dataset.session;
@@ -179,6 +190,7 @@ Page({
                 url: contentUrl
             })
         }
+
     },
 
     closeDialog(e) {

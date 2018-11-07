@@ -42,7 +42,7 @@
         <view wx:if="{{shareStatus === '0' && globalQuery.sessionStatus != 3}}" class="center ranking" bindtap="toRankPage">
             <view wx:if="{{pageInfo.ranking_list.length > 0}}">
                 <view class="word-20 color-3 center" style="height: 50rpx;">
-                    <image wx:key="" wx:for="{{pageInfo.ranking_list}}" src="{{item.Thumbnail}}" style="left: {{10 + index * 22}}rpx;z-index: {{3 - index}};"></image>
+                    <image wx:key="" wx:for="{{pageInfo.ranking_list}}" src="{{item.Thumbnail || emptyImg}}" style="left: {{10 + index * 22}}rpx;z-index: {{3 - index}};"></image>
                 </view>
                 <view class="word-12 color-9">排名No.{{pageInfo.ranking}}</view>
             </view>

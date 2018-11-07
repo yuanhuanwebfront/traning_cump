@@ -1,15 +1,8 @@
 //  引入神策
 let sa = require('./lib/sa/sensorsdata.min.js');
-sa.init();
 
-import {
-    wxPromise,
-    sendRequest
-} from './common/common';
-import {
-    getUserInfo,
-    loginStep
-} from './common/$http';
+import {wxPromise, sendRequest} from './common/common';
+import {getUserInfo, loginStep} from './common/$http';
 
 let getCode = wxPromise(wx.login);
 
@@ -26,6 +19,7 @@ App({
     },
 
     onLaunch: function () {
+        sa.init();
 
         sa.para.autoTrack.appLaunch = function () {
             return {
@@ -38,7 +32,6 @@ App({
             storageKey = wx.getStorageSync('sessionKey'),
             wxCheckSession = wxPromise(wx.checkSession);
 
-
         if (storageKey) {
             wxCheckSession().catch(err => {
                 vm.getJsCode();
@@ -49,9 +42,7 @@ App({
 
         let sid = wx.getStorageSync('sid');
 
-        if (sid) getUserInfo({
-            sid
-        }, this.setUserData);
+        if (sid) getUserInfo({sid}, this.setUserData);
 
         this.retryUploadRecord();
 
@@ -107,6 +98,7 @@ App({
             sendRequest('POST', 'statistic/playtime', item).then(res => {
                 if (res.data.error_code === 0) {
                     savePracticeArr.splice(idx, 1);
+                    wx.setStorageSync('practiceReportArr', savePracticeArr);
                 }
             })
 
@@ -116,12 +108,13 @@ App({
             sendRequest('POST', 'user/userActionLog', item).then(res => {
                 if (res.data.error_code === 0) {
                     saveActionArr.splice(index, 1);
+                    wx.setStorageSync('userActionArr', saveActionArr);
                 }
             })
         });
 
-        wx.setStorageSync('practiceReportArr', savePracticeArr);
-        wx.setStorageSync('userActionArr', saveActionArr);
+
+
 
     },
 
