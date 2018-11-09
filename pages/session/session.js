@@ -3,6 +3,8 @@ import {formatTime} from '../../common/common';
 
 let mySa = require('../../common/sa.js');
 
+let GLOBAL_SWIPER = 0;
+
 // status 0 未参加  1 未成功  2 已结束   is_join == 1  已参加
 
 const mock = {
@@ -72,6 +74,8 @@ Page({
     },
 
     onLoad() {
+
+        GLOBAL_SWIPER = 0;
 
         let sid = wx.getStorageSync('sid');
 
@@ -151,17 +155,16 @@ Page({
         })
     },
 
-    changeActivitySwiper(){
-        let maxLen = this.data.activityList.length,
-            nextSwiper = this.data.currentSwiper + 1;
-        this.setData({
-            "currentSwiper": nextSwiper >= maxLen ? 0 : nextSwiper
-        })
+    changeActivitySwiper(e){
+        GLOBAL_SWIPER = e.detail.current;
     },
 
-    stopTouchEvent(e){
-        return false;
+    changeActivitySwiperByClick(){
+        this.setData({
+            "currentSwiper": GLOBAL_SWIPER + 1 >= this.data.activityList.length ? 0 : GLOBAL_SWIPER + 1
+        })
     }
+
 
 
 });

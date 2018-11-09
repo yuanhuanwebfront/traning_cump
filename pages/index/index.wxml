@@ -53,10 +53,10 @@
 <view class="black-bg adv flex" wx:if="{{showFloatImage}}">
     <view class="content">
         <view class="close-area" bindtap="hideFloatImage"></view>
-        <image mode="widthFix" data-info="" catchtap="toBannerPage" src="{{floatImage}}"></image>
+        <image mode="widthFix" data-info="{{popData}}" catchtap="toBannerPage" src="{{floatImage}}"></image>
     </view>
 </view>
 
-<view class="adv-item" data-info="" bindtap="toBannerPage"
-      style="background-image: url({{smallFloatImage}});" hidden="{{showFloatImage || !smallFloatImage}}"></view>
+<view class="adv-item" data-info="{{popData}}" bindtap="toBannerPage"
+      style="background-image: url({{smallFloatImage}});" hidden="{{showFloatImage || !smallFloatImage || showGuideDialog}}"></view>
 
