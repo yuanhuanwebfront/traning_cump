@@ -1,6 +1,8 @@
 let app = getApp(),
     globalInterval = null;
 
+import {getDetailWebInfo} from '../../common/$http';
+
 const mock = {
     //  活动课程图
     sessionImage: 'http://qiniucdn.dailyyoga.com.cn/e2/19/e21918c26897cb13ee79dd28755fd9ac.png',
@@ -59,24 +61,54 @@ Page({
         showEndDialog: false,
         activityClass: {
             0: '',
-            1: 'finish-session'
+            1: '',
+            2: '',
+            4: 'finish-session'
         },
         activityDetail: {}
     },
 
-    onLoad() {
+    onLoad(options) {
 
         globalInterval = null;
+
+        this.getDetailInfo(options);
         
+        // this.setData({
+        //     allInviteList: new Array(mock.full_person > 6 ? 6 : mock.full_person).fill({}).map((item, index) =>{
+        //         if(mock.invite_list[index]){
+        //             return  {...mock.invite_list[index]}
+        //         }
+        //     })
+        // });
+        // this.countDown();
+    },
+
+    getDetailInfo({session_id, activity_id}){
+        let params = {
+            session_id,
+            activity_course_id: activity_id
+        };
+        getDetailWebInfo(params, this.handleDetailInfo, 'getActivitySessionInfo');
+    },
+
+    handleDetailInfo(data){
         this.setData({
-            activityDetail: mock,
-            allInviteList: new Array(mock.full_person > 6 ? 6 : mock.full_person).fill({}).map((item, index) =>{
-                if(mock.invite_list[index]){
-                    return  {...mock.invite_list[index]}
-                }
-            })
+            activityDetail: {
+                sessionImage: data.site_banner_img,
+                realPrice: data.price,
+                joinPerson: data.base_enroll_num,
+                end_time: data.end_time,
+                session_title: data.session_name,
+                session_subtitle: data.session_title,
+                full_person: data.activity_user_num,
+                invite_list: data.invite_list,
+                status: data.status             //  1 进行中  2  已完成  3 已购买  4 已结束
+            }
+        }, () => {
+            this.countDown();
         });
-        this.countDown();
+
     },
 
     countDown() {
@@ -88,7 +120,7 @@ Page({
             endTime = this.data.activityDetail.end_time ? this.data.activityDetail.end_time * 1000 : 0;
 
 
-        if (endTime - (new Date().getTime() * 1000) <= 0) {
+        if (endTime - new Date().getTime() <= 0) {
             return false;
         }
 
@@ -159,9 +191,5 @@ Page({
     backHome(){
         wx.switchTab({url: '/pages/index/index'})
     }
-
-
-
-
 
 });

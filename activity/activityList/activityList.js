@@ -1,3 +1,5 @@
+import {getDetailWebInfo} from "../../common/$http";
+
 const mock = {
     list: [{
         image: "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
@@ -28,7 +30,31 @@ const mock = {
 Page({
 
     data: {
-        activityList: mock.list
+        activityList:[]
+    },
+
+    onLoad(){
+        this.getActivityList();
+    },
+
+    getActivityList(){
+        getDetailWebInfo({}, this.handleActivityList, 'getCourseActivityList');
+    },
+
+    handleActivityList(data){
+        let activityList = data.map(item => {
+            return {
+                id: item.id,
+                price: item.price,
+                baseEnrollNum: item.base_enroll_num,
+                sessionImage: item.image_phone,
+                sessionName: item.session_name,
+                sessionTitle: item.session_title,
+                activity_id: item.activity_course_id,
+                status: item.user_state
+            }
+        });
+        this.setData({activityList});
     },
 
     toMyActivity(){

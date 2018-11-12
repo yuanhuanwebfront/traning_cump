@@ -34,11 +34,11 @@
 
     <view class="share-area flex bg-f">
 
-        <view>
-            <view class="word-18 color-3">{{activityDetail.session_title}}</view>
-            <view class="word-13 color-6">{{activityDetail.session_subtitle}}</view>
+        <view style="max-width: 80%;">
+            <view class="word-18 color-3 over-hide">{{activityDetail.session_title}}</view>
+            <view class="word-13 color-6 over-hide">{{activityDetail.session_subtitle}}</view>
         </view>
-        <view class="word-13 share-img" wx:if="{{activityDetail.status !== 1}}">分享</view>
+        <view class="word-13 share-img" wx:if="{{activityDetail.status !== 4}}">分享</view>
 
     </view>
     <view class="split-area"></view>
@@ -51,11 +51,11 @@
 
             <view class="inline">
                 <view class="word-13 color-3" style="margin-bottom: 4rpx;">已邀请{{activityDetail.invite_list.length}}人助力</view>
-                <view class="word-11 color-6" wx:if="{{activityDetail.status === 0}}">还差{{activityDetail.full_person - activityDetail.invite_list.length}}人免费获得课程</view>
-                <view class="word-11 color-6" wx:if="{{activityDetail.status === 1}}">您已免费获得课程</view>
+                <view class="word-11 color-6" wx:if="{{activityDetail.status === 1}}">还差{{activityDetail.full_person - activityDetail.invite_list.length}}人免费获得课程</view>
+                <view class="word-11 color-6" wx:if="{{activityDetail.status === 2 || activityDetail.status === 3}}">您已免费获得课程</view>
             </view>
         </view>
-        <button wx:if="{{activityDetail.status === 0}}" class="orange-bg word-14" bindtap="openInviteDialog">去邀请</button>
+        <button wx:if="{{activityDetail.status === 1}}" class="orange-bg word-14" bindtap="openInviteDialog">去邀请</button>
         <button wx:if="{{activityDetail.status === 2}}" class="word-14 sign">立即报名</button>
     </view>
 
@@ -88,6 +88,7 @@
 
     <!--    所有的弹窗   -->
     <view data-close="1"  bindtap="closeDialog" class="share-bg" wx:if="{{showInviteDialog || showEndDialog || showShareInDialog}}">
+
         <!--    分享内容    -->
         <view wx:if="{{showInviteDialog}}" class="share-content center">
             <view class="icon-close" data-close="1" bindtap="closeDialog"></view>

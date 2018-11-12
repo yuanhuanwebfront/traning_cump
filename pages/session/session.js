@@ -1,5 +1,5 @@
 import {getDetailWebInfo} from '../../common/$http';
-import {formatTime} from '../../common/common';
+import {formatTime, navigateToPath} from '../../common/common';
 
 let mySa = require('../../common/sa.js');
 
@@ -69,7 +69,7 @@ Page({
         showJoinSessionBtn: true,
         sessionList: [],
         currentSwiper: 0,
-        activityList: [1],
+        activityList: [],
         mineActivityList: []
     },
 
@@ -82,15 +82,17 @@ Page({
         if (!sid) {
             wx.navigateTo({
                 url: '../login/login'
-            })
+            });
+            return;
         }
 
         mySa.trackEvent(11, {page_id: 1001});
 
         this.setData({
-            activityList: mock.activity_list,
             mineActivityList: mock.mine_activity_list
-        })
+        });
+
+        this.getActivityList();
 
     },
 
@@ -126,27 +128,39 @@ Page({
         });
 
         this.setData({
-            sessionList: list,
-            activityList: mock.activity_list
+            sessionList: list
         })
     },
 
-    toSessionEndList() {
-        wx.navigateTo({
-            url: '../../session/sessionEndList/sessionEndList'
-        })
+    //  获取活动课程列表
+    getActivityList(){
+        getDetailWebInfo({}, this.handleActivityList, 'getCourseActivityList');
     },
+
+    handleActivityList(data){
+        let activityList = data.map(item => {
+            return {
+                id: item.id,
+                price: item.price,
+                baseEnrollNum: item.base_enroll_num,
+                sessionImage: item.image_phone,
+                sessionName: item.session_name,
+                sessionTitle: item.session_title,
+                activity_id: item.activity_course_id,
+                status: item.user_state
+            }
+        });
+        this.setData({activityList});
+    },
+
+    //  TODO    获取我的活动课程    暂时没有购买操作  后面再处理
 
     toMineActivityList(){
-      wx.navigateTo({
-        url: '/activity/activityMine/activityMine'
-      })  
+        navigateToPath('/activity/activityMine/activityMine');
     },
 
-    seeMoreActivity(){
-        wx.navigateTo({
-            url: '/activity/activityList/activityList'
-        })
+    toMoreActivity(){
+        navigateToPath('/activity/activityList/activityList');
     },
 
     joinSession() {
@@ -164,7 +178,5 @@ Page({
             "currentSwiper": GLOBAL_SWIPER + 1 >= this.data.activityList.length ? 0 : GLOBAL_SWIPER + 1
         })
     }
-
-
 
 });

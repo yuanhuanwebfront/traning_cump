@@ -26,9 +26,10 @@ Component({
     },
 
     methods: {
-        toActivityDetail(){
+        toActivityDetail(e){
+            let {activity_id, id} = e.target.dataset.info;
             wx.navigateTo({
-                url: '/activity/activityDetail/activityDetail'
+                url: '/activity/activityDetail/activityDetail?activity_id=' + activity_id + '&session_id=' + id
             })
         }
     }

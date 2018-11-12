@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 28,
 			"list": [
 				{
 					"id": 0,
@@ -227,10 +227,10 @@
 					"scene": "1001"
 				},
 				{
-					"id": -1,
+					"id": 28,
 					"name": "活动课程详情",
 					"pathName": "activity/activityDetail/activityDetail",
-					"query": "",
+					"query": "activity_id=11&session_id=4",
 					"scene": "1001"
 				},
 				{

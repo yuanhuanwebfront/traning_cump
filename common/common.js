@@ -306,6 +306,10 @@ let uploadImage = function (tempPath, cb) {
     })
 };
 
+let navigateToPath = function(url){
+    wx.navigateTo({url});
+};
+
 const common = {
     IS_IOS,
     SIGN_KEY,
@@ -324,7 +328,8 @@ const common = {
     sortObjectKey,
     decodeQrCodeScene,
     renderRebateInfo,
-    uploadImage
+    uploadImage,
+    navigateToPath
 };
 
 module.exports = common;
