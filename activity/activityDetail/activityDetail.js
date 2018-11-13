@@ -1,47 +1,10 @@
 let app = getApp(),
-    globalInterval = null;
+    globalInterval = null,
+    hasGetInfo = false,
+    wxParseObj = require('../../lib/wxParse/wxParse.js');
 
 import {getDetailWebInfo} from '../../common/$http';
-
-const mock = {
-    //  活动课程图
-    sessionImage: 'http://qiniucdn.dailyyoga.com.cn/e2/19/e21918c26897cb13ee79dd28755fd9ac.png',
-    //  活动原价
-    realPrice: 12,
-    //  参与人数
-    joinPerson: 200,
-    //  活动结束时间
-    end_time: 1541088000,
-    //  课程标题
-    session_title: "课程标题",
-    //  课程副标题
-    session_subtitle: "课程副标题",
-    //  邀请用户的列表
-    invite_list: [{
-        uid: 123213,
-        logo: "http://ypycdn.dailyyoga.com.cn/93/bf/93bfcd4df08f5d3d43264758c2b6c918.png"
-    }, {
-        uid: 123213,
-        logo: "http://st1.dailyyoga.com.cn/data/be/b8/beb8d753e3df02d1579774c907aca6c8.png"
-    }, {
-        uid: 123213,
-        logo: "http://ypycdn.dailyyoga.com.cn/53/03/5303bfb0d7c3fcbfcdf9a5cdfafb9490.jpeg"
-    }, {
-        uid: 123213,
-        logo: "http://ypycdn.dailyyoga.com.cn/f1/cd/f1cd0083ee6435f2d4865ff199ba55c1.png"
-    },{
-        uid: 123213,
-        logo: "http://ypycdn.dailyyoga.com.cn/f1/cd/f1cd0083ee6435f2d4865ff199ba55c1.png"
-    },{
-        uid: 123213,
-        logo: "http://ypycdn.dailyyoga.com.cn/f1/cd/f1cd0083ee6435f2d4865ff199ba55c1.png"
-    }],
-    //  邀请几个人算活动完成
-    full_person: 7,
-    //  0 进行中  1 已结束  2 参与成功
-    status: 0,
-
-};
+import {navigateToPath} from '../../common/common';
 
 
 Page({
@@ -70,33 +33,76 @@ Page({
 
     onLoad(options) {
 
+        wx.hideShareMenu();
+
+        this.setData({
+            globalQuery: options
+        });
+
         globalInterval = null;
 
-        this.getDetailInfo(options);
-        
-        // this.setData({
-        //     allInviteList: new Array(mock.full_person > 6 ? 6 : mock.full_person).fill({}).map((item, index) =>{
-        //         if(mock.invite_list[index]){
-        //             return  {...mock.invite_list[index]}
-        //         }
-        //     })
-        // });
-        // this.countDown();
+        if(wx.getStorageSync('sid')){
+            hasGetInfo = true;
+            this.getDetailInfo(options);
+        }else{
+            navigateToPath('/pages/login/login');
+        }
+
     },
 
-    getDetailInfo({session_id, activity_id}){
+    onShow(){
+        if(this.data.globalQuery && wx.getStorageSync('sid')){
+            if(!hasGetInfo) this.getDetailInfo(this.data.globalQuery);
+        }
+        this.countDown();
+    },
+
+    getDetailInfo({session_id, activity_id, invite_id, id}) {
         let params = {
             session_id,
             activity_course_id: activity_id
         };
+        if(invite_id && id){
+            //      给别人助力的逻辑
+            let assistParams = {
+                ...params,
+                id,
+                session_user_id: invite_id,
+            };
+            getDetailWebInfo(assistParams, this.handleInviteInfo, 'userPowerActivities');
+        }
+
         getDetailWebInfo(params, this.handleDetailInfo, 'getActivitySessionInfo');
+
+
     },
 
-    handleDetailInfo(data){
+    handleInviteInfo(data){
+        //  state 2  提示已经助力过了
+        if(data.state !== 0){
+            this.setData({
+                showShareInDialog: true,
+                inviteInfo: {
+                    helpUserName: data.FirstName,
+                    inviteList: data.invite_list,
+                    inviteUserName: data.invite_list[0] && data.invite_list[0].FirstName ? data.invite_list[0].FirstName : ''
+                }
+            })
+        }
+    },
+
+    handleDetailInfo(data) {
+
+        let templateH5 = data.introduction,
+            fullArr = new Array(data.activity_user_num).fill({});
+
+        wxParseObj.wxParse('templateDetailH5', 'html', templateH5, this);
+
         this.setData({
             activityDetail: {
+                id: data.id,
                 sessionImage: data.site_banner_img,
-                realPrice: data.price,
+                realPrice: parseInt(data.price),
                 joinPerson: data.base_enroll_num,
                 end_time: data.end_time,
                 session_title: data.session_name,
@@ -104,7 +110,13 @@ Page({
                 full_person: data.activity_user_num,
                 invite_list: data.invite_list,
                 status: data.status             //  1 进行中  2  已完成  3 已购买  4 已结束
-            }
+            },
+            allInviteList: fullArr.map((item, idx) => {
+                if (data.invite_list[idx]) {
+                    return {...idx.invite_list[index]}
+                }
+            }),
+            showEndDialog: data.status === 4
         }, () => {
             this.countDown();
         });
@@ -114,7 +126,7 @@ Page({
     countDown() {
 
         let vm = this,
-            minuteNum =  1000 * 60,
+            minuteNum = 1000 * 60,
             hourNum = minuteNum * 60,
             dayNum = hourNum * 24,
             endTime = this.data.activityDetail.end_time ? this.data.activityDetail.end_time * 1000 : 0;
@@ -146,16 +158,30 @@ Page({
 
     },
 
-    onShow(){
-        this.countDown();
-    },
-
-    onHide(){
+    onHide() {
         clearInterval(globalInterval);
     },
 
-    onUnload(){
+    onUnload() {
         clearInterval(globalInterval);
+    },
+
+    onShareAppMessage(){
+        let inviteId = app.globalData.userInfo.uid,
+            activityId = this.data.globalQuery.activity_id,
+            sessionId = this.data.globalQuery.session_id,
+            id = this.data.activityDetail.id,
+            shareUrl = `/activity/activityDetail/activityDetail?session_id=${sessionId}&activity_id=${activityId}&invite_id=${inviteId}&id=${id}`;
+
+        getDetailWebInfo({session_id: sessionId}, () => {
+
+        }, 'userShare');
+
+        return {
+            title: '来帮我免费得课程吧！',
+            path: shareUrl
+        }
+
     },
 
     openInviteDialog() {
@@ -167,12 +193,6 @@ Page({
     openShareInDialog() {
         this.setData({
             showShareInDialog: true
-        })
-    },
-
-    openEndDialog() {
-        this.setData({
-            showEndDialog: true
         })
     },
 
@@ -188,7 +208,7 @@ Page({
 
     },
 
-    backHome(){
+    backHome() {
         wx.switchTab({url: '/pages/index/index'})
     }
 

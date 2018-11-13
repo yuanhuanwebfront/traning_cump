@@ -92,13 +92,14 @@ Page({
             mineActivityList: mock.mine_activity_list
         });
 
-        this.getActivityList();
+
 
     },
 
     onShow() {
         if (wx.getStorageSync('sid')) {
             getDetailWebInfo({}, this.handleSessionInfo, 'getUserSessionList');
+            this.getActivityList();
         }
     },
 

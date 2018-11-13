@@ -1,6 +1,6 @@
 <view>
     <!--    活动列表banner  -->
-    <image class="activity-banner" src=""></image>
+    <image class="activity-banner" src="http://qiniucdn.dailyyoga.com.cn/5f/93/5f93b2883d37b0c3241309a4a60d58eb.jpeg"></image>
 
     <view class="split-area"></view>
 

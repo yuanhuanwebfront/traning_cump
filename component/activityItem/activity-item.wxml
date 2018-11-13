@@ -5,7 +5,7 @@
     <view class="activity-desc">
         <view class="word-15 color-3 over-hide">{{activityInfo.sessionName}}</view>
         <view class="flex">
-            <view class="word-13 color-9 over-hide">{{activityInfo.sessionTitle}}</view>
+            <view style="max-width:60%;" class="word-13 color-9 over-hide">{{activityInfo.sessionTitle}}</view>
             <view>
                 <text class="word-15 color-price" data-info="{{activityInfo}}" bindtap="toActivityDetail">￥{{activityInfo.price}}</text>
                 <!--    按钮状态有三种 0元参加  已参加   已购买  -->

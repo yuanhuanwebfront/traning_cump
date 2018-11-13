@@ -279,3 +279,10 @@
     margin-top: 40rpx;
     color: #fff;
 }
+.detail-content{
+    padding: 20rpx;
+}
+.share-in .user-name-h2{
+    max-width: 280rpx;
+    margin-top: 0rpx;
+}
