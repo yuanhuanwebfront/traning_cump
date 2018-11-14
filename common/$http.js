@@ -67,11 +67,11 @@ let getSessionList = function (params, callback, noNeedLoading) {
 };
 
 //  获取详情页数据  ------ Yogao2School/Session  -----
-let getDetailWebInfo = function (params, callback, nameSpace) {
+let getDetailWebInfo = function (params, callback, nameSpace, method = 'GET') {
 
     showLoading();
     //  getWebInfo  getUserSessionPurchaseInfo getUserEndSessionList
-    sendRequest('GET', `Yogao2School/Session/${nameSpace}`, params).then(res => {
+    sendRequest(method, `Yogao2School/Session/${nameSpace}`, params).then(res => {
         commonHandle(res, callback);
     }).catch(err => {
         console.log(err);

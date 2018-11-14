@@ -115,7 +115,7 @@
                 </view>
                 <view class="invite-person">
                     <view wx:for="{{allInviteList}}" wx:if="{{index <= 5}}" wx:key="" class="inline {{index >= 5 ? 'float-img' : '' }} {{item.logo ? 'has-img' : '' }}">
-                        <image wx:if="{{item.logo}}" mode="widthFix" src="{{item.logo}}"></image>
+                        <image wx:if="{{item}}" style="width: 84rpx;height: 84rpx;" src="{{item.logo || emptyImg}}"></image>
                     </view>
                 </view>
                 <view class="word-14 color-6">
@@ -144,8 +144,8 @@
             <view class="center word-20 flex">帮{{inviteInfo.helpUserName}}助力成功！</view>
             <view class="invite-person">
                 <view class="flex">
-                    <view wx:for="{{allInviteList}}" wx:if="{{index <= 5}}" wx:key="" class="inline {{index >= 5 ? 'float-img' : '' }} {{item.logo ? 'has-img' : '' }}">
-                        <image wx:if="{{inviteInfo.inviteList[index].logo}}" mode="widthFix" src="{{inviteInfo.inviteList[index].logo}}"></image>
+                    <view wx:for="{{allInviteList}}" wx:if="{{index <= 5}}" wx:key="" class="inline {{index >= 5 ? 'float-img' : '' }} {{inviteInfo.inviteList[index].logo ? 'has-img' : '' }}">
+                        <image style="width: 84rpx;height: 84rpx;" wx:if="{{inviteInfo.inviteList[index]}}" src="{{inviteInfo.inviteList[index].logo || emptyImg}}"></image>
                     </view>
                 </view>
                 <view class="word-13 color-6 center friend">{{inviteInfo.inviteUserName}}等{{inviteInfo.inviteList.length}}位好友已帮ta助力</view>

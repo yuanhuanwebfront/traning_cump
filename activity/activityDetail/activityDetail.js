@@ -10,7 +10,6 @@ import {navigateToPath} from '../../common/common';
 Page({
 
     data: {
-        sessionImage: 'http://qiniucdn.dailyyoga.com.cn/e2/19/e21918c26897cb13ee79dd28755fd9ac.png',
         sessionInfo: {
             finalPrice: [0, 0],
             dayCount: 0,
@@ -28,7 +27,8 @@ Page({
             2: '',
             4: 'finish-session'
         },
-        activityDetail: {}
+        activityDetail: {},
+        emptyImg: "http://qiniucdn.dailyyoga.com.cn/8c/82/8c82090346ccd81acedc440c76d344e2.png"
     },
 
     onLoad(options) {
@@ -69,11 +69,10 @@ Page({
                 id,
                 session_user_id: invite_id,
             };
-            getDetailWebInfo(assistParams, this.handleInviteInfo, 'userPowerActivities');
+            getDetailWebInfo(assistParams, this.handleInviteInfo, 'userPowerActivities', 'POST');
         }
 
         getDetailWebInfo(params, this.handleDetailInfo, 'getActivitySessionInfo');
-
 
     },
 
@@ -113,7 +112,7 @@ Page({
             },
             allInviteList: fullArr.map((item, idx) => {
                 if (data.invite_list[idx]) {
-                    return {...idx.invite_list[index]}
+                    return {...data.invite_list[idx]}
                 }
             }),
             showEndDialog: data.status === 4
@@ -174,8 +173,10 @@ Page({
             shareUrl = `/activity/activityDetail/activityDetail?session_id=${sessionId}&activity_id=${activityId}&invite_id=${inviteId}&id=${id}`;
 
         getDetailWebInfo({session_id: sessionId}, () => {
-
-        }, 'userShare');
+            this.setData({
+                showInviteDialog: false
+            })
+        }, 'userShare', 'POST');
 
         return {
             title: '来帮我免费得课程吧！',

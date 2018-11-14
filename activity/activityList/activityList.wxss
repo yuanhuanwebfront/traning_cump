@@ -1,7 +1,6 @@
 .activity-banner{
     width: 100%;
     height: 332rpx;
-    border-bottom: 1px solid red;
 }
 view.title{
     height: 90rpx;
