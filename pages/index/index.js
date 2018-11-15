@@ -1,7 +1,5 @@
-import {
-	getSessionDetail,
-	getSessionList
-} from '../../common/$http';
+import {getSessionDetail, getSessionList} from '../../common/$http';
+import {navigateToPath} from '../../common/common';
 
 let mySa = require('../../common/sa.js');
 
@@ -220,30 +218,17 @@ Page({
 
 	//  跳到课程详情页
 	goDetail(e) {
-		let {
-			id,
-			source
-		} = e.target.dataset.session;
-		wx.navigateTo({
-			url: '../../package/detail/detail?session_id=' + id + '&source=' + source
-		})
+		let {id, source} = e.target.dataset.session;
+		navigateToPath(`../../package/detail/detail?session_id=${id}&source=${source}`);
 	},
 
 	toBannerPage(e) {
 
 		//  跳转类型   1 (外链)  100(小程序内部页)
-		let {
-			sourceType,
-			content_url
-		} = e.target.dataset.info,
+		let {sourceType, content_url} = e.target.dataset.info,
 			url = sourceType === 1 ? '../webView/webView?url=' + encodeURI(content_url) : content_url;
 
-		console.log(e.target.dataset.info);
-		console.log(content_url);
-
-		wx.navigateTo({
-			url
-		});
+        navigateToPath(url);
 	},
 
 	closeDialog(e) {

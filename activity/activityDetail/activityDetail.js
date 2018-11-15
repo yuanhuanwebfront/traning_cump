@@ -4,7 +4,7 @@ let app = getApp(),
     wxParseObj = require('../../lib/wxParse/wxParse.js');
 
 import {getDetailWebInfo} from '../../common/$http';
-import {navigateToPath} from '../../common/common';
+import {navigateToPath, wxToast} from '../../common/common';
 
 
 Page({
@@ -79,6 +79,11 @@ Page({
     handleInviteInfo(data){
         //  state 2  提示已经助力过了
         if(data.state !== 0){
+
+        	if(data.state === 3){
+        		wxToast('');
+        	}
+
             this.setData({
                 showShareInDialog: true,
                 inviteInfo: {
@@ -108,14 +113,14 @@ Page({
                 session_subtitle: data.session_title,
                 full_person: data.activity_user_num,
                 invite_list: data.invite_list,
-                status: data.status             //  1 进行中  2  已完成  3 已购买  4 已结束
+                status: data.assist_status             //  1 进行中  2  已完成  3 已购买  4 已结束
             },
             allInviteList: fullArr.map((item, idx) => {
                 if (data.invite_list[idx]) {
                     return {...data.invite_list[idx]}
                 }
             }),
-            showEndDialog: data.status === 4
+            showEndDialog: data.assist_status === 4
         }, () => {
             this.countDown();
         });
