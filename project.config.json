@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 28,
+			"current": 31,
 			"list": [
 				{
 					"id": 0,
@@ -230,7 +230,7 @@
 					"id": 28,
 					"name": "活动课程详情",
 					"pathName": "activity/activityDetail/activityDetail",
-					"query": "session_id=6&activity_id=13&invite_id=102988951&id=6",
+					"query": "session_id=7&activity_id=10&invite_id=102988951",
 					"scene": "1001"
 				},
 				{
@@ -245,6 +245,13 @@
 					"name": "我的活动",
 					"pathName": "activity/activityMine/activityMine",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的活动课程列表",
+					"pathName": "activity/activityMine/activityMine",
+					"query": "",
+					"scene": "1001"
 				}
 			]
 		}

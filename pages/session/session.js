@@ -92,8 +92,6 @@ Page({
             mineActivityList: mock.mine_activity_list
         });
 
-
-
     },
 
     onShow() {
@@ -152,6 +150,7 @@ Page({
             }
         });
         this.setData({activityList});
+        wx.setStorageSync('activityList', activityList);
     },
 
     //  TODO    获取我的活动课程    暂时没有购买操作  后面再处理

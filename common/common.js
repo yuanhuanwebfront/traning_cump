@@ -310,6 +310,41 @@ let navigateToPath = function(url){
     wx.navigateTo({url});
 };
 
+/*  用户退出当前账号并且重新登录的方法(会打开弹窗并在弹窗的回调中执行退出操作);
+*   @params     content         弹窗的提示文案     String
+*   @params     confirmText     弹窗确认按钮文案   String
+*   @params     app             小程序实例        getApp可获得
+*/
+let reLogin = function(content, confirmText, app){
+    wx.showModal({
+        content,
+        confirmText,
+        title: '提示',
+        cancelText: '取消',
+        success: res => {
+            if (res.confirm) {
+                wx.showLoading({mark: true});
+                wx.removeStorageSync('sid');
+                wx.removeStorageSync('sessionKey');
+                wx.hideLoading();
+                app.getJsCode(() => {
+                    wx.navigateTo({
+                        url: '/pages/login/login'
+                    })
+                });
+            }
+
+            if (res.cancel) {
+                wx.switchTab({
+                    url: '/pages/index/index'
+                })
+            }
+
+
+        }
+    });
+};
+
 const common = {
     IS_IOS,
     SIGN_KEY,
@@ -329,7 +364,8 @@ const common = {
     decodeQrCodeScene,
     renderRebateInfo,
     uploadImage,
-    navigateToPath
+    navigateToPath,
+    reLogin
 };
 
 module.exports = common;

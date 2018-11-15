@@ -1,11 +1,11 @@
 <view class="container">
 
-    <view wx:for="{{activityList}}" wx:key="">
+    <view wx:for="{{mineActivityList}}" wx:key="">
 
         <activity-item activity-info="{{item}}" show-split="{{(index + 1) !== activityList.length}}"></activity-item>
 
     </view>
 
-    <button class="back-home-fix center word-12" bindtap="backHome">去首页</button>
+    <!--<button class="back-home-fix center word-12" bindtap="backHome">去首页</button>-->
 
 </view>

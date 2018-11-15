@@ -50,17 +50,24 @@
             </view>
 
             <view class="inline">
-                <view class="word-13 color-3" style="margin-bottom: 4rpx;">已邀请{{activityDetail.invite_list.length}}人助力</view>
-                <view class="word-11 color-6" wx:if="{{activityDetail.status === 1}}">还差{{activityDetail.full_person - activityDetail.invite_list.length}}人免费获得课程</view>
-                <view class="word-11 color-6" wx:if="{{activityDetail.status === 2 || activityDetail.status === 3}}">您已免费获得课程</view>
+                <view class="word-13 color-3" style="margin-bottom: 4rpx;">已邀请{{activityDetail.invite_list.length}}人助力
+                </view>
+                <view class="word-11 color-6" wx:if="{{activityDetail.status === 1}}">还差{{activityDetail.full_person -
+                    activityDetail.invite_list.length}}人免费获得课程
+                </view>
+                <view class="word-11 color-6" wx:if="{{activityDetail.status === 2 || activityDetail.status === 3}}">
+                    您已免费获得课程
+                </view>
             </view>
         </view>
-        <button wx:if="{{activityDetail.status === 1}}" class="orange-bg word-14" bindtap="openInviteDialog">去邀请</button>
-        <button wx:if="{{activityDetail.status === 2 || activityDetail.status === 3}}" class="word-14 sign">立即报名</button>
+        <button wx:if="{{activityDetail.status === 1}}" class="orange-bg word-14" bindtap="openInviteDialog">去邀请
+        </button>
+        <button wx:if="{{activityDetail.status === 2 || activityDetail.status === 3}}" class="word-14 sign">立即报名
+        </button>
     </view>
 
     <!--    规则区域-->
-    <view class="rule back-bg bg-f">
+    <view class="rule bg-f">
         <text class="word-13 color-6">活动规则</text>
         <text class="word-12 color-9">邀请好友参与助力，满{{activityDetail.full_person}}人获得课程</text>
     </view>
@@ -76,24 +83,28 @@
     <view class="bottom-area flex">
         <view class="home center" bindtap="backHome"></view>
         <!--    活动进行中底部的展示  -->
-        <block  wx:if="{{activityDetail.status === 1}}">
+        <block wx:if="{{activityDetail.status === 1}}">
             <view class="buy center">
-                <text class="word-20 color-price">¥{{activityDetail.realPrice}}</text>
+                <text class="word-18 color-price">¥{{activityDetail.realPrice}}</text>
                 <text class="word-11 color-9">单独购买</text>
             </view>
-            <view class="orange-bg center word-14" bindtap="openInviteDialog">好友助力免费领 (还差{{activityDetail.full_person - activityDetail.invite_list.length}}人)</view>
+            <view class="orange-bg center word-14" bindtap="openInviteDialog">好友助力免费领 (还差{{activityDetail.full_person -
+                activityDetail.invite_list.length}}人)
+            </view>
         </block>
 
         <!--    活动参与成功的展示   -->
         <button wx:if="{{activityDetail.status === 2}}" class="orange-bg center word-14">立即报名</button>
 
         <!--    活动结束的展示 -->
-        <button wx:if="{{activityDetail.status === 4}}" bindtap="backHome" class="orange-bg center word-14">进入训练营</button>
+        <button wx:if="{{activityDetail.status === 4}}" bindtap="backHome" class="orange-bg center word-14">进入训练营
+        </button>
 
     </view>
 
     <!--    所有的弹窗   -->
-    <view data-close="1"  bindtap="closeDialog" class="share-bg" wx:if="{{showInviteDialog || showEndDialog || showShareInDialog}}">
+    <view data-close="1" bindtap="closeDialog" class="share-bg"
+          wx:if="{{showInviteDialog || showEndDialog || showShareInDialog}}">
 
         <!--    分享内容    -->
         <view wx:if="{{showInviteDialog}}" class="share-content center">
@@ -101,7 +112,7 @@
             <view class="word-20">邀请好友助力 免费领</view>
             <view class="main">
                 <view class="time-line">
-                    <text class="word-14 color-price">剩余时间 </text>
+                    <text class="word-14 color-price">剩余时间</text>
                     <view class="inline time-ending center">
                         <text class="day-count color-price">{{sessionInfo.dayCount}}天</text>
                         <text class="count-item word-12 orange-bg">{{sessionInfo.hourCount}}</text>
@@ -114,12 +125,17 @@
                     </view>
                 </view>
                 <view class="invite-person">
-                    <view wx:for="{{allInviteList}}" wx:if="{{index <= 5}}" wx:key="" class="inline {{index >= 5 ? 'float-img' : '' }} {{item.logo ? 'has-img' : '' }}">
-                        <image wx:if="{{item}}" style="width: 84rpx;height: 84rpx;" src="{{item.logo || emptyImg}}"></image>
+                    <view wx:for="{{allInviteList}}" wx:if="{{index <= 5}}" wx:key=""
+                          class="inline {{index >= 5 ? 'float-img' : '' }} {{item.logo ? 'has-img' : '' }}">
+                        <image wx:if="{{item}}" style="width: 84rpx;height: 84rpx;"
+                               src="{{item.logo || emptyImg}}"></image>
                     </view>
                 </view>
-                <view class="word-14 color-6">
+                <view class="word-14 color-6" wx:if="{{activityDetail.full_person > activityDetail.invite_list.length}}">
                     再邀请<text class="color-man word-14">{{activityDetail.full_person - activityDetail.invite_list.length}}人</text>助力，即可获得
+                </view>
+                <view class="word-14 color-6" wx:if="{{activityDetail.full_person <= activityDetail.invite_list.length}}">
+                    您已获得免费课程
                 </view>
             </view>
             <view class="word-14">分享到5个微信群，成功率高达98%</view>
@@ -142,21 +158,21 @@
         <view wx:if="{{showShareInDialog}}" class="share-in">
             <view class="icon-close" data-close="1" bindtap="closeDialog"></view>
             <view class="center word-20 flex">帮{{inviteInfo.helpUserName}}助力成功！</view>
-            <view class="invite-person">
-                <view class="flex">
-                    <view wx:for="{{allInviteList}}" wx:if="{{index <= 5}}" wx:key="" class="inline {{index >= 5 ? 'float-img' : '' }} {{inviteInfo.inviteList[index].logo ? 'has-img' : '' }}">
-                        <image style="width: 84rpx;height: 84rpx;" wx:if="{{inviteInfo.inviteList[index]}}" src="{{inviteInfo.inviteList[index].logo || emptyImg}}"></image>
-                    </view>
+            <view class="invite-person center">
+                <view style="margin-right: 30rpx;" wx:for="{{allInviteList}}" wx:if="{{index <= 5}}" wx:key=""
+                      class="inline {{index >= 5 ? 'float-img' : '' }} {{inviteInfo.inviteList[index].logo ? 'has-img' : '' }}">
+                    <image style="width: 84rpx;height: 84rpx;" wx:if="{{inviteInfo.inviteList[index]}}"
+                           src="{{inviteInfo.inviteList[index].logo || emptyImg}}"></image>
                 </view>
-                <view class="word-13 color-6 center friend">{{inviteInfo.inviteUserName}}等{{inviteInfo.inviteList.length}}位好友已帮ta助力</view>
+                <view class="word-13 color-6 center friend">
+                    {{inviteInfo.inviteUserName}}等{{inviteInfo.inviteList.length}}位好友已帮ta助力
+                </view>
             </view>
             <view class="session-title word-16">{{inviteInfo.helpUserName}}正在参加{{activityDetail.session_title}}</view>
             <button class="know-btn" data-close="1" bindtap="closeDialog">了解一下</button>
         </view>
 
     </view>
-
-
 
 
 </view>

@@ -2,6 +2,9 @@ let app = getApp();
 
 let mySa = require('../../common/sa.js');
 
+// import {reLogin} from '../../common/common';
+import {navigateToPath} from '../../common/common';
+
 let emptyImg = "http://qiniucdn.dailyyoga.com.cn/8c/82/8c82090346ccd81acedc440c76d344e2.png";
 
 function jumpToLogin(){
@@ -80,10 +83,14 @@ Page({
     toOtherPage (pageUrl){
         let hasLogin = app.checkUserLogin();
         if (hasLogin) {
-            wx.navigateTo({ url: pageUrl })
+            navigateToPath(pageUrl);
         }else{
             jumpToLogin();
         }
-    }
+    },
+
+    // reLogin(){
+    //     reLogin('请重新登录', '确认', app);
+    // }
 
 });

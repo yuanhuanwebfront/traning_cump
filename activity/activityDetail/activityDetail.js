@@ -4,8 +4,7 @@ let app = getApp(),
     wxParseObj = require('../../lib/wxParse/wxParse.js');
 
 import {getDetailWebInfo} from '../../common/$http';
-import {navigateToPath, wxToast} from '../../common/common';
-
+import {navigateToPath} from '../../common/common';
 
 Page({
 
@@ -58,31 +57,28 @@ Page({
     },
 
     getDetailInfo({session_id, activity_id, invite_id, id}) {
+
         let params = {
-            session_id,
-            activity_course_id: activity_id
-        };
-        if(invite_id && id){
-            //      给别人助力的逻辑
-            let assistParams = {
-                ...params,
+                session_id,
+                activity_course_id: activity_id
+            },
+            assistParams = {
                 id,
                 session_user_id: invite_id,
+                ...params
             };
-            getDetailWebInfo(assistParams, this.handleInviteInfo, 'userPowerActivities', 'POST');
-        }
 
-        getDetailWebInfo(params, this.handleDetailInfo, 'getActivitySessionInfo');
+        getDetailWebInfo(params, data => {
+            this.handleDetailInfo(data, assistParams)
+        }, 'getActivitySessionInfo');
 
     },
 
+    //  处理用户进入分享的详情页，如何处理详情页弹窗的显示
+    //  data.state     0.助力失败   1.助力成功  2.已经助力过了  3.活动已过期
     handleInviteInfo(data){
         //  state 2  提示已经助力过了
         if(data.state !== 0){
-
-        	if(data.state === 3){
-        		wxToast('');
-        	}
 
             this.setData({
                 showShareInDialog: true,
@@ -95,7 +91,7 @@ Page({
         }
     },
 
-    handleDetailInfo(data) {
+    handleDetailInfo(data, assistParams) {
 
         let templateH5 = data.introduction,
             fullArr = new Array(data.activity_user_num).fill({});
@@ -109,6 +105,7 @@ Page({
                 realPrice: parseInt(data.price),
                 joinPerson: data.base_enroll_num,
                 end_time: data.end_time,
+                wxShareImg: data.wx_applet_img,
                 session_title: data.session_name,
                 session_subtitle: data.session_title,
                 full_person: data.activity_user_num,
@@ -124,6 +121,10 @@ Page({
         }, () => {
             this.countDown();
         });
+
+        if(data.assist_status !== 4 && assistParams.session_user_id){
+            getDetailWebInfo(assistParams, this.handleInviteInfo, 'userPowerActivities', 'POST');
+        }
 
     },
 
@@ -164,28 +165,31 @@ Page({
 
     onHide() {
         clearInterval(globalInterval);
+        globalInterval = null;
     },
 
     onUnload() {
         clearInterval(globalInterval);
+        globalInterval = null;
     },
 
     onShareAppMessage(){
-        let inviteId = app.globalData.userInfo.uid,
-            activityId = this.data.globalQuery.activity_id,
-            sessionId = this.data.globalQuery.session_id,
-            id = this.data.activityDetail.id,
-            shareUrl = `/activity/activityDetail/activityDetail?session_id=${sessionId}&activity_id=${activityId}&invite_id=${inviteId}&id=${id}`;
 
-        getDetailWebInfo({session_id: sessionId}, () => {
+        let inviteId = app.globalData.userInfo.uid,
+            {activity_id, session_id} = this.data.globalQuery,
+            {session_title, wxShareImg} = this.data.activityDetail,
+            shareUrl = `/activity/activityDetail/activityDetail?session_id=${session_id}&activity_id=${activity_id}&invite_id=${inviteId}`;
+
+        getDetailWebInfo({session_id: session_id}, () => {
             this.setData({
                 showInviteDialog: false
             })
         }, 'userShare', 'POST');
 
         return {
-            title: '来帮我免费得课程吧！',
-            path: shareUrl
+            title: `我正在参加【${session_title}】活动，帮我助力再送你一个权益`,
+            path: shareUrl,
+            imageUrl: wxShareImg
         }
 
     },

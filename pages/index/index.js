@@ -104,18 +104,24 @@ Page({
 		tempList = [...data.yogao2school_list];
 
 		if (!this.data.showGuideDialog) {
-			this.checkPopupStatus(data.Suspended_Adv);
+			this.checkPopupStatus(data.Suspended_Adv[0]);
 		}
+
 		this.setData({
 			swiperList: data.banner_list,
 			tagList: data.tag_list,
 			sessionList: tempList,
 			listEnd: data.yogao2school_list.length < 20,
-			isFirstEnter: false,
-			popData: data.Suspended_Adv,
-			floatImage: data.Suspended_Adv.image || '',
-			smallFloatImage: data.Suspended_Adv.images || ''
+			isFirstEnter: false
 		});
+
+		if(data.Suspended_Adv && data.Suspended_Adv[0]){
+			this.setData({
+                popData: data.Suspended_Adv[0],
+                floatImage: data.Suspended_Adv[0].image || '',
+                smallFloatImage: data.Suspended_Adv[0].images || ''
+			})
+		}
 	},
 
 	//  弹窗需要根据put_in_type区分展示次数为   每天展示一次( type === 2 )  只展示一次( type === 3 )

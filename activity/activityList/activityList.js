@@ -26,7 +26,6 @@ const mock = {
 };
 
 
-
 Page({
 
     data: {
@@ -38,7 +37,15 @@ Page({
     },
 
     getActivityList(){
-        getDetailWebInfo({}, this.handleActivityList, 'getCourseActivityList');
+        let existList = wx.getStorageSync('activityList');
+        if(existList){
+            this.setData({
+                activityList: existList
+            })
+        }else{
+            getDetailWebInfo({}, this.handleActivityList, 'getCourseActivityList');
+        }
+
     },
 
     handleActivityList(data){

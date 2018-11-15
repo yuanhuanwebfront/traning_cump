@@ -2,8 +2,6 @@ let app = getApp();
 
 import {wxToast, transformRpx, saveImgToLocalPath} from "../../common/common";
 
-let tempImgPath = "";
-
 Page({
 
     data: {
