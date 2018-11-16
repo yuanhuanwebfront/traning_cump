@@ -9,10 +9,11 @@
     </view>
 
 
-    <view wx:if="{{mineActivityList.length === 0}}" class="empty-area"></view>
+    <block wx:if="{{mineActivityList.length === 0}}">
+        <view  class="empty-area"></view>
 
-    <view style="margin-top: 60rpx;" class="center word-14">还没有参与任何活动</view>
+        <view style="margin-top: 60rpx;" class="center word-14 color-9">还没有参与任何活动</view>
+    </block>
 
-    <!--<button class="back-home-fix center word-12" bindtap="backHome">去首页</button>-->
 
 </view>
