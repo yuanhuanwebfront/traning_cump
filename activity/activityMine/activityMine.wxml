@@ -1,10 +1,17 @@
 <view class="container">
 
-    <view wx:for="{{mineActivityList}}" wx:key="">
+    <view wx:if="{{mineActivityList.length > 0}}">
+        <view wx:for="{{mineActivityList}}" wx:key="">
 
-        <activity-item activity-info="{{item}}" show-split="{{(index + 1) !== activityList.length}}"></activity-item>
+            <activity-item activity-info="{{item}}" show-split="{{(index + 1) !== activityList.length}}"></activity-item>
 
+        </view>
     </view>
+
+
+    <view wx:if="{{mineActivityList.length === 0}}" class="empty-area"></view>
+
+    <view style="margin-top: 60rpx;" class="center word-14">还没有参与任何活动</view>
 
     <!--<button class="back-home-fix center word-12" bindtap="backHome">去首页</button>-->
 

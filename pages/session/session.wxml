@@ -47,7 +47,7 @@
             <text class="word-14 color-3">活动课程  拼课限免</text>
             <text class="word-13 color-6" wx:if="{{activityList.length > 3}}" style="font-weight: 500;" bindtap="toMoreActivity">查看更多></text>
         </view>
-        <swiper style="min-height: 460rpx;" bindchange="changeActivitySwiper" current="{{currentSwiper}}" circular="{{true}}">
+        <swiper style="min-height: 430rpx;" bindchange="changeActivitySwiper" current="{{currentSwiper}}" circular="{{true}}">
             <block wx:for="{{activityList}}" wx:key="">
                 <swiper-item>
                     <activity-item activity-info="{{item}}"></activity-item>
