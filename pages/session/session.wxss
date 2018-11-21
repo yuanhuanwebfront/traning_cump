@@ -49,13 +49,11 @@
     line-height: 80rpx;
     justify-content: space-between;
 }
-.my-activity{
-    padding: 0 20rpx;
-    background: #fff;
-}
+.my-activity{background: #fff;}
 .my-activity-item{
     justify-content: flex-start;
-    padding: 20rpx 0;
+    padding: 20rpx;
+    box-sizing: border-box;
 }
 .my-activity-item .main-title{margin-bottom: 6rpx;}
 .my-activity-item image{

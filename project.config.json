@@ -230,7 +230,7 @@
 					"id": 28,
 					"name": "活动课程详情",
 					"pathName": "activity/activityDetail/activityDetail",
-					"query": "session_id=1&activity_id=1&shareId=2",
+					"query": "session_id=3&activity_id=3&shareId=6",
 					"scene": "1001"
 				},
 				{

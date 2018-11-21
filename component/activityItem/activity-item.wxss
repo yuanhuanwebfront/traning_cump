@@ -3,20 +3,42 @@
     background: #fff;
 }
 .activity-item-container image{
-    margin-bottom: 20rpx;
+    margin-bottom: 12rpx;
     height: 280rpx;
 }
 .activity-desc{
     padding: 0 26rpx;
-    padding-bottom: 20rpx;
+    padding-bottom: 14rpx;
     box-sizing: border-box;
 }
-.activity-desc .flex{
-    margin-top: 10rpx;
-    justify-content: space-between;
+.activity-desc .session-name{
+    font-size: 30rpx;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
+.activity-desc .flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.activity-desc .session-title{
+    font-size: 26rpx;
+    color: #999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.activity-desc .session-price{
+    font-size: 30rpx;
+    color: #FE6B42;
+}
+
 .activity-desc .join-info{
     position: absolute;
+    font-size: 24rpx;
     color: #fff;
     top: 0;
     right: 0;
@@ -28,15 +50,20 @@
 }
 .price-bg{
     background: #fe6b42;
-    height: 50rpx;
-    line-height: 40rpx;
+    height: 24rpx;
+    line-height: 24rpx;
+    font-size: 24rpx;
     color: #fff;
-    padding: 5rpx 12rpx;
+    padding: 2rpx 12rpx;
     border-radius: 20rpx;
     margin-left: 12rpx;
-    box-sizing: border-box;
+    margin-bottom: 3rpx;
 }
 .activity-desc .error{
     background: #c6c6c6;
     color: #fff;
+}
+.split-area{
+    height: 20rpx;
+    background-color: #f9fafa;
 }

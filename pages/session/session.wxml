@@ -26,9 +26,9 @@
 
     <!--    我的活动课程  -->
     <view wx:if="{{mineActivityList.length > 0}}">
-        <view class="list-title activity-title word-14 color-3">我的课程</view>
+        <view class="list-title activity-title word-14 color-3 split-border">我的课程</view>
         <view class="my-activity">
-            <view wx:if="{{index < 2}}" wx:for="{{mineActivityList}}" wx:key="" class="my-activity-item flex">
+            <view wx:if="{{index < 2}}" wx:for="{{mineActivityList}}" wx:key="" class="my-activity-item flex split-border">
                 <image src="{{item.session_image}}"></image>
                 <view>
                     <view class="word-15 color-3 main-title">{{item.session_name}}</view>
@@ -47,7 +47,7 @@
             <text class="word-14 color-3">活动课程  拼课限免</text>
             <text class="word-13 color-6" wx:if="{{activityList.length > 3}}" style="font-weight: 500;" bindtap="toMoreActivity">查看更多></text>
         </view>
-        <swiper style="min-height: 430rpx;" bindchange="changeActivitySwiper" current="{{currentSwiper}}" circular="{{true}}">
+        <swiper style="min-height: 430rpx;" bindchange="changeActivitySwiper" current="{{currentSwiper}}" circular="{{isCircularSwiper}}">
             <block wx:for="{{activityList}}" wx:key="">
                 <swiper-item>
                     <activity-item activity-info="{{item}}"></activity-item>

@@ -180,6 +180,10 @@ Page({
             {session_title, wxShareImg} = this.data.activityDetail,
             shareUrl = `/activity/activityDetail/activityDetail?session_id=${session_id}&activity_id=${activity_id}&shareId=${shareId}`;
 
+        this.setData({
+            showInviteDialog: false
+        });
+
         return {
             title: `我正在参加【${session_title}】活动，帮我助力再送你一个权益`,
             path: shareUrl,

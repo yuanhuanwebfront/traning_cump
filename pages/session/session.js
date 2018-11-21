@@ -70,7 +70,8 @@ Page({
         sessionList: [],
         currentSwiper: 0,
         activityList: [],
-        mineActivityList: []
+        mineActivityList: [],
+        isCircularSwiper: true
     },
 
     onLoad() {

@@ -1,9 +1,5 @@
 Component({
 
-    options: {
-        addGlobalClass: true
-    },
-
     properties: {
 
         activityInfo: {

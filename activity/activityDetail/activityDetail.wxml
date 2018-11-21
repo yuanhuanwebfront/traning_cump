@@ -124,11 +124,11 @@
                         <text class="count-item word-12 orange-bg">{{sessionInfo.millsCount}}</text>
                     </view>
                 </view>
-                <view class="invite-person">
+                <view class="invite-person {{allInviteList.length <= 5 ? 'center' : '' }}">
                     <view wx:for="{{allInviteList}}" wx:if="{{index <= 5}}" wx:key=""
+                          style="right: {{index >= 5 ? '92rpx' : '0' }}"
                           class="inline {{index >= 5 ? 'float-img' : '' }} {{item.logo ? 'has-img' : '' }}">
-                        <image wx:if="{{item}}" style="width: 84rpx;height: 84rpx;"
-                               src="{{item.logo || emptyImg}}"></image>
+                        <image wx:if="{{item}}" style="width: 72rpx;height: 72rpx;" src="{{item.logo || emptyImg}}"></image>
                     </view>
                 </view>
                 <view class="word-14 color-6" wx:if="{{activityDetail.full_person > activityDetail.invite_list.length}}">
@@ -138,7 +138,7 @@
                     您已获得免费课程
                 </view>
             </view>
-            <view class="word-14">分享到5个微信群，成功率高达98%</view>
+            <view class="word-14" style="margin-bottom: 40rpx;">分享到5个微信群，成功率高达98%</view>
             <view class="share-btn-area">
                 <share-area text-color="#fff"></share-area>
             </view>
@@ -158,8 +158,8 @@
         <view wx:if="{{showShareInDialog}}" class="share-in">
             <view class="icon-close" data-close="1" bindtap="closeDialog"></view>
             <view class="center word-20 flex">帮{{inviteInfo.helpUserName}}助力成功！</view>
-            <view class="invite-person center" style="padding-left: 0;padding-right: 0;">
-                <view style="margin-left: {{index === 0 ? 0 : 30}}rpx;" wx:for="{{allInviteList}}" wx:if="{{index <= 5}}" wx:key=""
+            <view class="invite-person {{allInviteList.length <= 5 ? 'center' : '' }}" style="padding-left: 0;padding-right: 0;">
+                <view style="margin-left:26rpx;" wx:for="{{allInviteList}}" wx:if="{{index <= 5}}" wx:key=""
                       class="inline {{index >= 5 ? 'float-img' : '' }} {{inviteInfo.inviteList[index].logo ? 'has-img' : '' }}">
                     <image style="width: 70rpx;height: 70rpx;" wx:if="{{inviteInfo.inviteList[index]}}"
                            src="{{inviteInfo.inviteList[index].logo || emptyImg}}"></image>
