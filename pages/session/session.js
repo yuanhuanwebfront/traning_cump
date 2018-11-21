@@ -145,7 +145,7 @@ Page({
                 sessionImage: item.image_phone,
                 sessionName: item.session_name,
                 sessionTitle: item.session_title,
-                activity_id: item.activity_course_id,
+                activity_id: item.course_activity_id,
                 status: item.user_state
             }
         });

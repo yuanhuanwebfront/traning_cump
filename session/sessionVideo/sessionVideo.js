@@ -223,8 +223,7 @@ Page({
 
         let actionInfo = wx.getStorageSync('actionInfo'),
             endTime = new Date().getTime() / 1000,
-            playTime = parseInt(Math.min(...[endTime - this.data.useActionStartTime, this.data.videoLength]));
-        console.log(this.data.videoLength);
+            playTime = parseInt(Math.min(endTime - this.data.useActionStartTime, this.data.videoLength));
         this.setData({
           dialogTime: Math.ceil(playTime / 60),
           dialogKcal: Math.ceil((playTime / this.data.videoLength * this.data.calorieRatio) )

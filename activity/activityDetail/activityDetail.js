@@ -27,7 +27,8 @@ Page({
             4: 'finish-session'
         },
         activityDetail: {},
-        emptyImg: "http://qiniucdn.dailyyoga.com.cn/8c/82/8c82090346ccd81acedc440c76d344e2.png"
+        emptyImg: "http://qiniucdn.dailyyoga.com.cn/8c/82/8c82090346ccd81acedc440c76d344e2.png",
+        globalShareId: ''
     },
 
     onLoad(options) {
@@ -40,31 +41,30 @@ Page({
 
         globalInterval = null;
 
-        if(wx.getStorageSync('sid')){
+        if (wx.getStorageSync('sid')) {
             hasGetInfo = true;
             this.getDetailInfo(options);
-        }else{
+        } else {
             navigateToPath('/pages/login/login');
         }
 
     },
 
-    onShow(){
-        if(this.data.globalQuery && wx.getStorageSync('sid')){
-            if(!hasGetInfo) this.getDetailInfo(this.data.globalQuery);
+    onShow() {
+        if (this.data.globalQuery && wx.getStorageSync('sid')) {
+            if (!hasGetInfo) this.getDetailInfo(this.data.globalQuery);
         }
         this.countDown();
     },
 
-    getDetailInfo({session_id, activity_id, invite_id, id}) {
+    getDetailInfo({session_id, activity_id, shareId}) {
 
         let params = {
                 session_id,
                 activity_course_id: activity_id
             },
             assistParams = {
-                id,
-                session_user_id: invite_id,
+                user_share_id: shareId,
                 ...params
             };
 
@@ -76,16 +76,16 @@ Page({
 
     //  处理用户进入分享的详情页，如何处理详情页弹窗的显示
     //  data.state     0.助力失败   1.助力成功  2.已经助力过了  3.活动已过期
-    handleInviteInfo(data){
+    handleInviteInfo(data) {
         //  state 2  提示已经助力过了
-        if(data.state !== 0){
+        if (data.state !== 0) {
 
             this.setData({
                 showShareInDialog: true,
                 inviteInfo: {
-                    helpUserName: data.FirstName,
+                    helpUserName: data.nickname,
                     inviteList: data.invite_list,
-                    inviteUserName: data.invite_list[0] && data.invite_list[0].FirstName ? data.invite_list[0].FirstName : ''
+                    inviteUserName: data.invite_list[0] && data.invite_list[0].nickname ? data.invite_list[0].nickname : ''
                 }
             })
         }
@@ -110,7 +110,7 @@ Page({
                 session_subtitle: data.session_title,
                 full_person: data.activity_user_num,
                 invite_list: data.invite_list,
-                status: data.assist_status             //  1 进行中  2  已完成  3 已购买  4 已结束
+                status: data.assist_status             //  0 未参与   1 进行中  2  已完成  3 已购买  4 已结束
             },
             allInviteList: fullArr.map((item, idx) => {
                 if (data.invite_list[idx]) {
@@ -122,7 +122,7 @@ Page({
             this.countDown();
         });
 
-        if(data.assist_status !== 4 && assistParams.session_user_id){
+        if (data.assist_status !== 4 && assistParams.user_share_id) {
             getDetailWebInfo(assistParams, this.handleInviteInfo, 'userPowerActivities', 'POST');
         }
 
@@ -173,18 +173,12 @@ Page({
         globalInterval = null;
     },
 
-    onShareAppMessage(){
+    onShareAppMessage() {
 
-        let inviteId = app.globalData.userInfo.uid,
+        let shareId = this.data.globalShareId,
             {activity_id, session_id} = this.data.globalQuery,
             {session_title, wxShareImg} = this.data.activityDetail,
-            shareUrl = `/activity/activityDetail/activityDetail?session_id=${session_id}&activity_id=${activity_id}&invite_id=${inviteId}`;
-
-        getDetailWebInfo({session_id: session_id}, () => {
-            this.setData({
-                showInviteDialog: false
-            })
-        }, 'userShare', 'POST');
+            shareUrl = `/activity/activityDetail/activityDetail?session_id=${session_id}&activity_id=${activity_id}&shareId=${shareId}`;
 
         return {
             title: `我正在参加【${session_title}】活动，帮我助力再送你一个权益`,
@@ -195,9 +189,17 @@ Page({
     },
 
     openInviteDialog() {
-        this.setData({
-            showInviteDialog: true
-        })
+
+        let {activity_id, session_id} = this.data.globalQuery;
+
+        getDetailWebInfo({session_id, activity_course_id: activity_id}, data => {
+            this.setData({
+                showInviteDialog: true,
+                globalShareId: data.user_share_id
+            });
+
+        }, 'userShare', 'POST');
+
     },
 
     openShareInDialog() {

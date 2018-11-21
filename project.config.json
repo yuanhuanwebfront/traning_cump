@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 31,
+			"current": 28,
 			"list": [
 				{
 					"id": 0,
@@ -230,7 +230,7 @@
 					"id": 28,
 					"name": "活动课程详情",
 					"pathName": "activity/activityDetail/activityDetail",
-					"query": "session_id=7&activity_id=10&invite_id=102988951",
+					"query": "session_id=1&activity_id=1&shareId=2",
 					"scene": "1001"
 				},
 				{
