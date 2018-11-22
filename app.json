@@ -75,6 +75,7 @@
     "pages": [
       "activityDetail/activityDetail",
       "activityList/activityList",
+      "activitySuccess/activitySuccess",
       "activityMine/activityMine"
     ]
   }]

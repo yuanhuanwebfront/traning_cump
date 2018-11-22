@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 28,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -60,7 +60,7 @@
 					"id": 3,
 					"name": "购买页面",
 					"pathName": "package/buy/buy",
-					"query": "sessionId=317",
+					"query": "sessionId=1&activityId=1",
 					"scene": "1001"
 				},
 				{
@@ -230,7 +230,7 @@
 					"id": 28,
 					"name": "活动课程详情",
 					"pathName": "activity/activityDetail/activityDetail",
-					"query": "session_id=3&activity_id=3&shareId=6",
+					"query": "session_id=1&activity_id=1&shareId=18",
 					"scene": "1001"
 				},
 				{
@@ -251,6 +251,13 @@
 					"name": "我的活动课程列表",
 					"pathName": "activity/activityMine/activityMine",
 					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": 32,
+					"name": "活动课程购买成功",
+					"pathName": "activity/activitySuccess/activitySuccess",
+					"query": "session_id=1&activity_id=1&shareId=18",
 					"scene": "1001"
 				}
 			]

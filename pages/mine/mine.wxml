@@ -23,6 +23,6 @@
         <view class="bar word-14 color-3" style="background-position-y: -320rpx;" bindtap="toMyRebate">我的返利</view>
     </view>
 
-    <!--<button bindtap="reLogin">重新登录</button>-->
+    <!--<button bindtap="toSuccess">重新登录</button>-->
 
 </view>

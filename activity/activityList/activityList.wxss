@@ -20,3 +20,11 @@ view.title{
     border-top-left-radius: 22rpx;
     background: rgba(0, 0, 0, 0.5);
 }
+.empty-area{
+    width: 420rpx;
+    height: 340rpx;
+    margin: 0 auto;
+    margin-top: 100rpx;
+    background-image: url("http://qiniucdn.dailyyoga.com.cn/74/90/7490eb4dc5c0bb970a8f2553a7004ed8.png");
+    background-size: 100% 100%;
+}

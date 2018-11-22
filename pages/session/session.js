@@ -135,6 +135,7 @@ Page({
     //  获取活动课程列表
     getActivityList(){
         getDetailWebInfo({}, this.handleActivityList, 'getCourseActivityList');
+        getDetailWebInfo({}, this.handleActivityList, 'getUserJoinActivitySessionList');
     },
 
     handleActivityList(data){

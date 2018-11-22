@@ -80,6 +80,10 @@ Page({
         this.toOtherPage('../../other/dailyList/dailyList')
     },
 
+    // toSuccess(){
+    //     navigateToPath('/activity/activitySuccess/activitySuccess')
+    // },
+
     toOtherPage (pageUrl){
         let hasLogin = app.checkUserLogin();
         if (hasLogin) {

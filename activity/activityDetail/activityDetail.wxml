@@ -19,7 +19,7 @@
         <view class="inline area time-area color-price">
             <view class="center word-12">距结束仅剩</view>
             <view class="time-ending center">
-                <text class="day-count">{{sessionInfo.dayCount}}天</text>
+                <text class="day-count" wx:if="{{activityDetail.status != 4}}">{{sessionInfo.dayCount}}天</text>
                 <text class="count-item word-12 orange-bg">{{sessionInfo.hourCount}}</text>
                 <text class="split">:</text>
                 <text class="count-item word-12 orange-bg">{{sessionInfo.minuteCount}}</text>
@@ -52,7 +52,7 @@
             <view class="inline">
                 <view class="word-13 color-3" style="margin-bottom: 4rpx;">已邀请{{activityDetail.invite_list.length}}人助力
                 </view>
-                <view class="word-11 color-6" wx:if="{{activityDetail.status === 1 || activityDetail.status === 0}}">还差{{activityDetail.full_person -
+                <view class="word-11 color-6" wx:if="{{activityDetail.status === 1 || activityDetail.status === 0 || activityDetail.status === 4}}">还差{{activityDetail.full_person -
                     activityDetail.invite_list.length}}人免费获得课程
                 </view>
                 <view class="word-11 color-6" wx:if="{{activityDetail.status === 2 || activityDetail.status === 3}}">
@@ -60,7 +60,8 @@
                 </view>
             </view>
         </view>
-        <button wx:if="{{activityDetail.status === 1 || activityDetail.status === 0}}" class="orange-bg word-14" bindtap="openInviteDialog">去邀请
+        <button wx:if="{{activityDetail.status === 1 || activityDetail.status === 0 || activityDetail.status === 4}}"
+                class="orange-bg word-14 {{activityDetail.status === 4 ? 'disable' : ''}}" bindtap="openInviteDialog">去邀请
         </button>
         <button wx:if="{{activityDetail.status === 2 || activityDetail.status === 3}}" class="word-14 sign">立即报名
         </button>
@@ -81,12 +82,14 @@
 
     <!--    底部区域    -->
     <view class="bottom-area flex">
-        <view class="home center" bindtap="backHome"></view>
+        <view class="home center" bindtap="backHome">
+            <text class="color-6 home-text">首页</text>
+        </view>
         <!--    活动进行中底部的展示  -->
         <block wx:if="{{activityDetail.status === 1 || activityDetail.status === 0}}">
-            <view class="buy center">
+            <view class="buy center" bindtap="toBuySession">
                 <text class="word-18 color-price">¥{{activityDetail.realPrice}}</text>
-                <text class="word-11 color-9">单独购买</text>
+                <text class="word-11 color-6">单独购买</text>
             </view>
             <view class="orange-bg center word-14" bindtap="openInviteDialog">好友助力免费领 (还差{{activityDetail.full_person -
                 activityDetail.invite_list.length}}人)
@@ -94,7 +97,7 @@
         </block>
 
         <!--    活动参与成功的展示   -->
-        <button wx:if="{{activityDetail.status === 2}}" class="orange-bg center word-14">立即报名</button>
+        <button wx:if="{{activityDetail.status === 2}}" bindtap="toBuySession" class="orange-bg center word-14">立即报名</button>
 
         <!--    活动结束的展示 -->
         <button wx:if="{{activityDetail.status === 4}}" bindtap="backHome" class="orange-bg center word-14">进入训练营
@@ -112,9 +115,9 @@
             <view class="word-20">邀请好友助力 免费领</view>
             <view class="main">
                 <view class="time-line">
-                    <text class="word-14 color-price">剩余时间</text>
+                    <text class="word-14 color-price">剩余时间 </text>
                     <view class="inline time-ending center">
-                        <text class="day-count color-price">{{sessionInfo.dayCount}}天</text>
+                        <text class="day-count color-price"> {{sessionInfo.dayCount}}天</text>
                         <text class="count-item word-12 orange-bg">{{sessionInfo.hourCount}}</text>
                         <text class="split color-price">:</text>
                         <text class="count-item word-12 orange-bg">{{sessionInfo.minuteCount}}</text>

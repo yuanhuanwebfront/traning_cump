@@ -194,6 +194,10 @@ Page({
 
     openInviteDialog() {
 
+        if(this.data.activityDetail.status === 4){
+            return;
+        }
+
         let {activity_id, session_id} = this.data.globalQuery;
 
         getDetailWebInfo({session_id, activity_course_id: activity_id}, data => {
@@ -210,6 +214,12 @@ Page({
         this.setData({
             showShareInDialog: true
         })
+    },
+
+    //  直接购买或者助力完成免费获得课程
+    toBuySession(){
+        let {activity_id, session_id} = this.data.globalQuery;
+        navigateToPath(`/package/buy/buy?sessionId=${session_id}&activityId=${activity_id}`);
     },
 
     closeDialog(e) {

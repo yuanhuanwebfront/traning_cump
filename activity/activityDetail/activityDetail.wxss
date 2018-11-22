@@ -107,11 +107,19 @@
 }
 .bottom-area view{height: 100rpx;}
 .bottom-area .home{
+    position: relative;
     width: 120rpx;
     border-right: 2rpx solid #f1f1f1;
     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAABkCAMAAAB6rgQAAAAAflBMVEUAAABnZ2dmZmZycnJnZ2dnZ2dmZmZmZmZmZmZnZ2dnZ2dmZmZ0dHRmZmZmZmZnZ2dra2tnZ2dnZ2dpaWlmZmZmZmZmZmZnZ2dnZ2dnZ2doaGhoaGhoaGhnZ2dnZ2dmZmZnZ2dnZ2dnZ2dmZmZnZ2dmZmZmZmZnZ2dnZ2dmZmadvNcmAAAAKXRSTlMAQn0KuH52/OH1sJcFRsC8E482HOfapIJqVEwvJO7QtKydiG9k7FrMWUEqtHwAAAEuSURBVGje7dHJbsJAFETRIgR3Gze2MZONzTwk9f8/mIRBJJJByqKbSKmze29zFwUREREREXmmPMtyPEG+JJdPKI8mzIacjBDKrbtymNE2CKqxXDsAEcc1AmrGnDp82XFRIJj6wA0uSsYdBFIsmNyuvYnnCKITc4hvjsYc4dOtu8UPlTF7eDeP2Wv5RfCsMm2NQcwZvHo33N3d3aO9YYZWM3IDb0oavqLVC2NOHfyIaMv74dmUfT/lF9qmcz/cw5Br+GAnIzwMI/ITzrt4HPbnL4Rd98KFDc8Nr3pBwxFXycmG/cDhAU66Cl8orPBvFUzbw1vu4JNbmAKfEtY4i5cOwMiygFeV4djaMd8czoY8WGsNE3hWJ1maZtscV+UqTdNpBREREREREREREfkHPgAeHx0Ot1G5QgAAAABJRU5ErkJggg==") no-repeat center center;
     background-size: cover;
     background-color: #fff;
+}
+.home-text{
+    position: absolute;
+    display: block;
+    width: 100%;
+    bottom: 10rpx;
+    font-size: 22rpx;
 }
 .bottom-area .buy{
   width: 176rpx;
@@ -304,4 +312,7 @@
 .share-in .user-name-h2{
     max-width: 280rpx;
     margin-top: 0rpx;
+}
+button.disable{
+    background: #ccc;
 }

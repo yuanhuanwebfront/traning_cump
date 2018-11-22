@@ -18,7 +18,7 @@
             <input type="text" placeholder="微信号" value="{{addressInfo.userWeChat}}" bindinput="setUserWechat" placeholder-style="font-size: 26rpx;line-height: 80rpx;" />
         </view>
 
-        <view class="input flex start back-bg" style="border-bottom: none;" bindtap="showPicker">
+        <view wx:if="{{!hideAddressDetail}}" class="input flex start back-bg" style="border-bottom: none;" bindtap="showPicker">
             <text class="iconfont icon-buoumaotubiao23"></text>
             <view class="info" style="padding-left: 10rpx;font-size: 26rpx;" wx:if="{{areaName.length > 0}}">{{areaName[0]}} {{areaName[1]}} {{areaName[2]}}</view>
             <view class="info" style="padding-left: 10rpx;font-size: 26rpx;color: #999;" wx:if="{{areaName.length === 0}}">请选择城市</view>
@@ -38,9 +38,9 @@
             <view class="top over-hide" style="padding-right: 40rpx;">
                 <text class="word-15 color-3">{{addressInfo.userName}} {{addressInfo.userPhone}} <text style="font-size: 30rpx;padding-left: 20rpx;"> 微信：{{addressInfo.userWeChat}}</text></text>
             </view>
-            <view class="bottom">
-                <text style="color: #666;">{{areaName[0]}}-{{areaName[1]}}市-{{areaName[2]}}</text>
-                <text style="color: #666;"> {{addressInfo.userAddress}}</text>
+            <view class="bottom" >
+                <text wx:if="{{!hideAddressDetail}}" style="color: #666;">{{areaName[0]}}-{{areaName[1]}}市-{{areaName[2]}}</text>
+                <text wx:if="{{!hideAddressDetail}}" style="color: #666;"> {{addressInfo.userAddress}}</text>
             </view>
         </view>
     </view>
@@ -56,37 +56,44 @@
         <view class="order-content flex">
             <image src="{{sessionInfo.sessionImg}}" mode="widthFix"></image>
             <view class="inner">
-                <view class="word-13 color-6">开课时间：{{sessionInfo.sessionStartTime}}</view>
-                <view class="word-13 color-6">上课地点：{{sessionInfo.sessionAddress}}</view>
+                <view hidden="{{hideAddressDetail}}" class="word-13 color-6">开课时间：{{sessionInfo.sessionStartTime}}</view>
+                <view wx:if="{{hideAddressDetail}}" class="word-13 color-6">课程有效期：{{sessionInfo.validDay}} 天</view>
+                <view wx:if="{{sessionInfo.sessionAddress}}" class="word-13 color-6">上课地点：{{sessionInfo.sessionAddress}}</view>
             </view>
         </view>
 
         <view class="discount-area" wx:if="{{discountLoadFinish}}">
 
                 <!--    复购优惠   不与任何优惠共用（存在这个优惠，其他都没有）  -->
-                <view class="discount-item flex" wx:if="{{discountsInfo[4]}}" style="border: none;">
-                    <text>{{discountsInfo[4].title}} <text class="word-12 color-9">(不与其他优惠共享)</text> </text>
-                    <text class="money">{{discountsInfo[4].value_content}}</text>
+                <view class="discount-item flex" wx:if="{{discountsInfo['REPURCHASED']}}" style="border: none;">
+                    <text>{{discountsInfo['REPURCHASED'].title}} <text class="word-12 color-9">(不与其他优惠共享)</text> </text>
+                    <text class="money">{{discountsInfo['REPURCHASED'].value_content}}</text>
                 </view>
 
-                <view wx:if="{{!discountsInfo[4]}}">
+                <!--   1.3.0  新增活动课程优惠   不与任何优惠共用（存在这个优惠，其他都没有）  -->
+                <view class="discount-item flex" wx:if="{{discountsInfo['COURSE_ACTIVITY']}}" style="border: none;">
+                    <text>{{discountsInfo['COURSE_ACTIVITY'].title}} <text class="word-12 color-9">(不与其他优惠共享)</text> </text>
+                    <text class="money">{{discountsInfo['COURSE_ACTIVITY'].value_content}}</text>
+                </view>
 
-                    <!--    会员优惠   不会存在互斥关系   -->
-                    <view class="discount-item flex {{!canUseCoupon && !canUsePoints && pointsList.length !== 0 ? 'no-border' : '' }}" wx:if="{{discountsInfo[2]}}">
-                        <text>{{discountsInfo[2].title}}</text>
-                        <text class="money">{{discountsInfo[2].value_content}}</text>
+                <view wx:if="{{!discountsInfo['REPURCHASED']}}">
+
+                    <!--    会员优惠   不会存在互斥关系   discountsInfo['MEMBER_REWARD']  -->
+                    <view class="discount-item flex {{!canUseCoupon && !canUsePoints && pointsList.length !== 0 ? 'no-border' : '' }}" wx:if="{{discountsInfo['MEMBER_REWARD']}}">
+                        <text>{{discountsInfo['MEMBER_REWARD'].title}}</text>
+                        <text class="money">{{discountsInfo['MEMBER_REWARD'].value_content}}</text>
                     </view>
 
                     <!--    优惠券    可能会与瑜币存在互斥关系 -->
                     <view class="discount-item back-bg flex {{!canUsePoints && pointsList.length !== 0 ? 'no-border' : '' }}" bindtap="chooseCoupon" wx:if="{{canUseCoupon}}">
                         <text>优惠券</text>
-                        <text class="money">{{discountsInfo[5].value_content || '不使用'}}</text>
+                        <text class="money">{{discountsInfo['VOUCHER'].value_content || '不使用'}}</text>
                     </view>
 
                     <!--    瑜币抵用   可能会与优惠券互斥     -->
                     <view class="discount-item back-bg flex no-border" wx:if="{{pointsList.length !== 0 && canUsePoints}}">
                         <text>瑜币抵用: {{pointsList[0].usePoints}}瑜币抵用</text>
-                        <text class="money" data-open="1" bindtap="showPoints">{{discountsInfo[6].value_content || '不使用'}}</text>
+                        <text class="money" data-open="1" bindtap="showPoints">{{discountsInfo['POINTS'].value_content || '不使用'}}</text>
                     </view>
 
                 </view>
@@ -100,7 +107,7 @@
         <view class="total flex">
             <view class="left">
                 <text>实付: </text>
-                <text class="vip">￥{{discountsInfo[9].value}}</text>
+                <text class="vip">￥{{discountsInfo['TOTAL'].value}}</text>
             </view>
             <view class="right detail">
                 <text bindtap="toggleDetail">明细 </text>
@@ -139,11 +146,11 @@
 
                 <view class="flex" style="margin-bottom: 48rpx;">
                     <text class="word-14 color-3">{{sessionInfo.sessionName}}</text>
-                    <text class="word-14 color-3">￥{{discountsInfo[1].value}}</text>
+                    <text class="word-14 color-3">￥{{discountsInfo['SUB_TOTAL'].value}}</text>
                 </view>
 
                 <view wx:for="{{discountList}}" wx:key="" >
-                    <view class="flex" wx:if="{{item.sort_order != 1 && item.sort_order != 9}}">
+                    <view class="flex" wx:if="{{item.code != 'SUB_TOTAL' && item.code != 'TOTAL' }}">
                         <text class="word-13-3">{{item.title}}</text>
                         <text class="word-13-3 money">{{item.value_content}}</text>
                     </view>

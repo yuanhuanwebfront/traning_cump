@@ -1,0 +1,12 @@
+.buy-img{
+    padding:40rpx 0;
+}
+.buy-img image{
+    width: 300rpx;
+}
+.btn-confirm.see{
+    width: 496rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-radius: 40rpx;
+}

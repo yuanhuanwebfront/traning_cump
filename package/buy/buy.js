@@ -1,5 +1,5 @@
 import {IS_IOS, formatTime, wxToast, wxSetNavTitle} from '../../common/common';
-import {getYogaSchoolInfo, postCheckout, createPrePayment} from '../../common/$http';
+import {getYogaSchoolInfo, postCheckout, createPrePayment, getDetailWebInfo} from '../../common/$http';
 import AREA from './area';
 
 let mySa = require('../../common/sa');
@@ -7,6 +7,18 @@ let mySa = require('../../common/sa');
 let track_params = {};
 
 const app = getApp();
+
+// const DERATE_TYPE_UNKNOWN = 'UNKNOWN';
+// const DERATE_TYPE_SUB_TOTAL = 'SUB_TOTAL';                   //  原价                1
+// const DERATE_TYPE_MEMBER_REWARD = 'MEMBER_REWARD';           //  会员优惠            2
+// const DERATE_TYPE_MEMBER_CARD = 'MEMBER_CARD';               //  会员卡优惠          3
+// const DERATE_TYPE_REPURCHASED = 'REPURCHASED';               //  老学员复购          4
+// const DERATE_TYPE_VOUCHER = 'VOUCHER';                       //  优惠券              5
+// const DERATE_TYPE_POINTS = 'POINTS';                         //  瑜币兑换            6
+// const DERATE_TYPE_COMBINED_SALE = 'COMBINED_SALE';           //  打包购买            7
+// const DERATE_TYPE_COURSE_ACTIVITY = 'COURSE_ACTIVITY';       //  课程优惠            8
+// const DERATE_TYPE_WALLET='WALLET';                           //  返利余额支付         9
+// const DERATE_TYPE_TOTAL = 'TOTAL';                           //  总价                10
 
 /*
 *    step1.   优惠信息分为两种  一种是页面显示的优惠信息，逻辑如下
@@ -65,6 +77,10 @@ Page({
     },
 
     onLoad(options) {
+
+        this.setData({
+            pageQuery: options
+        });
         track_params = {};
         pageInfo.sessionId = options.sessionId;
 
@@ -74,7 +90,12 @@ Page({
             })
         }
 
-        this.getSessionInfo(options.sessionId);
+        //  TODO  如果是课程活动进入，那么吊获取活动课程详情的接口
+        if(options.activityId){
+            this.getActivitySessionInfo(options);
+        }else{
+            this.getSessionInfo(options.sessionId);
+        }
         wxSetNavTitle('确认订单');
     },
 
@@ -211,6 +232,81 @@ Page({
         this.getDiscountInfo(data.id);
     },
 
+    //  TODO    获取活动课程详情的信息
+    getActivitySessionInfo({sessionId, activityId}){
+        let params = {
+            session_id: sessionId,
+            activity_course_id: activityId
+        };
+        getDetailWebInfo(params, data => {
+            this.handleActivitySessionInfo(data)
+        }, 'getActivitySessionInfo');
+    },
+
+    //  TODO    处理活动课程详情的信息
+    handleActivitySessionInfo(data){
+        this.setData({
+            "showDetailAddress": false,
+            "hideAddressDetail": true,                 //  1.3.0 新增活动课程隐藏地址选择器
+            "sessionInfo.validDay": data.session_period_validity,
+            "sessionInfo.sessionName": data.session_name,
+            "sessionInfo.sessionPrice": data.price,
+            "sessionInfo.sessionImg": data.image_phone,
+            "sessionInfo.sessionStartTime": formatTime(data.session_start_time * 1000, 'yyyy-mm-dd')
+        });
+
+        if (data.member_list) {
+
+            let user = data.member_list,
+                //  需要缓存到本地然后去修改地址页面直接拿到修改
+                saveAddress = {
+                    addressInfo: {
+                        userName: user.member_name,
+                        userPhone: user.member_mobile,
+                        userWeChat: user.member_wx_no,
+                        userAddress: user.userAddress,
+                    }
+                };
+
+            this.setData({
+                userInfoFull: true,
+                btnDisable: false,
+                ...saveAddress,
+            });
+
+            wx.setStorageSync('userAddress', saveAddress);
+        }
+        this.getActivityDiscount();
+    },
+
+    //  TODO    获取活动课程详情的折扣
+    getActivityDiscount(){
+
+        let params = {
+            product_id: this.data.pageQuery.sessionId,
+            product_type: 12,
+            product_list: [{
+                "is_main": "1",
+                "product_id": this.data.pageQuery.sessionId,
+                "product_type": "12",
+                "payment_order_type": "12",
+                "activity_course_id": this.data.pageQuery.activityId
+            }],
+            discounts_list: []
+        };
+
+        wx.setStorageSync('checkoutActivityParams', {...params});
+
+        params.product_list = JSON.stringify(params.product_list);
+        params.discounts_list = JSON.stringify(params.discounts_list);
+
+        postCheckout(params, data => {
+            this.handleDiscountInfo(data, true);
+        })
+
+    },
+
+
     //  生成神策上报参数
     renderTrackSessionInfo(data){
 
@@ -270,25 +366,25 @@ Page({
         let discountsInfo = {};
 
         data.total_list.forEach(item => {
-            discountsInfo[item.sort_order] = item;
+            discountsInfo[item.code] = item;
         });
 
         this.renderTrackParamsDiscount(discountsInfo);
 
         //  如果互斥  那么每一次请求都会判断有没有这种优惠, 只要有就显示
-        if (discountsInfo[5]) this.setData({canUseCoupon: true});
+        if (discountsInfo['VOUCHER']) this.setData({canUseCoupon: true});
 
-        if (discountsInfo[6]) {
+        if (discountsInfo['POINTS']) {
             this.setData({
                 canUsePoints: true
             });
-            this.data.pointsList[0].title = '瑜币抵用：可用' + discountsInfo[6].purchase_discounts_value + '瑜币抵用' + (discountsInfo[6].purchase_discounts_value / 100).toFixed(2);
-            this.data.pointsList[0].usePoints = discountsInfo[6].purchase_discounts_value;
+            this.data.pointsList[0].title = '瑜币抵用：可用' + discountsInfo['POINTS'].purchase_discounts_value + '瑜币抵用' + (discountsInfo['POINTS'].purchase_discounts_value / 100).toFixed(2);
+            this.data.pointsList[0].usePoints = discountsInfo['POINTS'].purchase_discounts_value;
         }
 
         if(this.data.pointsList && this.data.pointsList.length > 0){
-            this.data.pointsList[0].isChecked = !!discountsInfo[6];
-            this.data.pointsList[1].isChecked = !discountsInfo[6];
+            this.data.pointsList[0].isChecked = !!discountsInfo['POINTS'];
+            this.data.pointsList[1].isChecked = !discountsInfo['POINTS'];
         }
 
         this.setData({
@@ -395,9 +491,16 @@ Page({
     //  /^1[0-9]{10}$/
     checkInfoIsRight() {
         let info = this.data.addressInfo;
-        this.setData({
-            btnDisable: (!info.userName || !info.userWeChat || !info.userPhone || !this.data.areaInfo.pId)
-        })
+        if(this.data.pageQuery.activityId){
+            this.setData({
+                btnDisable: (!info.userName || !info.userWeChat || !info.userPhone)
+            })
+        }else{
+            this.setData({
+                btnDisable: (!info.userName || !info.userWeChat || !info.userPhone || !this.data.areaInfo.pId)
+            })
+        }
+
     },
 
     //          输入框输入事件  end    -----------------------
@@ -439,36 +542,55 @@ Page({
 
         //  调用preCreatePayment  step1  从缓存中先获取产品信息
         let checkoutDetail = wx.getStorageSync('checkoutParams'),
-            params = {
-                product_list: JSON.stringify(checkoutDetail.product_list),
+            checkoutActivityParams = wx.getStorageSync('checkoutActivityParams'),
+            commonParams = {
                 member_name: userAddress.userName,
                 member_mobile: userAddress.userPhone,
                 member_wx_no: userAddress.userWeChat,
-                address: userAddress.userAddress || "",
-                product_id: checkoutDetail.product_id,
-                product_type: checkoutDetail.product_list[0].product_type,
-                province_id: areaInfo.pId,
-                region_id: areaInfo.cId,
-                area_id: areaInfo.aId,
                 partner: IS_IOS ? "121" : "111",
-                source_id: checkoutDetail.product_id,
-                source_type: "50001",
                 payment_order_type: 2,
                 uid: app.globalData.userInfo.uid,
                 sid: wx.getStorageSync('sid'),
-                openid: wx.getStorageSync('openId'),
+                openid: wx.getStorageSync('openId')
+            },
+            params = {};
+
+        if(this.data.pageQuery.activityId){
+            params = {
+                ...commonParams,
+                source_type: "50003",
+                product_id: checkoutActivityParams.product_id,
+                product_type: checkoutActivityParams.product_list[0].product_type,
+                product_list: JSON.stringify(checkoutActivityParams.product_list),
+                payment_order_type:12
             };
+        }else{
+            params = {
+                ...commonParams,
+                source_type: "50001",
+                source_id: checkoutDetail.product_id,
+                product_id: checkoutDetail.product_id,
+                product_list: JSON.stringify(checkoutDetail.product_list),
+                product_type: checkoutDetail.product_list[0].product_type,
+                address: userAddress.userAddress || "",
+                province_id: areaInfo.pId,
+                region_id: areaInfo.cId,
+                area_id: areaInfo.aId,
+            };
+        }
+
+
 
         if(this.data.invite_euid){
             params.invite_euid = this.data.invite_euid;
             params.source_type = '50002';
         }
 
-        if(this.data.discountsInfo[5]){
-            params.user_voucher_id = this.data.discountsInfo[5].purchase_discounts_value || 0;
+        if(this.data.discountsInfo['VOUCHER']){
+            params.user_voucher_id = this.data.discountsInfo['VOUCHER'].purchase_discounts_value || 0;
         }
-        if(this.data.discountsInfo[6]){
-            params.points = this.data.discountsInfo[6].purchase_discounts_value || 0;
+        if(this.data.discountsInfo['POINTS']){
+            params.points = this.data.discountsInfo['POINTS'].purchase_discounts_value || 0;
         }
 
         createPrePayment(params, function(data){
