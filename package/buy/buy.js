@@ -1,4 +1,4 @@
-import {IS_IOS, formatTime, wxToast, wxSetNavTitle} from '../../common/common';
+import {IS_IOS, formatTime, wxToast, wxSetNavTitle, navigateToPath} from '../../common/common';
 import {getYogaSchoolInfo, postCheckout, createPrePayment, getDetailWebInfo} from '../../common/$http';
 import AREA from './area';
 
@@ -79,7 +79,8 @@ Page({
     onLoad(options) {
 
         this.setData({
-            pageQuery: options
+            pageQuery: options,
+            isActivityEnter: !!options.activityId
         });
         track_params = {};
         pageInfo.sessionId = options.sessionId;
@@ -255,7 +256,7 @@ Page({
             "sessionInfo.sessionStartTime": formatTime(data.session_start_time * 1000, 'yyyy-mm-dd')
         });
 
-        if (data.member_list) {
+        if (data.member_list && data.member_list.member_name && data.member_list.member_mobile) {
 
             let user = data.member_list,
                 //  需要缓存到本地然后去修改地址页面直接拿到修改
@@ -306,7 +307,6 @@ Page({
 
     },
 
-
     //  生成神策上报参数
     renderTrackSessionInfo(data){
 
@@ -320,7 +320,6 @@ Page({
         track_params.teaching_location = data.address;
 
     },
-
 
     //  第一次进入页面获取优惠信息  此时将优惠信息缓存起来。每次更新优惠时，则重新修改参数并缓存
     getDiscountInfo(sessionId) {
@@ -358,7 +357,6 @@ Page({
         });
 
     },
-
 
     //  处理优惠信息 (绘制优惠界面)
     handleDiscountInfo(data, isFirst) {
@@ -460,7 +458,6 @@ Page({
     },
 
     //          输入框输入事件  start   ----------------------
-
     setUserName(e) {
         this.setData({
             "addressInfo.userName": e.detail.value
@@ -504,7 +501,6 @@ Page({
     },
 
     //          输入框输入事件  end    -----------------------
-
     cancelPicker(e) {
         this.setData({
             showAreaPicker: e.detail
@@ -579,8 +575,6 @@ Page({
             };
         }
 
-
-
         if(this.data.invite_euid){
             params.invite_euid = this.data.invite_euid;
             params.source_type = '50002';
@@ -610,27 +604,39 @@ Page({
     //  吊起微信支付
     openWxPay(data, trackParams) {
 
-        let info = data.pay_info;
+        let info = data.pay_info,
+            sessionId = trackParams.product_id,
+            activityUrl = `/activity/activitySuccess/activitySuccess?session_id=${sessionId}`;
 
         this.renderTrackParamsAddress(trackParams);
 
         track_params.order_id = data.out_trade_no;
 
-        wx.requestPayment({
-            timeStamp: info.timeStamp + "",
-            nonceStr: info.nonceStr,
-            package: info.package,
-            signType: info.signType,
-            paySign: info.paySign,
-            success: res => {
-                wx.redirectTo({
-                    url: '../success/success?order_id=' + data.out_trade_no + '&session_id=' + pageInfo.sessionId
-                })
-            },
-            fail: err => {
-                wxToast('支付失败');
-            }
-        });
+        //  必须是活动课程进入并且0元购的活动  就可以不走微信支付
+        if(this.data.isActivityEnter && this.data.discountsInfo['COURSE_ACTIVITY']){
+            wx.redirectTo({url: activityUrl + '&valid_day=' + this.data.sessionInfo.validDay});
+        }else{
+            wx.requestPayment({
+                timeStamp: info.timeStamp + "",
+                nonceStr: info.nonceStr,
+                package: info.package,
+                signType: info.signType,
+                paySign: info.paySign,
+                success: res => {
+                    if(this.data.isActivityEnter){
+                        wx.redirectTo({url: activityUrl + '&valid_day=' + this.data.sessionInfo.validDay});
+                    }else{
+                        wx.redirectTo({
+                            url: '../success/success?order_id=' + data.out_trade_no + '&session_id=' + pageInfo.sessionId
+                        })
+                    }
+                },
+                fail: err => {
+                    wxToast('支付失败');
+                }
+            });
+        }
+
 
     },
 

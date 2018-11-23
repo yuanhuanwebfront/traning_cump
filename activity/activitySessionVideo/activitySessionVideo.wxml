@@ -1,0 +1,10 @@
+<view class="container">
+
+    <video class="videoInfo" objectFit="fill" src="{{sessionVideo}}"></video>
+
+    <view class="video-desc">
+        <view class="word-18 color-3">RYT教练线下培训训练营</view>
+        <view class="word-13 color-6">课程小标题小标题小标题</view>
+    </view>
+
+</view>

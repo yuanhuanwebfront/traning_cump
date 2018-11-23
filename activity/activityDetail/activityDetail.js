@@ -52,7 +52,7 @@ Page({
 
     onShow() {
         if (this.data.globalQuery && wx.getStorageSync('sid')) {
-            if (!hasGetInfo) this.getDetailInfo(this.data.globalQuery);
+            this.getDetailInfo(this.data.globalQuery);
         }
         this.countDown();
     },
@@ -220,6 +220,10 @@ Page({
     toBuySession(){
         let {activity_id, session_id} = this.data.globalQuery;
         navigateToPath(`/package/buy/buy?sessionId=${session_id}&activityId=${activity_id}`);
+    },
+
+    toWatchSession(){
+
     },
 
     closeDialog(e) {

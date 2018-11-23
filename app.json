@@ -76,7 +76,8 @@
       "activityDetail/activityDetail",
       "activityList/activityList",
       "activitySuccess/activitySuccess",
-      "activityMine/activityMine"
+      "activityMine/activityMine",
+      "activitySessionVideo/activitySessionVideo"
     ]
   }]
 }

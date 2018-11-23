@@ -63,7 +63,7 @@
         <button wx:if="{{activityDetail.status === 1 || activityDetail.status === 0 || activityDetail.status === 4}}"
                 class="orange-bg word-14 {{activityDetail.status === 4 ? 'disable' : ''}}" bindtap="openInviteDialog">去邀请
         </button>
-        <button wx:if="{{activityDetail.status === 2 || activityDetail.status === 3}}" class="word-14 sign">立即报名
+        <button wx:if="{{activityDetail.status === 2}}" class="word-14 sign">立即报名
         </button>
     </view>
 
@@ -98,6 +98,9 @@
 
         <!--    活动参与成功的展示   -->
         <button wx:if="{{activityDetail.status === 2}}" bindtap="toBuySession" class="orange-bg center word-14">立即报名</button>
+
+        <!--    活动购买成功的展示   -->
+        <button wx:if="{{activityDetail.status === 3}}" bindtap="toWatchSession" class="orange-bg center word-14">立即播放</button>
 
         <!--    活动结束的展示 -->
         <button wx:if="{{activityDetail.status === 4}}" bindtap="backHome" class="orange-bg center word-14">进入训练营

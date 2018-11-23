@@ -6,7 +6,7 @@
 
     <view class="center word-18 color-3" style="margin-bottom: 22rpx;">恭喜你，购买成功!</view>
 
-    <view class="center word-13 color-6" >课程有效期：5天</view>
+    <view class="center word-13 color-6" >课程有效期：{{validDay}}天</view>
 
     <button class="word-18 btn-confirm see" style="margin-top: 88rpx;">立即观看</button>
 </view>

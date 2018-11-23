@@ -89,10 +89,6 @@ Page({
 
         mySa.trackEvent(11, {page_id: 1001});
 
-        this.setData({
-            mineActivityList: mock.mine_activity_list
-        });
-
     },
 
     onShow() {
@@ -135,7 +131,7 @@ Page({
     //  获取活动课程列表
     getActivityList(){
         getDetailWebInfo({}, this.handleActivityList, 'getCourseActivityList');
-        getDetailWebInfo({}, this.handleActivityList, 'getUserJoinActivitySessionList');
+        getDetailWebInfo({}, this.handleUserJoinActivityList, 'getUserJoinActivitySessionList');
     },
 
     handleActivityList(data){
@@ -153,6 +149,19 @@ Page({
         });
         this.setData({activityList});
         wx.setStorageSync('activityList', activityList);
+    },
+
+    handleUserJoinActivityList(data){
+        function formatSession(item){
+            return {
+                session_image: item.image_phone,
+                session_name: item.session_name,
+                end_time: ''
+            }
+        }
+        this.setData({
+            mineActivityList: data.map(formatSession)
+        });
     },
 
     //  TODO    获取我的活动课程    暂时没有购买操作  后面再处理
