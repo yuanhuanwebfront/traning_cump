@@ -63,8 +63,7 @@
         <button wx:if="{{activityDetail.status === 1 || activityDetail.status === 0 || activityDetail.status === 4}}"
                 class="orange-bg word-14 {{activityDetail.status === 4 ? 'disable' : ''}}" bindtap="openInviteDialog">去邀请
         </button>
-        <button wx:if="{{activityDetail.status === 2}}" class="word-14 sign">立即报名
-        </button>
+        <button wx:if="{{activityDetail.status === 2}}" bindtap="toBuySession" class="word-14 sign">立即报名</button>
     </view>
 
     <!--    规则区域-->

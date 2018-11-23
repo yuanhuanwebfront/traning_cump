@@ -12,8 +12,10 @@ Page({
     },
 
     toWatchVideo(){
-        wx.navigateTo({
-            url: '/activity/activitySessionVideo/activitySessionVideo?sessionId=' + this.data.pageQuery.session_id
+        wx.redirectTo({
+            url: '/activity/activitySessionVideo/activitySessionVideo?session_id='
+            + this.data.pageQuery.session_id + '&activity_id='
+            + this.data.pageQuery.activity_id
         })
     }
 

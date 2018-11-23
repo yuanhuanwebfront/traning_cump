@@ -606,7 +606,8 @@ Page({
 
         let info = data.pay_info,
             sessionId = trackParams.product_id,
-            activityUrl = `/activity/activitySuccess/activitySuccess?session_id=${sessionId}`;
+            activityId = this.data.pageQuery.activityId,
+            activityUrl = `/activity/activitySuccess/activitySuccess?session_id=${sessionId}&activity_id=${activityId}`;
 
         this.renderTrackParamsAddress(trackParams);
 

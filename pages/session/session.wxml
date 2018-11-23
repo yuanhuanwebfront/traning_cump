@@ -28,13 +28,13 @@
     <view wx:if="{{mineActivityList.length > 0}}">
         <view class="list-title activity-title word-14 color-3 split-border">我的课程</view>
         <view class="my-activity">
-            <view wx:if="{{index < 2}}" wx:for="{{mineActivityList}}" bindtap="toWatchVideo"
+            <view wx:if="{{index < 2}}" data-info="{{item}}" wx:for="{{mineActivityList}}" bindtap="toWatchVideo"
                   wx:key="" class="my-activity-item flex split-border">
-                <image src="{{item.session_image}}"></image>
-                <view>
-                    <view class="word-15 color-3 main-title">{{item.session_name}}</view>
-                    <view class="word-14 color-9">有效期至：{{item.end_time}}</view>
-                    <view class="word-12 play-btn">立即播放</view>
+                <image data-info="{{item}}" src="{{item.session_image}}"></image>
+                <view data-info="{{item}}">
+                    <view data-info="{{item}}" class="word-15 color-3 main-title">{{item.session_name}}</view>
+                    <view data-info="{{item}}" class="word-14 color-9">有效期至：{{item.end_time}}</view>
+                    <view data-info="{{item}}" class="word-12 play-btn">立即播放</view>
                 </view>
             </view>
             <view class="word-12 color-9 center get-more" bindtap="toMineActivityList" wx:if="{{mineActivityList.length >= 2}}">查看更多</view>

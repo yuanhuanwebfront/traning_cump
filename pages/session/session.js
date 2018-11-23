@@ -98,6 +98,8 @@ Page({
             return {
                 session_image: item.image_phone,
                 session_name: item.session_name,
+                session_id: item.id,
+                activity_id: item.course_activity_id,
                 end_time: ''
             }
         }
@@ -116,8 +118,10 @@ Page({
         navigateToPath('/activity/activityList/activityList');
     },
 
-    toWatchVideo(){
-
+    toWatchVideo(e){
+        let {session_id, activity_id} = e.target.dataset.info,
+            url = `/activity/activitySessionVideo/activitySessionVideo?session_id=${session_id}&activity_id=${activity_id}`;
+        navigateToPath(url)
     },
 
     joinSession() {

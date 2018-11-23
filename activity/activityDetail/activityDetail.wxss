@@ -80,7 +80,7 @@
 .invite-area button{
     width: 140rpx;
     height: 52rpx;
-    line-height: 52rpx;
+    line-height: 48rpx;
     border-radius: 26rpx;
     color: #fff;
     padding: 0;
