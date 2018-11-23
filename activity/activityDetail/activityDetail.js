@@ -36,7 +36,8 @@ Page({
         wx.hideShareMenu();
 
         this.setData({
-            globalQuery: options
+            globalQuery: options,
+            notFirstLoad: false
         });
 
         globalInterval = null;
@@ -52,7 +53,7 @@ Page({
 
     onShow() {
         if (this.data.globalQuery && wx.getStorageSync('sid')) {
-            this.getDetailInfo(this.data.globalQuery);
+            if(this.data.notFirstLoad) this.getDetailInfo(this.data.globalQuery);
         }
         this.countDown();
     },
@@ -69,6 +70,7 @@ Page({
             };
 
         getDetailWebInfo(params, data => {
+            this.setData({notFirstLoad: true});
             this.handleDetailInfo(data, assistParams)
         }, 'getActivitySessionInfo');
 
@@ -223,7 +225,9 @@ Page({
     },
 
     toWatchSession(){
-
+        let {session_id, activity_id} = this.data.globalQuery,
+            url = `/activity/activitySessionVideo/activitySessionVideo?session_id=${session_id}&activity_id=${activity_id}`;
+        navigateToPath(url);
     },
 
     closeDialog(e) {

@@ -8,5 +8,5 @@
 
     <view class="center word-13 color-6" >课程有效期：{{validDay}}天</view>
 
-    <button class="word-18 btn-confirm see" style="margin-top: 88rpx;">立即观看</button>
+    <button class="word-18 btn-confirm see" bindtap="toWatchVideo" style="margin-top: 88rpx;">立即观看</button>
 </view>

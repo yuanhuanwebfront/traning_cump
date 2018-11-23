@@ -5,64 +5,6 @@ let mySa = require('../../common/sa.js');
 
 let GLOBAL_SWIPER = 0;
 
-// status 0 未参加  1 未成功  2 已结束   is_join == 1  已参加
-
-const mock = {
-    // 我报名和购买的活动课程列表
-    // 课程图片  课程名称  有效期
-    // 最多三条（前端页面大于等于三条会只展示两条）
-    "mine_activity_list": [{
-        "id": 1,
-        "session_image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
-        "session_name": "课程名称-1",
-        "end_time": "2018-11-2"
-    },{
-        "id": 2,
-        "session_image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
-        "session_name": "课程名称-2",
-        "end_time": "2018-11-3"
-    },{
-        "id": 3,
-        "session_image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
-        "session_name": "课程名称-3",
-        "end_time": "2018-11-4"
-    }],
-
-    // 	配置的活动课程列表
-    //  图片 课程标题  课程副标题  课程原价 参加人数  课程状态(0  未参加  1 已参加  2 已购买)
-    "activity_list": [{
-        "image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
-        "sessionTitle": "活动标题1",
-        "subTitle": "活动副标题1",
-        "price": "10",
-        "joinPerson": "100",
-        "status": 0
-    }, {
-        "image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
-        "sessionTitle": "活动标题2",
-        "subTitle": "活动副标题2",
-        "price": "20",
-        "joinPerson": "200",
-        "status": 1
-    }, {
-        "image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
-        "sessionTitle": "活动标题3",
-        "subTitle": "活动副标题3",
-        "price": "30",
-        "joinPerson": "300",
-        "status": 2
-    },
-        {
-        "image": "http://ypycdn.dailyyoga.com.cn/cd/90/cd90fec9fcaac7552a6d718f9a8fca0f.jpeg",
-        "sessionTitle": "活动标题4",
-        "subTitle": "活动副标题4",
-        "price": "40",
-        "joinPerson": "400",
-        "status": 2
-    }
-    ]
-};
-
 Page({
 
     data: {
@@ -131,7 +73,7 @@ Page({
     //  获取活动课程列表
     getActivityList(){
         getDetailWebInfo({}, this.handleActivityList, 'getCourseActivityList');
-        getDetailWebInfo({}, this.handleUserJoinActivityList, 'getUserJoinActivitySessionList');
+        getDetailWebInfo({}, this.handleUserJoinActivityList, 'getUserJoinActivitySessionHaveInHand');
     },
 
     handleActivityList(data){
@@ -172,6 +114,10 @@ Page({
 
     toMoreActivity(){
         navigateToPath('/activity/activityList/activityList');
+    },
+
+    toWatchVideo(){
+
     },
 
     joinSession() {

@@ -28,7 +28,8 @@
     <view wx:if="{{mineActivityList.length > 0}}">
         <view class="list-title activity-title word-14 color-3 split-border">我的课程</view>
         <view class="my-activity">
-            <view wx:if="{{index < 2}}" wx:for="{{mineActivityList}}" wx:key="" class="my-activity-item flex split-border">
+            <view wx:if="{{index < 2}}" wx:for="{{mineActivityList}}" bindtap="toWatchVideo"
+                  wx:key="" class="my-activity-item flex split-border">
                 <image src="{{item.session_image}}"></image>
                 <view>
                     <view class="word-15 color-3 main-title">{{item.session_name}}</view>

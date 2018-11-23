@@ -3,9 +3,14 @@ video.videoInfo{
     height: 422rpx;
 }
 .video-desc{
-    margin-top: 20rpx;
-    padding: 0 30rpx;
+    padding: 20rpx 30rpx;
+    background: #fff;
 }
 .video-desc .word-18{
     margin-bottom: 10rpx;
+}
+.detail-content{
+    padding: 0 20rpx;
+    margin-top: 40rpx;
+    padding-bottom: 80rpx;
 }
