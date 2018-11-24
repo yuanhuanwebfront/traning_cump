@@ -1,5 +1,6 @@
 import {getDetailWebInfo} from '../../common/$http';
 
+
 let wxParseObj = require('../../lib/wxParse/wxParse.js');
 
 Page({
@@ -12,7 +13,6 @@ Page({
         getDetailWebInfo(options, this.handleSessionInfo, 'getActivitySessionInfo');
     },
 
-
     handleSessionInfo(data){
         this.setData({
             videoUrl: data.stream_media_cn,
@@ -20,8 +20,7 @@ Page({
             sessionTitle: data.session_title
         });
 
-        wxParseObj.wxParse('templateDetailH5', 'html', data.session_content, this)
+        wxParseObj.wxParse('templateDetailH5', 'html', data.introduction, this)
     }
-
 
 });

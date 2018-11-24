@@ -13,4 +13,6 @@
         <template is="wxParse" data="{{wxParseData: templateDetailH5.nodes}}"/>
     </view>
 
+    <button class="btn-confirm word-18 design-btn">自定义文字</button>
+
 </view>

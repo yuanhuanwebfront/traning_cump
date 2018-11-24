@@ -52,12 +52,9 @@
             <view class="inline">
                 <view class="word-13 color-3" style="margin-bottom: 4rpx;">已邀请{{activityDetail.invite_list.length}}人助力
                 </view>
-                <view class="word-11 color-6" wx:if="{{activityDetail.status === 1 || activityDetail.status === 0 || activityDetail.status === 4}}">还差{{activityDetail.full_person -
-                    activityDetail.invite_list.length}}人免费获得课程
-                </view>
-                <view class="word-11 color-6" wx:if="{{activityDetail.status === 2 || activityDetail.status === 3}}">
-                    您已免费获得课程
-                </view>
+                <view wx:if="{{activityDetail.status === 1 || activityDetail.status === 0 || activityDetail.status === 4}}"
+                      class="word-11 color-6" >还差{{activityDetail.full_person - activityDetail.invite_list.length}}人免费获得课程</view>
+                <view class="word-11 color-6" wx:if="{{activityDetail.status === 2 || activityDetail.status === 3}}">您已免费获得课程</view>
             </view>
         </view>
         <button wx:if="{{activityDetail.status === 1 || activityDetail.status === 0 || activityDetail.status === 4}}"

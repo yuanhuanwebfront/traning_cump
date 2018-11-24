@@ -28,7 +28,8 @@ Page({
         },
         activityDetail: {},
         emptyImg: "http://qiniucdn.dailyyoga.com.cn/8c/82/8c82090346ccd81acedc440c76d344e2.png",
-        globalShareId: ''
+        globalShareId: '',
+        firstEnter: true
     },
 
     onLoad(options) {
@@ -81,9 +82,9 @@ Page({
     handleInviteInfo(data) {
         //  state 2  提示已经助力过了
         if (data.state !== 0) {
-
+            this.data.firstEnter = false;
             this.setData({
-                showShareInDialog: true,
+                showShareInDialog: data.state !== 4,
                 inviteInfo: {
                     helpUserName: data.nickname,
                     inviteList: data.invite_list,
@@ -95,7 +96,7 @@ Page({
 
     handleDetailInfo(data, assistParams) {
 
-        let templateH5 = data.introduction,
+        let templateH5 = data.session_content,
             fullArr = new Array(data.activity_user_num).fill({});
 
         wxParseObj.wxParse('templateDetailH5', 'html', templateH5, this);
@@ -124,7 +125,8 @@ Page({
             this.countDown();
         });
 
-        if (data.assist_status !== 4 && assistParams.user_share_id) {
+        //  课程没有结束 --- 并且 --- 是从分享卡片进入的 --- 并且 --- 是第一次进来的
+        if (data.assist_status !== 4 && assistParams.user_share_id && this.data.firstEnter) {
             getDetailWebInfo(assistParams, this.handleInviteInfo, 'userPowerActivities', 'POST');
         }
 

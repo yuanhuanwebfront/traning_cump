@@ -73,7 +73,10 @@ Page({
     //  获取活动课程列表
     getActivityList(){
         getDetailWebInfo({}, this.handleActivityList, 'getCourseActivityList');
-        getDetailWebInfo({}, this.handleUserJoinActivityList, 'getUserJoinActivitySessionHaveInHand');
+        getDetailWebInfo({
+            page: 1,
+            size: 3
+        }, this.handleUserJoinActivityList, 'getUserJoinActivitySessionHaveInHand');
     },
 
     handleActivityList(data){
@@ -100,7 +103,7 @@ Page({
                 session_name: item.session_name,
                 session_id: item.id,
                 activity_id: item.course_activity_id,
-                end_time: ''
+                validDate: formatTime(item.valid_date * 1000, 'yyyy-mm-dd'),
             }
         }
         this.setData({
@@ -111,7 +114,7 @@ Page({
     //  TODO    获取我的活动课程    暂时没有购买操作  后面再处理
 
     toMineActivityList(){
-        navigateToPath('/activity/activityMine/activityMine');
+        navigateToPath('/activity/activityMine/activityMine?type=1');
     },
 
     toMoreActivity(){

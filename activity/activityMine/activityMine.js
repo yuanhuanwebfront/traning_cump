@@ -1,16 +1,30 @@
 import {getDetailWebInfo} from "../../common/$http";
 
+let tempList = [];
+let pageParams = {
+    page: 1,
+    size: 10
+};
+
 Page({
 
     data: {
         mineActivityList: []
     },
 
-    onLoad(){
-        getDetailWebInfo({}, this.handleMineList, 'getUserJoinActivitySessionList');
+    onLoad(options){
+        if(options.type){
+            this.setData({isBuyPage: true});
+            pageParams.page = 1;
+            getDetailWebInfo(pageParams, this.handleMineList, 'getUserJoinActivitySessionHaveInHand');
+        }else{
+            getDetailWebInfo({}, this.handleMineList, 'getUserJoinActivitySessionList');
+        }
+
     },
 
     handleMineList(data){
+
         let mineActivityList = data.map(item => {
             return {
                 id: item.id,
@@ -23,7 +37,18 @@ Page({
                 status: item.user_state
             }
         });
-        this.setData({mineActivityList});
+
+        tempList = [...mineActivityList];
+        this.setData({
+            mineActivityList: [...this.data.mineActivityList, ...tempList]
+        });
+    },
+
+    onReachBottom(){
+        if(tempList.length >= pageParams.size && this.data.isBuyPage){
+            pageParams.page++;
+            getDetailWebInfo(pageParams, this.handleMineList, 'getUserJoinActivitySessionHaveInHand');
+        }
     },
 
     backHome(){

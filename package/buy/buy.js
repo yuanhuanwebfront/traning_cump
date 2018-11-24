@@ -253,7 +253,7 @@ Page({
             "sessionInfo.sessionName": data.session_name,
             "sessionInfo.sessionPrice": data.price,
             "sessionInfo.sessionImg": data.image_phone,
-            "sessionInfo.sessionStartTime": formatTime(data.session_start_time * 1000, 'yyyy-mm-dd')
+            "sessionInfo.sessionStartTime": formatTime(new Date().getTime(), 'yyyy-mm-dd')
         });
 
         if (data.member_list && data.member_list.member_name && data.member_list.member_mobile) {

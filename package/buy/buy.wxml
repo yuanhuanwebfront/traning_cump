@@ -56,7 +56,7 @@
         <view class="order-content flex">
             <image src="{{sessionInfo.sessionImg}}" mode="widthFix"></image>
             <view class="inner">
-                <view hidden="{{hideAddressDetail}}" class="word-13 color-6">开课时间：{{sessionInfo.sessionStartTime}}</view>
+                <view class="word-13 color-6">开课时间：{{sessionInfo.sessionStartTime}}</view>
                 <view wx:if="{{hideAddressDetail}}" class="word-13 color-6">课程有效期：{{sessionInfo.validDay}} 天</view>
                 <view wx:if="{{sessionInfo.sessionAddress}}" class="word-13 color-6">上课地点：{{sessionInfo.sessionAddress}}</view>
             </view>
@@ -72,7 +72,7 @@
 
                 <!--   1.3.0  新增活动课程优惠   不与任何优惠共用（存在这个优惠，其他都没有）  -->
                 <view class="discount-item flex" wx:if="{{discountsInfo['COURSE_ACTIVITY']}}" style="border: none;">
-                    <text>{{discountsInfo['COURSE_ACTIVITY'].title}} <text class="word-12 color-9">(不与其他优惠共享)</text> </text>
+                    <text>{{discountsInfo['COURSE_ACTIVITY'].title}}</text>
                     <text class="money">{{discountsInfo['COURSE_ACTIVITY'].value_content}}</text>
                 </view>
 

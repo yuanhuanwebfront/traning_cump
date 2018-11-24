@@ -10,7 +10,18 @@ video.videoInfo{
     margin-bottom: 10rpx;
 }
 .detail-content{
-    padding: 0 20rpx;
+    width: 100%;
     margin-top: 40rpx;
-    padding-bottom: 80rpx;
+    padding-bottom: 120rpx;
+}
+.detail-content image{display: block !important;}
+.design-btn{
+    position: fixed;
+    bottom: 40rpx;
+    width: 556rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-radius: 40rpx;
+    left: 50%;
+    margin-left: -278rpx;
 }
