@@ -33,7 +33,7 @@
                 <image data-info="{{item}}" src="{{item.session_image}}"></image>
                 <view data-info="{{item}}">
                     <view data-info="{{item}}" class="word-15 color-3 main-title">{{item.session_name}}</view>
-                    <view data-info="{{item}}" class="word-14 color-9">有效期至：{{item.validDate}}</view>
+                    <view wx:if="{{item.hasDate}}" data-info="{{item}}" class="word-14 color-9">有效期至：{{item.validDate}}</view>
                     <view data-info="{{item}}" class="word-12 play-btn">立即播放</view>
                 </view>
             </view>
@@ -50,7 +50,7 @@
         </view>
         <swiper style="min-height: 430rpx;" bindchange="changeActivitySwiper" current="{{currentSwiper}}" circular="{{isCircularSwiper}}">
             <block wx:for="{{activityList}}" wx:key="">
-                <swiper-item>
+                <swiper-item data-info="{{item}}" bindtap="trackViewReport">
                     <activity-item activity-info="{{item}}"></activity-item>
                 </swiper-item>
             </block>

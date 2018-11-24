@@ -307,10 +307,15 @@
 }
 .detail-content{
     width: 100%;
+    padding: 0 20rpx;
     box-sizing: border-box;
+    margin-top: 40rpx;
     padding-bottom: 120rpx;
 }
-.detail-content image{display: block !important;}
+.detail-content image{
+    display: block !important;
+    width: 100% !important;
+}
 .share-in .user-name-h2{
     max-width: 280rpx;
     margin-top: 0rpx;

@@ -1,6 +1,6 @@
-let app = getApp(),
-    globalInterval = null,
+let globalInterval = null,
     hasGetInfo = false,
+    mySa = require('../../common/sa.js'),
     wxParseObj = require('../../lib/wxParse/wxParse.js');
 
 import {getDetailWebInfo} from '../../common/$http';
@@ -39,6 +39,10 @@ Page({
         this.setData({
             globalQuery: options,
             notFirstLoad: false
+        });
+
+        mySa.trackEvent(7, {
+            page_id: 1018
         });
 
         globalInterval = null;
@@ -83,6 +87,9 @@ Page({
         //  state 2  提示已经助力过了
         if (data.state !== 0) {
             this.data.firstEnter = false;
+            mySa.trackEvent(7, {
+                page_id: 1016
+            });
             this.setData({
                 showShareInDialog: data.state !== 4,
                 inviteInfo: {
@@ -188,6 +195,11 @@ Page({
             showInviteDialog: false
         });
 
+        mySa.trackEvent(9, {
+            page_id: 1020,
+            share_way: 'weixin_fri'
+        });
+
         return {
             title: `我正在参加【${session_title}】活动，帮我助力再送你一个权益`,
             path: shareUrl,
@@ -203,6 +215,10 @@ Page({
         }
 
         let {activity_id, session_id} = this.data.globalQuery;
+
+        mySa.trackEvent(7, {
+            page_id: 1020
+        });
 
         getDetailWebInfo({session_id, activity_course_id: activity_id}, data => {
             this.setData({
@@ -222,7 +238,13 @@ Page({
 
     //  直接购买或者助力完成免费获得课程
     toBuySession(){
+
         let {activity_id, session_id} = this.data.globalQuery;
+        mySa.trackEvent(6, {
+            activity_type: 1,
+            activity_id,
+            deal_id: session_id
+        });
         navigateToPath(`/package/buy/buy?sessionId=${session_id}&activityId=${activity_id}`);
     },
 
@@ -233,12 +255,19 @@ Page({
     },
 
     closeDialog(e) {
-        let closeStatus = e.target.dataset.close === '1';
+        let closeStatus = e.target.dataset.close === '1',
+            track = e.target.dataset.close;
+
         if (closeStatus) {
             this.setData({
                 showInviteDialog: false,
                 showShareInDialog: false,
                 showEndDialog: false
+            })
+        }
+        if(track){
+            mySa.trackEvent(4, {
+                click_id: parseInt(track)
             })
         }
 

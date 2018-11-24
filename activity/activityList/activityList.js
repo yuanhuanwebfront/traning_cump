@@ -33,6 +33,9 @@ Page({
     },
 
     onLoad(){
+        mySa.trackEvent(7, {
+            page_id: 1017
+        });
         this.getActivityList();
     },
 

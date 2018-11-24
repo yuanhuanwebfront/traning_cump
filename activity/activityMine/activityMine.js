@@ -4,7 +4,8 @@ let tempList = [];
 let pageParams = {
     page: 1,
     size: 10
-};
+},
+    mySa = require('../../common/sa.js');
 
 Page({
 
@@ -13,6 +14,9 @@ Page({
     },
 
     onLoad(options){
+        mySa.trackEvent(7, {
+            page_id: 1019
+        });
         if(options.type){
             this.setData({isBuyPage: true});
             pageParams.page = 1;

@@ -103,6 +103,7 @@ Page({
                 session_name: item.session_name,
                 session_id: item.id,
                 activity_id: item.course_activity_id,
+                hasDate: !!item.valid_date,
                 validDate: formatTime(item.valid_date * 1000, 'yyyy-mm-dd'),
             }
         }
@@ -138,9 +139,15 @@ Page({
     },
 
     changeActivitySwiperByClick(){
+        mySa.trackEvent(4, {click_id: 1008});
         this.setData({
             "currentSwiper": GLOBAL_SWIPER + 1 >= this.data.activityList.length ? 0 : GLOBAL_SWIPER + 1
         })
+    },
+
+    //  神策上报
+    trackViewReport(){
+        mySa.trackEvent(4, {click_id: 1005})
     }
 
 });

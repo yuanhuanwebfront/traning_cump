@@ -233,7 +233,7 @@ Page({
         this.getDiscountInfo(data.id);
     },
 
-    //  TODO    获取活动课程详情的信息
+    //  获取活动课程详情的信息
     getActivitySessionInfo({sessionId, activityId}){
         let params = {
             session_id: sessionId,
@@ -244,7 +244,7 @@ Page({
         }, 'getActivitySessionInfo');
     },
 
-    //  TODO    处理活动课程详情的信息
+    //   处理活动课程详情的信息
     handleActivitySessionInfo(data){
         this.setData({
             "showDetailAddress": false,
@@ -280,7 +280,7 @@ Page({
         this.getActivityDiscount();
     },
 
-    //  TODO    获取活动课程详情的折扣
+    //  获取活动课程详情的折扣
     getActivityDiscount(){
 
         let params = {
@@ -560,6 +560,11 @@ Page({
                 product_list: JSON.stringify(checkoutActivityParams.product_list),
                 payment_order_type:12
             };
+            mySa.trackEvent(8, {
+                activity_type: 1,
+                activity_id: this.data.pageQuery.activityId,
+                click_type: 1
+            })
         }else{
             params = {
                 ...commonParams,

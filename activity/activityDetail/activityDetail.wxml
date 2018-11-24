@@ -158,7 +158,7 @@
 
         <!--    助力弹窗    -->
         <view wx:if="{{showShareInDialog}}" class="share-in">
-            <view class="icon-close" data-close="1" bindtap="closeDialog"></view>
+            <view class="icon-close" data-close="1" data-track="1007" bindtap="closeDialog"></view>
             <view class="center word-20 flex">帮{{inviteInfo.helpUserName}}助力成功！</view>
             <view class="invite-person {{allInviteList.length <= 5 ? 'center' : '' }}" style="padding-left: 0;padding-right: 0;">
                 <view style="margin-left:26rpx;" wx:for="{{allInviteList}}" wx:if="{{index <= 5}}" wx:key=""
@@ -171,7 +171,7 @@
                 </view>
             </view>
             <view class="session-title word-16 center">{{inviteInfo.helpUserName}}正在参加{{activityDetail.session_title}}</view>
-            <button class="know-btn" data-close="1" bindtap="closeDialog">了解一下</button>
+            <button class="know-btn" data-close="1" data-track="1006" bindtap="closeDialog">了解一下</button>
         </view>
 
     </view>

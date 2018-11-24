@@ -13,6 +13,6 @@
         <template is="wxParse" data="{{wxParseData: templateDetailH5.nodes}}"/>
     </view>
 
-    <button class="btn-confirm word-18 design-btn">自定义文字</button>
+    <button style="background-color: {{buttonColor}}" class="btn-confirm word-18 design-btn" bindtap="jumpLink">{{buttonText}}</button>
 
 </view>
