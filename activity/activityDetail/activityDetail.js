@@ -3,7 +3,7 @@ let globalInterval = null,
     mySa = require('../../common/sa.js'),
     wxParseObj = require('../../lib/wxParse/wxParse.js');
 
-import {getDetailWebInfo} from '../../common/$http';
+import {getDetailWebInfo, transformQrCodeScene} from '../../common/$http';
 import {navigateToPath} from '../../common/common';
 
 Page({
@@ -34,12 +34,9 @@ Page({
 
     onLoad(options) {
 
-        wx.hideShareMenu();
+        let vm = this;
 
-        this.setData({
-            globalQuery: options,
-            notFirstLoad: false
-        });
+        wx.hideShareMenu();
 
         mySa.trackEvent(7, {
             page_id: 1018
@@ -47,11 +44,23 @@ Page({
 
         globalInterval = null;
 
-        if (wx.getStorageSync('sid')) {
-            hasGetInfo = true;
-            this.getDetailInfo(options);
-        } else {
-            navigateToPath('/pages/login/login');
+        function initInfo(){
+            vm.setData({
+                globalQuery: options,
+                notFirstLoad: false
+            });
+            if (wx.getStorageSync('sid')) {
+                hasGetInfo = true;
+                vm.getDetailInfo(options);
+            } else {
+                navigateToPath('/pages/login/login');
+            }
+        }
+
+        if(options.scene){
+            transformQrCodeScene({user_rebate_qr: options.scene}, initInfo);
+        }else{
+            initInfo();
         }
 
     },

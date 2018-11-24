@@ -285,12 +285,12 @@ Page({
 
         let params = {
             product_id: this.data.pageQuery.sessionId,
-            product_type: 12,
+            product_type: 13,
             product_list: [{
                 "is_main": "1",
                 "product_id": this.data.pageQuery.sessionId,
-                "product_type": "12",
-                "payment_order_type": "12",
+                "product_type": "13",
+                "payment_order_type": "13",
                 "activity_course_id": this.data.pageQuery.activityId
             }],
             discounts_list: []
@@ -558,7 +558,7 @@ Page({
                 product_id: checkoutActivityParams.product_id,
                 product_type: checkoutActivityParams.product_list[0].product_type,
                 product_list: JSON.stringify(checkoutActivityParams.product_list),
-                payment_order_type:12
+                payment_order_type: 13
             };
             mySa.trackEvent(8, {
                 activity_type: 1,

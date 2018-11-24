@@ -1,10 +1,25 @@
 <view class="container">
 
-    <view wx:if="{{mineActivityList.length > 0}}">
+    <view wx:if="{{mineActivityList.length > 0 && !isBuyPage}}">
         <view wx:for="{{mineActivityList}}" wx:key="">
 
             <activity-item activity-info="{{item}}" show-split="{{(index + 1) !== activityList.length}}"></activity-item>
 
+        </view>
+    </view>
+
+    <view wx:if="{{mineActivityList.length > 0 && isBuyPage}}">
+        <view class="my-activity" wx:for="{{mineActivityList}}">
+            <view data-info="{{item}}" bindtap="toWatchVideo"
+                  wx:key="" class="my-activity-item flex split-border">
+                <image data-info="{{item}}" src="{{item.sessionImage}}"></image>
+                <view data-info="{{item}}">
+                    <view data-info="{{item}}" class="word-15 color-3 main-title">{{item.sessionName}}</view>
+                    <view wx:if="{{item.hasDate}}" data-info="{{item}}" class="word-14 color-9">有效期至：{{item.validDate}}</view>
+                    <view data-info="{{item}}" class="word-12 play-btn">立即播放</view>
+                </view>
+            </view>
+            <view class="split-area"></view>
         </view>
     </view>
 

@@ -6,3 +6,30 @@
     background-image: url("http://qiniucdn.dailyyoga.com.cn/74/90/7490eb4dc5c0bb970a8f2553a7004ed8.png");
     background-size: 100% 100%;
 }
+.my-activity{background: #fff;}
+.my-activity-item{
+    justify-content: flex-start;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+.my-activity-item .main-title{margin-bottom: 6rpx;}
+.my-activity-item image{
+    width: 260rpx;
+    height: 149rpx;
+    margin-right: 20rpx;
+}
+.my-activity-item .play-btn{
+    background-color: #8ca5ff;
+    color: #fff;
+    width: 156rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    border-radius: 20rpx;
+    margin-top: 20rpx;
+    text-indent: 20rpx;
+    /*  tip 播放的三角按钮 */
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAADzoH0MAAAAAXNSR0IArs4c6QAAAMlJREFUOBFj+P///1wg5mQgFwA1g8BFIFYlywywdgjxEUgFk2wIkgEwZj+QwUq0QTBdaPQxIF+GKEPQNCJzXwM5bgQNQdaBhf0XKNYAxEw4DcKiCZvQLqCgKFZDsKnGIfYEKG6FYQgOxbiEfwMlilAMwaWSgPhaoDw/yCBGkEIUE4nn3AEqDcUduoQNYgQrIeBUXNLrgBJgLzDgUoFDnKJApCgayU5IoKTcCMS4AxuHX0HCFGUmirIz2QUKRUUaRYXqPGCAkV2sAwAiU8Lhy0uCOQAAAABJRU5ErkJggg==");
+    background-repeat: no-repeat;
+    background-position: right 16rpx center;
+    background-size: 16rpx 24rpx;
+}
