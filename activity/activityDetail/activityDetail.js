@@ -26,6 +26,7 @@ Page({
             2: '',
             4: 'finish-session'
         },
+        userPowerSuccess: false,    //  是否助力过  没有助力过  会继续调接口
         activityDetail: {},
         emptyImg: "http://qiniucdn.dailyyoga.com.cn/8c/82/8c82090346ccd81acedc440c76d344e2.png",
         globalShareId: '',
@@ -53,6 +54,7 @@ Page({
                 hasGetInfo = true;
                 vm.getDetailInfo(options);
             } else {
+                vm.setData({notFirstLoad: true});
                 navigateToPath('/pages/login/login');
             }
         }
@@ -67,7 +69,7 @@ Page({
 
     onShow() {
         if (this.data.globalQuery && wx.getStorageSync('sid')) {
-            if(this.data.notFirstLoad) this.getDetailInfo(this.data.globalQuery);
+          if (this.data.notFirstLoad && !this.data.userPowerSuccess) this.getDetailInfo(this.data.globalQuery);
         }
         this.countDown();
     },
@@ -95,12 +97,13 @@ Page({
     handleInviteInfo(data) {
         //  state 2  提示已经助力过了
         if (data.state !== 0) {
-            this.data.firstEnter = false;
             mySa.trackEvent(7, {
                 page_id: 1016
             });
             this.setData({
                 showShareInDialog: data.state !== 4,
+                firstEnter: false,
+                userPowerSuccess: true,
                 inviteInfo: {
                     helpUserName: data.nickname,
                     inviteList: data.invite_list,
@@ -232,7 +235,8 @@ Page({
         getDetailWebInfo({session_id, activity_course_id: activity_id}, data => {
             this.setData({
                 showInviteDialog: true,
-                globalShareId: data.user_share_id
+                globalShareId: data.user_share_id,
+                userSpaceShareImg: data.friends_circle_img
             });
 
         }, 'userShare', 'POST');
@@ -243,6 +247,13 @@ Page({
         this.setData({
             showShareInDialog: true
         })
+    },
+
+    shareImgToSpace(){
+        wx.setStorageSync('shareImgInfo', {
+            share_main_image: this.data.userSpaceShareImg
+        });
+        navigateToPath('/package/shareFriendSpace/shareFriendSpace');
     },
 
     //  直接购买或者助力完成免费获得课程

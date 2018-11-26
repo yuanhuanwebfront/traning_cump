@@ -34,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 30,
+			"current": 33,
 			"list": [
 				{
 					"id": 0,
@@ -231,7 +231,7 @@
 					"id": 28,
 					"name": "活动课程详情",
 					"pathName": "activity/activityDetail/activityDetail",
-					"query": "session_id=4&activity_id=4&shareId=18",
+					"query": "session_id=1&activity_id=1&shareId=1",
 					"scene": "1001"
 				},
 				{
@@ -266,7 +266,7 @@
 					"id": 33,
 					"name": "课程视频",
 					"pathName": "activity/activitySessionVideo/activitySessionVideo",
-					"query": "session_id=8&activity_id=4",
+					"query": "session_id=1&activity_id=1",
 					"scene": "1001"
 				}
 			]

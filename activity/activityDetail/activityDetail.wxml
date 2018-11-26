@@ -142,7 +142,7 @@
             </view>
             <view class="word-14" style="margin-bottom: 40rpx;">分享到5个微信群，成功率高达98%</view>
             <view class="share-btn-area">
-                <share-area text-color="#fff"></share-area>
+                <share-area text-color="#fff" bindsharefriend="shareImgToSpace"></share-area>
             </view>
         </view>
 

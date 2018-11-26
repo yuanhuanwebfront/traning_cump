@@ -1,8 +1,13 @@
 video.videoInfo{
+    /* position: fixed;
+    top: 0;
+    left: 0; */
     width: 100%;
     height: 422rpx;
+    /* z-index: 20; */
 }
 .video-desc{
+  /* margin-top: 422rpx; */
     padding: 20rpx 30rpx;
     background: #fff;
 }
@@ -14,19 +19,16 @@ video.videoInfo{
     padding: 0 20rpx;
     box-sizing: border-box;
     margin-top: 40rpx;
-    padding-bottom: 120rpx;
+    margin-bottom: 20rpx;
 }
 .detail-content image{
     display: block !important;
     width: 100% !important;
 }
 .design-btn{
-    position: fixed;
-    bottom: 40rpx;
     width: 556rpx;
     height: 80rpx;
+    margin-bottom: 40rpx;
     line-height: 80rpx;
     border-radius: 40rpx;
-    left: 50%;
-    margin-left: -278rpx;
 }

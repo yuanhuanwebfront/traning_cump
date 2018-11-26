@@ -327,6 +327,7 @@ Page({
         let vm = this,
             checkoutParams = {
                 sid: wx.getStorageSync('sid'),
+                version: '7.0.0',
                 product_id: sessionId,
                 product_type: 1,
                 product_list: [{
@@ -577,6 +578,7 @@ Page({
                 province_id: areaInfo.pId,
                 region_id: areaInfo.cId,
                 area_id: areaInfo.aId,
+                version: '7.0.0'
             };
         }
 

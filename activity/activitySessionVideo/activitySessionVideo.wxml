@@ -2,17 +2,21 @@
 
     <video src="{{videoUrl}}" class="videoInfo" objectFit="fill"></video>
 
-    <view class="video-desc">
-        <view class="word-18 color-3">{{sessionName}}</view>
-        <view class="word-13 color-6">{{sessionTitle}}</view>
-    </view>
+    <!-- <scroll-view style="max-height: 1200rpx;"> -->
+      <view class="video-desc">
+          <view class="word-18 color-3">{{sessionName}}</view>
+          <view class="word-13 color-6">{{sessionTitle}}</view>
+      </view>
 
-    <!--    课程详情h5  -->
-    <view class="detail-content">
-        <import src="../../lib/wxParse/wxParse.wxml"/>
-        <template is="wxParse" data="{{wxParseData: templateDetailH5.nodes}}"/>
-    </view>
+      <!--    课程详情h5  -->
+      <view class="detail-content">
+          <import src="../../lib/wxParse/wxParse.wxml"/>
+          <template is="wxParse" data="{{wxParseData: templateDetailH5.nodes}}"/>
+      </view>
 
-    <button style="background-color: {{buttonColor}}" class="btn-confirm word-18 design-btn" bindtap="jumpLink">{{buttonText}}</button>
+      <button style="background-color: {{buttonColor}}" class="btn-confirm word-18 design-btn" 
+          bindtap="jumpLink">{{buttonText}}</button>
+    <!-- </scroll-view> -->
+
 
 </view>

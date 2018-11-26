@@ -1,7 +1,7 @@
 import MD5 from '../common/md5';
 
 //  0 测试    1 mirror    2 线上
-const DEBUG_TYPE = 0;
+const DEBUG_TYPE = 2;
 
 const SHOW_HIDDEN_SESSION = false;
 

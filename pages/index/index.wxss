@@ -108,4 +108,5 @@
     color: #fff;
     margin: 0 auto;
     margin-top: 60rpx;
+    font-size: 36rpx;
 }

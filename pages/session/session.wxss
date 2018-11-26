@@ -1,5 +1,6 @@
 .btn-area{
     margin-top: 48rpx;
+    margin-bottom: 20rpx;
     justify-content: center;
 }
 .empty-img{

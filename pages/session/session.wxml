@@ -48,13 +48,19 @@
             <text class="word-14 color-3">活动课程  拼课限免</text>
             <text class="word-13 color-6" wx:if="{{activityList.length > 3}}" style="font-weight: 500;" bindtap="toMoreActivity">查看更多></text>
         </view>
-        <swiper style="min-height: 430rpx;" bindchange="changeActivitySwiper" current="{{currentSwiper}}" circular="{{isCircularSwiper}}">
+        <swiper wx:if="{{activityList.length > 1}}" style="min-height: 430rpx;" bindchange="changeActivitySwiper" current="{{currentSwiper}}" circular="{{isCircularSwiper}}">
             <block wx:for="{{activityList}}" wx:key="">
                 <swiper-item data-info="{{item}}" bindtap="trackViewReport">
                     <activity-item activity-info="{{item}}"></activity-item>
                 </swiper-item>
             </block>
         </swiper>
+
+         <block wx:if="{{activityList.length == 1}}" data-info="{{item}}" bindtap="trackViewReport"
+         	 	wx:for="{{activityList}}" wx:key="">
+                <activity-item activity-info="{{item}}"></activity-item>
+        </block>
+
         <button wx:if="{{activityList.length > 1}}" class="change-activity word-13 color-6" bindtap="changeActivitySwiperByClick">换一个</button>
         <view class="split-area"></view>
     </view>
