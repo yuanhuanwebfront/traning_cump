@@ -45,7 +45,7 @@ Page({
 
         globalInterval = null;
 
-        function initInfo(){
+        function initInfo(options){
             vm.setData({
                 globalQuery: options,
                 notFirstLoad: false
@@ -62,7 +62,7 @@ Page({
         if(options.scene){
             transformQrCodeScene({user_rebate_qr: options.scene}, initInfo);
         }else{
-            initInfo();
+          initInfo(options);
         }
 
     },
@@ -124,7 +124,7 @@ Page({
             activityDetail: {
                 id: data.id,
                 sessionImage: data.site_banner_img,
-                realPrice: parseInt(data.price),
+                realPrice: data.price,
                 joinPerson: data.base_enroll_num,
                 end_time: data.end_time,
                 wxShareImg: data.wx_applet_img,
